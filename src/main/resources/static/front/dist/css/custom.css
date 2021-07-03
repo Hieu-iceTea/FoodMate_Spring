@@ -1,0 +1,105 @@
+/* Tùy biến CSS */
+
+/* cart-table mặc định ẩn đi */
+.cart-table-show {
+    line-height: 1.25;
+    width: 100%
+}
+
+.cart-table-show td, .cart-table-show th {
+    vertical-align: middle;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e0e0e0
+}
+
+.cart-table-show .title .name {
+    font-weight: 500;
+    display: block
+}
+
+.cart-table-show .price {
+    font-weight: 500;
+    text-align: right;
+    width: 95px
+}
+
+.cart-table-show .actions {
+    white-space: nowrap;
+    text-align: right
+}
+
+.cart-table-show .actions button {
+    background-color: transparent;
+    border: 0;
+    outline: none;
+    padding: 0;
+    text-align: left;
+    text-align: initial
+}
+
+/* rate-custom */
+.rate-custom {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+
+.rate-custom:not(:checked) > input {
+    display: none;
+}
+
+.rate-custom:not(:checked) > label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ccc;
+}
+
+.rate-custom:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rate-custom > input:checked ~ label {
+    color: #ffc700;
+}
+
+.rate-custom:not(:checked) > label:hover,
+.rate-custom:not(:checked) > label:hover ~ label {
+    color: #deb217;
+}
+
+.rate-custom > input:checked + label:hover,
+.rate-custom > input:checked + label:hover ~ label,
+.rate-custom > input:checked ~ label:hover,
+.rate-custom > input:checked ~ label:hover ~ label,
+.rate-custom > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
+/* loader-icon */
+.loader-icon {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Hình ảnh trong restaurant/detail ở chế độ mobile mặc định bị mờ */
+.section-bg-edge .image {
+    opacity: 1;
+    margin-top: 2px;
+}
