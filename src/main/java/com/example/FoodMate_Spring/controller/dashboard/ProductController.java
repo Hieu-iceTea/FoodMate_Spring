@@ -24,7 +24,7 @@ public class ProductController {
         return "dashboard/product/show";
     }
 
-    @GetMapping(path = {"/edit/{id}/", "/edit/{id}"})
+    @GetMapping(path = {"/{id}/edit/", "/{id}/edit"})
     public String edit(@PathVariable int id) {
         return "dashboard/product/create-edit";
     }
