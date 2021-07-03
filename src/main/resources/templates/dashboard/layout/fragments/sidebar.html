@@ -13,56 +13,56 @@
         <ul class="vertical-nav-menu pt-3">
             <li>
                 <a href="../admin"
-                   class="mm-active">
+                   th:classappend="${#httpServletRequest.getRequestURI() == '/admin' ? 'mm-active' : ''}">
                     <i class="metismenu-icon pe-7s-rocket"></i>
                     Dashboard
                 </a>
             </li>
             <li>
                 <a href="../admin/report"
-                   class="">
+                   th:classappend="${#request.requestURI.startsWith('/admin/report') ? 'mm-active' : ''}">
                     <i class="metismenu-icon pe-7s-display2"></i>
                     Report
                 </a>
             </li>
             <li>
                 <a href="../admin/feedback"
-                   class="">
+                   th:classappend="${#request.requestURI.startsWith('/admin/feedback') ? 'mm-active' : ''}">
                     <i class="metismenu-icon pe-7s-light"></i>
                     Feedback
                 </a>
             </li>
             <li>
                 <a href="../admin/order"
-                   class="">
+                   th:classappend="${#request.requestURI.startsWith('/admin/order') ? 'mm-active' : ''}">
                     <i class="metismenu-icon pe-7s-shopbag"></i>
                     Order
                 </a>
             </li>
             <li>
                 <a href="../admin/product"
-                   class="">
+                   th:classappend="${#request.requestURI.startsWith('/admin/product') ? 'mm-active' : ''}">
                     <i class="metismenu-icon pe-7s-plugin"></i>
                     Product
                 </a>
             </li>
             <li>
                 <a href="../admin/category"
-                   class="">
+                   th:classappend="${#request.requestURI.startsWith('/admin/category') ? 'mm-active' : ''}">
                     <i class="metismenu-icon pe-7s-ticket"></i>
                     Category
                 </a>
             </li>
             <li>
                 <a href="../admin/restaurant"
-                   class="">
+                   th:classappend="${#request.requestURI.startsWith('/admin/restaurant') ? 'mm-active' : ''}">
                     <i class="metismenu-icon pe-7s-map-2"></i>
                     Restaurant
                 </a>
             </li>
             <li>
                 <a href="../admin/user"
-                   class="">
+                   th:classappend="${#request.requestURI.startsWith('/admin/user') ? 'mm-active' : ''}">
                     <i class="metismenu-icon pe-7s-users"></i>
                     User
                 </a>
