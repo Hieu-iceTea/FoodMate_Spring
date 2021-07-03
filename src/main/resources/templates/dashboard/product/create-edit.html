@@ -1,0 +1,320 @@
+<!doctype html>
+
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{dashboard/layout/master}">
+
+<head>
+    <base href="/dashboard/">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Dashboard</title>
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="../favicon-admin.png">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"/>
+    <meta name="description" content="CODEDY @ Cloud Kitchen - TechWiz 2021">
+
+    <!-- Disable tap highlight on IE -->
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <link href="tailwind.min.css" rel="stylesheet">
+
+    <link href="main.css" rel="stylesheet">
+    <link href="my_style.css" rel="stylesheet">
+</head>
+
+<body>
+
+            <!-- Main -->
+            <div layout:fragment="content" class="app-main__inner">
+                <div class="app-page-title">
+                    <div class="page-title-wrapper">
+                        <div class="page-title-heading">
+                            <div class="page-title-icon">
+                                <i class="pe-7s-plugin icon-gradient bg-night-fade"></i>
+                            </div>
+                            <div>
+                                Product
+                                <div class="page-title-subheading">
+                                    View, create, update, delete and manage.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="main-card mb-3 card">
+                            <div class="card-body">
+
+                                <form method="post"
+                                      action="../admin/product/59"
+                                      enctype="multipart/form-data">
+                                    <input type="hidden" name="_token" value="zHFtvpYPcCMdmPw2mfFlT0T1eNnqG0I2460gbDIS">
+                                    <input type="hidden" name="_method" value="PUT">
+
+                                    <div class="position-relative row form-group">
+                                        <label for="" class="col-md-3 text-md-right col-form-label">Images</label>
+                                        <div class="col-md-9 col-xl-8">
+                                            <ul class="text-nowrap overflow-auto" id="image">
+
+                                                <li class="d-inline-block" id="add-image-icon">
+                                                    <img id="thumbnail" style="height: 150px; cursor: pointer;"
+                                                         class="thumbnail"
+                                                         data-toggle="tooltip" title="Click to add image"
+                                                         data-placement="bottom"
+                                                         src="../front/data-images/products/CocktailCafe.jpg"
+                                                         alt="Add Image">
+                                                    <input name="image" id="image" type="file" onchange="changeImg(this)"
+                                                           class="image form-control-file" style="display: none;">
+
+                                                    <input type="hidden" name="image_old" value="CocktailCafe.jpg">
+                                                    <small class="form-text text-muted">
+                                                        Look at it, it looks great! (Click on the image to change)
+                                                    </small>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="position-relative row form-group">
+                                        <label for="brand_id"
+                                               class="col-md-3 text-md-right col-form-label">Name</label>
+                                        <div class="col-md-9 col-xl-8">
+                                            <input required name="name" id="name" placeholder="Name" type="text"
+                                                   class="form-control" value="Cocktail Cafe">
+                                        </div>
+                                    </div>
+
+                                    <div class="position-relative row form-group">
+                                        <label for="product_category_id"
+                                               class="col-md-3 text-md-right col-form-label">Category</label>
+                                        <div class="col-md-9 col-xl-8">
+                                            <select name="product_category_id" id="product_category_id" class="form-control"
+                                                    required>
+                                                <option value="">----Select Item----</option>
+                                                <option
+                                                        value="1" selected>
+                                                    Vegetarian
+                                                </option>
+                                                <option
+                                                        value="2" selected>
+                                                    Vegan
+                                                </option>
+                                                <option
+                                                        value="3" selected>
+                                                    Chinese
+                                                </option>
+                                                <option
+                                                        value="4" selected>
+                                                    Mexican
+                                                </option>
+                                                <option
+                                                        value="5" selected>
+                                                    Burgers
+                                                </option>
+                                                <option
+                                                        value="6" selected>
+                                                    Pasta
+                                                </option>
+                                                <option
+                                                        value="7" selected>
+                                                    Pizza
+                                                </option>
+                                                <option
+                                                        value="8" selected>
+                                                    Sushi
+                                                </option>
+                                                <option
+                                                        value="9" selected>
+                                                    Desserts
+                                                </option>
+                                                <option
+                                                        value="10" selected>
+                                                    Drinks
+                                                </option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="position-relative row form-group">
+                                        <label for="restaurant_id"
+                                               class="col-md-3 text-md-right col-form-label">
+                                            Restaurant
+                                        </label>
+
+
+                                        <div class="col-md-9 col-xl-8">
+                                            <select class="form-control"
+                                                    disabled>
+                                                <option value="">----Select Item----</option>
+                                                <option value="1"
+
+                                                        selected>
+                                                    Essence Restaurant
+                                                </option>
+                                                <option value="2"
+
+                                                >
+                                                    Chestnut Restaurant &amp; Sky Bar
+                                                </option>
+                                                <option value="3"
+
+                                                >
+                                                    Poke Hanoi
+                                                </option>
+                                                <option value="4"
+
+                                                >
+                                                    Chops Old Quarter
+                                                </option>
+                                                <option value="5"
+
+                                                >
+                                                    Burgers Berlin
+                                                </option>
+                                                <option value="6"
+
+                                                >
+                                                    Hoang Cuisine
+                                                </option>
+                                                <option value="7"
+
+                                                >
+                                                    Green Cuisine
+                                                </option>
+                                                <option value="8"
+
+                                                >
+                                                    The Handpulled Noodle
+                                                </option>
+                                                <option value="9"
+
+                                                >
+                                                    Xian Famous Foods
+                                                </option>
+                                            </select>
+
+                                            <input type="hidden"
+                                                   name=restaurant_id id=restaurant_id
+                                                   value="1">
+                                        </div>
+
+
+                                    </div>
+
+
+                                    <div class="position-relative row form-group">
+                                        <label for="price"
+                                               class="col-md-3 text-md-right col-form-label">Price</label>
+                                        <div class="col-md-9 col-xl-8">
+                                            <input required name="price" id="price"
+                                                   placeholder="$ Price" type="number" class="form-control"
+                                                   value="16.39">
+                                        </div>
+                                    </div>
+
+                                    <div class="position-relative row form-group">
+                                        <label for="discount"
+                                               class="col-md-3 text-md-right col-form-label">Ingredients</label>
+                                        <div class="col-md-9 col-xl-8">
+                                            <input required name="ingredients" id="ingredients"
+                                                   placeholder="ingredients" type="text" class="form-control"
+                                                   value="Base wines, colorants, fragrances, coffee and decorations">
+                                        </div>
+                                    </div>
+
+                                    <div class="position-relative row form-group">
+                                        <label for="qty"
+                                               class="col-md-3 text-md-right col-form-label">Country</label>
+                                        <div class="col-md-9 col-xl-8">
+                                            <input required name="country" id="country"
+                                                   placeholder="country" type="text" class="form-control"
+                                                   value="Korean">
+                                        </div>
+                                    </div>
+
+                                    <div class="position-relative row form-group">
+                                        <label for="description"
+                                               class="col-md-3 text-md-right col-form-label">Description</label>
+                                        <div class="col-md-9 col-xl-8">
+                                    <textarea required name="description" id="description">
+                                        A cocktail is an alcoholic mixed drink, which is either a combination of spirits, or one or more spirits mixed with other ingredients such as fruit juice, flavored syrup, or cream.
+                                    </textarea>
+                                        </div>
+                                    </div>
+                                    <div class="position-relative row form-group">
+                                        <label for="featured"
+                                               class="col-md-3 text-md-right col-form-label">Feature</label>
+
+                                        <div class="form-check ml-3 mr-3">
+                                            <input class="form-check-input" type="radio" name="featured" value="1"
+                                                   id="flexRadioDefault1">
+                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                Yes
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="featured" value="0"
+                                                   id="flexRadioDefault2" checked>
+                                            <label class="form-check-label" for="flexRadioDefault2">
+                                                No
+                                            </label>
+                                        </div>
+
+
+                                    </div>
+
+
+                                    <div class="position-relative row form-group mb-1">
+                                        <div class="col-md-9 col-xl-8 offset-md-2">
+                                            <a href="../admin/product" class="border-0 btn btn-outline-danger mr-1">
+                                                    <span class="btn-icon-wrapper pr-1 opacity-8">
+                                                        <i class="fa fa-times fa-w-20"></i>
+                                                    </span>
+                                                <span>Cancel</span>
+                                            </a>
+
+                                            <button type="submit"
+                                                    class="btn-shadow btn-hover-shine btn btn-primary">
+                                                    <span class="btn-icon-wrapper pr-2 opacity-8">
+                                                        <i class="fa fa-download fa-w-20"></i>
+                                                    </span>
+                                                <span>Save</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+
+                <script>
+                    CKEDITOR.replace('description', {
+                        filebrowserBrowseUrl: '../plugins/ckfinder_php_3.5.1.1/ckfinder.html',
+                        filebrowserImageBrowseUrl: '../plugins/ckfinder_php_3.5.1.1/ckfinder.html?type=Images',
+                        filebrowserFlashBrowseUrl: '../plugins/ckfinder_php_3.5.1.1/ckfinder.html?type=Flash',
+                        filebrowserUploadUrl: '../plugins/ckfinder_php_3.5.1.1/connector?command=QuickUpload&type=Files',
+                        filebrowserImageUploadUrl: '../plugins/ckfinder_php_3.5.1.1/connector?command=QuickUpload&type=Images',
+                        filebrowserFlashUploadUrl: '../plugins/ckfinder_php_3.5.1.1/connector?command=QuickUpload&type=Flash'
+                    });
+
+                    //https://ckeditor.com/docs/ckfinder/ckfinder3/#!/guide/dev_ckeditor
+                </script>
+            </div>
+            <!-- End Main -->
+
+</body>
+
+</html>
