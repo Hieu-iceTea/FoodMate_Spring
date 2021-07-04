@@ -8,8 +8,8 @@ import java.util.Date;
 public class Product extends BaseModel {
 
     //region - Define Fields -
-    //private Integer productCategoryId;
-    private Integer restaurantId;
+    //private Integer productCategoryId; //Foreign key - Relationship
+    //private Integer restaurantId; //Foreign key - Relationship
 
     private String name;
     private String ingredients;
@@ -26,6 +26,10 @@ public class Product extends BaseModel {
     @ManyToOne
     @JoinColumn(name = "productCategoryId") //updatable = false, insertable = false
     private ProductCategory productCategory;
+
+    @ManyToOne
+    @JoinColumn(name = "restaurantId") //updatable = false, insertable = false
+    private Restaurant restaurant;
     //endregion
 
 
@@ -43,11 +47,15 @@ public class Product extends BaseModel {
     }
 
     public Integer getRestaurantId() {
-        return restaurantId;
+        //return restaurantId;
+
+        return restaurant.getId(); //Relationship
     }
 
     public void setRestaurantId(Integer restaurantId) {
-        this.restaurantId = restaurantId;
+        //this.restaurantId = restaurantId;
+
+        restaurant.setId(restaurantId); //Relationship
     }
 
     public String getName() {
@@ -120,6 +128,14 @@ public class Product extends BaseModel {
 
     public void setProductCategory(ProductCategory productCategory) {
         this.productCategory = productCategory;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
     //endregion
 
