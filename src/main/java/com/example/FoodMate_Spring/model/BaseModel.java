@@ -28,7 +28,7 @@ public class BaseModel {
     //@Column(name = "updated_at")
     private Date updatedAt;
 
-    @Version
+    //@Version
     private int version;
     private Boolean deleted;
     //endregion
