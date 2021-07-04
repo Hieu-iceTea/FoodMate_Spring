@@ -61,7 +61,8 @@
                     </li>
 
                     <li class="nav-item delete">
-                        <form class="d-inline" th:action="@{|/admin/product/${product.id}|}" method="post">
+                        <form class="d-inline"
+                              th:action="@{|/admin/product/${product.id}|}" th:method="DELETE">
                             <button class="btn nav-link"
                                     onclick="return confirm('Do you really want to delete this item?')">
                                 <span class="btn-icon-wrapper opacity-8">
@@ -78,7 +79,7 @@
                         <div class="main-card mb-3 card">
                             <div class="card-body display_data">
                                 <div class="position-relative row form-group">
-                                    <label for="image" class="col-md-3 text-md-right col-form-label">Image</label>
+                                    <label for="" class="col-md-3 text-md-right col-form-label">Image</label>
                                     <div class="col-md-9 col-xl-8">
                                         <p>
                                             <img style="height: 200px;" class="" data-toggle="tooltip"
@@ -89,7 +90,7 @@
                                 </div>
 
                                 <div class="position-relative row form-group">
-                                    <label for="name" class="col-md-3 text-md-right col-form-label">
+                                    <label for="" class="col-md-3 text-md-right col-form-label">
                                         Name
                                     </label>
                                     <div class="col-md-9 col-xl-8">
@@ -98,7 +99,7 @@
                                 </div>
 
                                 <div class="position-relative row form-group">
-                                    <label for="company_name" class="col-md-3 text-md-right col-form-label">
+                                    <label for="" class="col-md-3 text-md-right col-form-label">
                                         Category
                                     </label>
                                     <div class="col-md-9 col-xl-8">
@@ -106,14 +107,14 @@
                                     </div>
                                 </div>
                                 <div class="position-relative row form-group">
-                                    <label for="email" class="col-md-3 text-md-right col-form-label">Restaurant</label>
+                                    <label for="" class="col-md-3 text-md-right col-form-label">Restaurant</label>
                                     <div class="col-md-9 col-xl-8">
                                         <p th:text="${product.restaurant.name}"></p>
                                     </div>
                                 </div>
 
                                 <div class="position-relative row form-group">
-                                    <label for="description"
+                                    <label for=""
                                            class="col-md-3 text-md-right col-form-label">Price</label>
                                     <div class="col-md-9 col-xl-8">
                                         <p th:text="${product.price}"></p>
@@ -121,7 +122,7 @@
                                 </div>
 
                                 <div class="position-relative row form-group">
-                                    <label for="description"
+                                    <label for=""
                                            class="col-md-3 text-md-right col-form-label">Ingredients</label>
                                     <div class="col-md-9 col-xl-8">
                                         <p th:text="${product.ingredients}"></p>
@@ -130,7 +131,7 @@
 
 
                                 <div class="position-relative row form-group">
-                                    <label for="country"
+                                    <label for=""
                                            class="col-md-3 text-md-right col-form-label">Country</label>
                                     <div class="col-md-9 col-xl-8">
                                         <p th:text="${product.country}"></p>
@@ -138,7 +139,7 @@
                                 </div>
 
                                 <div class="position-relative row form-group">
-                                    <label for="street_address" class="col-md-3 text-md-right col-form-label">
+                                    <label for="" class="col-md-3 text-md-right col-form-label">
                                         Description</label>
                                     <div class="col-md-9 col-xl-8" th:utext="${product.description}">[(${product.description})]</div>
                                 </div>

@@ -83,4 +83,12 @@ public class ProductController {
         return "redirect:/admin/product/" + product.getId();
     }
 
+    @DeleteMapping(path = {"/{id}/", "/{id}"})
+    public String delete(@PathVariable int id) {
+
+        productService.deleteById(id);
+
+        return "redirect:/admin/product/index";
+    }
+
 }
