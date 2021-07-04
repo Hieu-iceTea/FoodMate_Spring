@@ -73,7 +73,7 @@
                                                          data-placement="bottom"
                                                          th:src="${product.image} ? @{|../front/data-images/products/${product.image}|} : @{|../dashboard/assets/images/add-image-icon.jpg|}"
                                                          alt="Add Image">
-                                                    <input name="image_file" id="image" type="file" onchange="changeImg(this)"
+                                                    <input name="image_file" id="image" type="file" onchange="changeImg(this)" accept="image/*"
                                                            class="image form-control-file" style="display: none;">
 
                                                     <input type="hidden" name="image_old" th:value="${product.image}">
