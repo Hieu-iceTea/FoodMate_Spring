@@ -85,7 +85,7 @@
                                         <p>
                                             <img style="height: 200px;" class="" data-toggle="tooltip"
                                                  title="Avatar" data-placement="bottom"
-                                                 src="../front/data-images/products/CocktailCafe.jpg" alt="Avatar">
+                                                 th:src="@{|../front/data-images/products/${product.image}|}" alt="Avatar">
                                         </p>
                                     </div>
                                 </div>
@@ -95,7 +95,7 @@
                                         Name
                                     </label>
                                     <div class="col-md-9 col-xl-8">
-                                        <p>Cocktail Cafe</p>
+                                        <p th:text="${product.name}">[[(${product.name})]]</p>
                                     </div>
                                 </div>
 
@@ -104,13 +104,13 @@
                                         Category
                                     </label>
                                     <div class="col-md-9 col-xl-8">
-                                        <p>Drinks</p>
+                                        <p th:text="${product.productCategoryId}"></p>
                                     </div>
                                 </div>
                                 <div class="position-relative row form-group">
                                     <label for="email" class="col-md-3 text-md-right col-form-label">Restaurant</label>
                                     <div class="col-md-9 col-xl-8">
-                                        <p>Essence Restaurant</p>
+                                        <p th:text="${product.restaurantId}"></p>
                                     </div>
                                 </div>
 
@@ -118,7 +118,7 @@
                                     <label for="description"
                                            class="col-md-3 text-md-right col-form-label">Price</label>
                                     <div class="col-md-9 col-xl-8">
-                                        <p>$16.39</p>
+                                        <p th:text="${product.price}"></p>
                                     </div>
                                 </div>
 
@@ -126,7 +126,7 @@
                                     <label for="description"
                                            class="col-md-3 text-md-right col-form-label">Ingredients</label>
                                     <div class="col-md-9 col-xl-8">
-                                        <p>Base wines, colorants, fragrances, coffee and decorations</p>
+                                        <p th:text="${product.ingredients}"></p>
                                     </div>
                                 </div>
 
@@ -135,16 +135,14 @@
                                     <label for="country"
                                            class="col-md-3 text-md-right col-form-label">Country</label>
                                     <div class="col-md-9 col-xl-8">
-                                        <p>Korean</p>
+                                        <p th:text="${product.country}"></p>
                                     </div>
                                 </div>
 
                                 <div class="position-relative row form-group">
                                     <label for="street_address" class="col-md-3 text-md-right col-form-label">
                                         Description</label>
-                                    <div class="col-md-9 col-xl-8">
-                                        A cocktail is an alcoholic mixed drink, which is either a combination of spirits, or one or more spirits mixed with other ingredients such as fruit juice, flavored syrup, or cream.
-                                    </div>
+                                    <div class="col-md-9 col-xl-8" th:utext="${product.description}">[(${product.description})]</div>
                                 </div>
                             </div>
                         </div>

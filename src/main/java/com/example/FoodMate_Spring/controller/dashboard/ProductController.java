@@ -35,7 +35,12 @@ public class ProductController {
     }
 
     @GetMapping(path = {"/{id}/", "/{id}"})
-    public String show(@PathVariable int id) {
+    public String show(Model model, @PathVariable int id) {
+
+        Product product = productService.findById(id);
+
+        model.addAttribute("product", product);
+
         return "dashboard/product/show";
     }
 
