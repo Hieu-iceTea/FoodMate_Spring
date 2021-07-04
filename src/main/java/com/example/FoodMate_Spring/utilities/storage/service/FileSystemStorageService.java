@@ -2,10 +2,12 @@ package com.example.FoodMate_Spring.utilities.storage.service;
 
 import com.example.FoodMate_Spring.utilities.Common;
 import com.example.FoodMate_Spring.utilities.storage.exception.StorageException;
+import com.example.FoodMate_Spring.utilities.storage.exception.StorageFileNotFoundException;
 import net.bytebuddy.utility.RandomString;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -44,6 +46,15 @@ public class FileSystemStorageService implements StorageService {
             return uniqueFileName;
         } catch (IOException e) {
             throw new StorageException("Failed to store file " + file.getOriginalFilename(), e);
+        }
+    }
+
+    @Override
+    public void delete(String fileName, String path) {
+        try {
+            Files.delete(Paths.get(path).resolve(fileName));
+        } catch (IOException e) {
+            throw new StorageFileNotFoundException("Could not read file:" + fileName, e);
         }
     }
 
