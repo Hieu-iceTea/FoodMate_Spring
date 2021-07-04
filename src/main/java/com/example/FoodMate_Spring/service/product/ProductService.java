@@ -1,4 +1,4 @@
-package com.example.FoodMate_Spring.service;
+package com.example.FoodMate_Spring.service.product;
 
 import com.example.FoodMate_Spring.model.Product;
 
