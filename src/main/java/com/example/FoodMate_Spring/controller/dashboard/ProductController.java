@@ -22,12 +22,7 @@ public class ProductController {
     @GetMapping(path = {"", "/", "/index"})
     public String index(Model model, @RequestParam(required = false) String search) { //Có thể bỏ @RequestParam nếu dùng [required = false]
 
-        List<Product> products;
-        if (search == null) {
-            products = productService.findAllByOrderByIdDesc();
-        } else {
-            products = productService.findAllByNameContainsOrderByIdDesc(search);
-        }
+        List<Product> products = productService.getAll(search);
 
         model.addAttribute("products", products);
 

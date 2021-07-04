@@ -15,4 +15,6 @@ public interface ProductService {
 
     public List<Product> findAllByOrderByIdDesc();
     public List<Product> findAllByNameContainsOrderByIdDesc(String name);
+
+    public List<Product> getAll(String KeywordSearch);
 }

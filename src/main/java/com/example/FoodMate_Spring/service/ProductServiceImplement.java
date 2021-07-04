@@ -53,4 +53,16 @@ public class ProductServiceImplement implements ProductService {
     public List<Product> findAllByNameContainsOrderByIdDesc(String name) {
         return productRepository.findAllByNameContainsOrderByIdDesc(name);
     }
+
+    @Override
+    public List<Product> getAll(String KeywordSearch) {
+        List<Product> products;
+        if (KeywordSearch == null) {
+            products = productRepository.findAllByOrderByIdDesc();
+        } else {
+            products = productRepository.findAllByNameContainsOrderByIdDesc(KeywordSearch);
+        }
+
+        return products;
+    }
 }
