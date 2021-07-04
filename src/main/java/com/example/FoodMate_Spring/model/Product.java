@@ -14,7 +14,7 @@ public class Product {
     private Integer id;
 
     //@Column(name = "product_category_id")
-    private Integer productCategoryId;
+    //private Integer productCategoryId;
     //@Column(name = "restaurant_id")
     private Integer restaurantId;
 
@@ -40,6 +40,13 @@ public class Product {
     //endregion
 
 
+    //region - Relationship -
+    @ManyToOne
+    @JoinColumn(name = "productCategoryId") //updatable = false, insertable = false
+    private ProductCategory productCategory;
+    //endregion
+
+
     //region - Getter, Setter -
     public Integer getId() {
         return id;
@@ -50,11 +57,15 @@ public class Product {
     }
 
     public Integer getProductCategoryId() {
-        return productCategoryId;
+        //return productCategoryId;
+
+        return productCategory.getId(); //Relationship
     }
 
     public void setProductCategoryId(Integer productCategoryId) {
-        this.productCategoryId = productCategoryId;
+        //this.productCategoryId = productCategoryId;
+
+        productCategory.setId(productCategoryId); //Relationship
     }
 
     public Integer getRestaurantId() {
@@ -175,6 +186,14 @@ public class Product {
 
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
+    }
+
+    public ProductCategory getProductCategory() {
+        return productCategory;
+    }
+
+    public void setProductCategory(ProductCategory productCategory) {
+        this.productCategory = productCategory;
     }
     //endregion
 }

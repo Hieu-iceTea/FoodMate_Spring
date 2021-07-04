@@ -2,6 +2,7 @@ package com.example.FoodMate_Spring.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "product_categories")
@@ -26,6 +27,12 @@ public class ProductCategory {
     private Date updatedAt;
     private int version;
     private boolean deleted;
+    //endregion
+
+
+    //region - Relationship -
+    @OneToMany(mappedBy = "productCategory")
+    private List<Product> products;
     //endregion
 
 
@@ -111,5 +118,12 @@ public class ProductCategory {
         this.deleted = deleted;
     }
 
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
     //endregion
 }
