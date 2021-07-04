@@ -54,14 +54,14 @@
                         <div class="main-card mb-3 card">
                             <div class="card-body">
 
-                                <form method="post"
-                                      action="../admin/product/59"
-                                      enctype="multipart/form-data">
-                                    <input type="hidden" name="_token" value="zHFtvpYPcCMdmPw2mfFlT0T1eNnqG0I2460gbDIS">
-                                    <input type="hidden" name="_method" value="PUT">
+                                <form method="post" enctype="multipart/form-data"
+                                      th:action="@{|/admin/product/${product.id}|}" th:object="${product}">
+
+                                    <input type="hidden" th:field="*{id}">
+                                    <input type="hidden" th:field="*{image}">
 
                                     <div class="position-relative row form-group">
-                                        <label for="" class="col-md-3 text-md-right col-form-label">Images</label>
+                                        <label for="image" class="col-md-3 text-md-right col-form-label">Images</label>
                                         <div class="col-md-9 col-xl-8">
                                             <ul class="text-nowrap overflow-auto" id="image">
 
@@ -70,9 +70,9 @@
                                                          class="thumbnail"
                                                          data-toggle="tooltip" title="Click to add image"
                                                          data-placement="bottom"
-                                                         src="../front/data-images/products/CocktailCafe.jpg"
+                                                         th:src="@{|../front/data-images/products/${product.image}|}"
                                                          alt="Add Image">
-                                                    <input name="image" id="image" type="file" onchange="changeImg(this)"
+                                                    <input name="image_file" id="image" type="file" onchange="changeImg(this)"
                                                            class="image form-control-file" style="display: none;">
 
                                                     <input type="hidden" name="image_old" value="CocktailCafe.jpg">
@@ -85,10 +85,10 @@
                                     </div>
 
                                     <div class="position-relative row form-group">
-                                        <label for="brand_id"
+                                        <label for="name"
                                                class="col-md-3 text-md-right col-form-label">Name</label>
                                         <div class="col-md-9 col-xl-8">
-                                            <input required name="name" id="name" placeholder="Name" type="text"
+                                            <input th:field="*{name}" required name="name" id="name" placeholder="Name" type="text"
                                                    class="form-control" value="Cocktail Cafe">
                                         </div>
                                     </div>
@@ -97,118 +97,30 @@
                                         <label for="product_category_id"
                                                class="col-md-3 text-md-right col-form-label">Category</label>
                                         <div class="col-md-9 col-xl-8">
-                                            <select name="product_category_id" id="product_category_id" class="form-control"
-                                                    required>
-                                                <option value="">----Select Item----</option>
-                                                <option
-                                                        value="1" selected>
-                                                    Vegetarian
-                                                </option>
-                                                <option
-                                                        value="2" selected>
-                                                    Vegan
-                                                </option>
-                                                <option
-                                                        value="3" selected>
-                                                    Chinese
-                                                </option>
-                                                <option
-                                                        value="4" selected>
-                                                    Mexican
-                                                </option>
-                                                <option
-                                                        value="5" selected>
-                                                    Burgers
-                                                </option>
-                                                <option
-                                                        value="6" selected>
-                                                    Pasta
-                                                </option>
-                                                <option
-                                                        value="7" selected>
-                                                    Pizza
-                                                </option>
-                                                <option
-                                                        value="8" selected>
-                                                    Sushi
-                                                </option>
-                                                <option
-                                                        value="9" selected>
-                                                    Desserts
-                                                </option>
-                                                <option
-                                                        value="10" selected>
-                                                    Drinks
-                                                </option>
-
+                                            <select th:field="*{productCategory}"
+                                                    id="product_category_id" class="form-control" required>
+                                                <option value="">--- Select Item ---</option>
+                                                <option th:each="productCategory: ${productCategories}"
+                                                        th:value="${productCategory.id}"
+                                                        th:text="${productCategory.name}"></option>
                                             </select>
                                         </div>
                                     </div>
 
                                     <div class="position-relative row form-group">
-                                        <label for="restaurant_id"
+                                        <label for="restaurant"
                                                class="col-md-3 text-md-right col-form-label">
                                             Restaurant
                                         </label>
-
-
                                         <div class="col-md-9 col-xl-8">
-                                            <select class="form-control"
-                                                    disabled>
-                                                <option value="">----Select Item----</option>
-                                                <option value="1"
-
-                                                        selected>
-                                                    Essence Restaurant
-                                                </option>
-                                                <option value="2"
-
-                                                >
-                                                    Chestnut Restaurant &amp; Sky Bar
-                                                </option>
-                                                <option value="3"
-
-                                                >
-                                                    Poke Hanoi
-                                                </option>
-                                                <option value="4"
-
-                                                >
-                                                    Chops Old Quarter
-                                                </option>
-                                                <option value="5"
-
-                                                >
-                                                    Burgers Berlin
-                                                </option>
-                                                <option value="6"
-
-                                                >
-                                                    Hoang Cuisine
-                                                </option>
-                                                <option value="7"
-
-                                                >
-                                                    Green Cuisine
-                                                </option>
-                                                <option value="8"
-
-                                                >
-                                                    The Handpulled Noodle
-                                                </option>
-                                                <option value="9"
-
-                                                >
-                                                    Xian Famous Foods
-                                                </option>
+                                            <select th:field="*{restaurant}"
+                                                    id="restaurant" class="form-control" required>
+                                                <option value="">--- Select Item ---</option>
+                                                <option th:each="restaurant: ${restaurants}"
+                                                        th:value="${restaurant.id}"
+                                                        th:text="${restaurant.name}"></option>
                                             </select>
-
-                                            <input type="hidden"
-                                                   name=restaurant_id id=restaurant_id
-                                                   value="1">
                                         </div>
-
-
                                     </div>
 
 
@@ -216,27 +128,27 @@
                                         <label for="price"
                                                class="col-md-3 text-md-right col-form-label">Price</label>
                                         <div class="col-md-9 col-xl-8">
-                                            <input required name="price" id="price"
+                                            <input th:field="*{price}" required name="price" id="price"
                                                    placeholder="$ Price" type="number" class="form-control"
                                                    value="16.39">
                                         </div>
                                     </div>
 
                                     <div class="position-relative row form-group">
-                                        <label for="discount"
+                                        <label for="ingredients"
                                                class="col-md-3 text-md-right col-form-label">Ingredients</label>
                                         <div class="col-md-9 col-xl-8">
-                                            <input required name="ingredients" id="ingredients"
+                                            <input th:field="*{ingredients}" required name="ingredients" id="ingredients"
                                                    placeholder="ingredients" type="text" class="form-control"
                                                    value="Base wines, colorants, fragrances, coffee and decorations">
                                         </div>
                                     </div>
 
                                     <div class="position-relative row form-group">
-                                        <label for="qty"
+                                        <label for="country"
                                                class="col-md-3 text-md-right col-form-label">Country</label>
                                         <div class="col-md-9 col-xl-8">
-                                            <input required name="country" id="country"
+                                            <input th:field="*{country}" required name="country" id="country"
                                                    placeholder="country" type="text" class="form-control"
                                                    value="Korean">
                                         </div>
@@ -246,31 +158,31 @@
                                         <label for="description"
                                                class="col-md-3 text-md-right col-form-label">Description</label>
                                         <div class="col-md-9 col-xl-8">
-                                    <textarea required name="description" id="description">
+                                    <textarea th:field="*{description}" required name="description" id="description">
                                         A cocktail is an alcoholic mixed drink, which is either a combination of spirits, or one or more spirits mixed with other ingredients such as fruit juice, flavored syrup, or cream.
                                     </textarea>
                                         </div>
                                     </div>
+
+
                                     <div class="position-relative row form-group">
                                         <label for="featured"
                                                class="col-md-3 text-md-right col-form-label">Feature</label>
 
                                         <div class="form-check ml-3 mr-3">
-                                            <input class="form-check-input" type="radio" name="featured" value="1"
+                                            <input th:field="*{featured}" class="form-check-input" type="radio" name="featured" value="1"
                                                    id="flexRadioDefault1">
                                             <label class="form-check-label" for="flexRadioDefault1">
                                                 Yes
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="featured" value="0"
-                                                   id="flexRadioDefault2" checked>
+                                            <input th:field="*{featured}" class="form-check-input" type="radio" name="featured" value="0"
+                                                   id="flexRadioDefault2">
                                             <label class="form-check-label" for="flexRadioDefault2">
                                                 No
                                             </label>
                                         </div>
-
-
                                     </div>
 
 
