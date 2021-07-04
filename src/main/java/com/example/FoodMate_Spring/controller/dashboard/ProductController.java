@@ -17,6 +17,8 @@ import java.util.List;
 @RequestMapping(path = "/admin/product")
 public class ProductController {
 
+    private final String _path = "src/main/resources/static/" + "front/data-images/products";
+
     //region - Autowired Service -
     @Autowired
     private ProductService productService;
@@ -70,10 +72,8 @@ public class ProductController {
 
         //Xử lý file
         if (!file.isEmpty()) {
-            String path = "src/main/resources/static/front/data-images/products";
-
             // 02. Lưu file mới:
-            String fileName =  storageService.store(file, path);
+            String fileName =  storageService.store(file, _path);
             product.setImage(fileName);
         }
 
@@ -101,13 +101,11 @@ public class ProductController {
 
         //Xử lý file
         if (!file.isEmpty()) {
-            String path = "src/main/resources/static/front/data-images/products";
-
             // 01. Xóa file cũ:
-            storageService.delete(fileName_old, path);
+            storageService.delete(fileName_old, _path);
 
             // 02. Lưu file mới:
-            String fileName =  storageService.store(file, path);
+            String fileName =  storageService.store(file, _path);
             product.setImage(fileName);
         }
 
@@ -122,6 +120,10 @@ public class ProductController {
     @DeleteMapping(path = {"/{id}/", "/{id}"})
     public String delete(@PathVariable int id) {
 
+        // 01. Xóa file:
+        storageService.delete(productService.findById(id).getImage(), _path);
+
+        // 02. Xóa bản ghi database
         productService.deleteById(id);
 
         return "redirect:/admin/product/index";
