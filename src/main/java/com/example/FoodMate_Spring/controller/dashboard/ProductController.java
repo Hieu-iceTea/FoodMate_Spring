@@ -34,8 +34,22 @@ public class ProductController {
 
 
     @GetMapping(path = {"/create/", "/create"})
-    public String create() {
+    public String create(Model model) {
+
+        model.addAttribute("product", new Product());
+
+        model.addAttribute("productCategories", productCategoryService.findAllByOrderByIdDesc());
+        model.addAttribute("restaurants", restaurantService.findAllByOrderByIdDesc());
+
         return "dashboard/product/create-edit";
+    }
+
+    @PostMapping(path = "/create")
+    public String store(@ModelAttribute Product product) {
+
+        productService.save(product);
+
+        return "redirect:/admin/product/index";
     }
 
 
@@ -54,6 +68,7 @@ public class ProductController {
     public String edit(Model model, @PathVariable int id) {
 
         model.addAttribute("product", productService.findById(id));
+
         model.addAttribute("productCategories", productCategoryService.findAllByOrderByIdDesc());
         model.addAttribute("restaurants", restaurantService.findAllByOrderByIdDesc());
 
