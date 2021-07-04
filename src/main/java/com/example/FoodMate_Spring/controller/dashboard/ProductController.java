@@ -15,13 +15,17 @@ import java.util.List;
 @RequestMapping(path = "/admin/product")
 public class ProductController {
 
+    //region - Autowired Service -
     @Autowired
     private ProductService productService;
     @Autowired
     private ProductCategoryService productCategoryService;
     @Autowired
     private RestaurantService restaurantService;
+    //endregion
 
+
+    //region - Display -
     @GetMapping(path = {"", "/", "/index"})
     public String index(Model model, @RequestParam(required = false) String search) { //Có thể bỏ @RequestParam nếu dùng [required = false]
 
@@ -32,7 +36,19 @@ public class ProductController {
         return "dashboard/product/index";
     }
 
+    @GetMapping(path = {"/{id}/", "/{id}"})
+    public String show(Model model, @PathVariable int id) {
 
+        Product product = productService.findById(id);
+
+        model.addAttribute("product", product);
+
+        return "dashboard/product/show";
+    }
+    //endregion
+
+
+    //region - Create -
     @GetMapping(path = {"/create/", "/create"})
     public String create(Model model) {
 
@@ -44,26 +60,17 @@ public class ProductController {
         return "dashboard/product/create-edit";
     }
 
-    @PostMapping(path = "/create")
+    @PostMapping(path = {"", "/"})
     public String store(@ModelAttribute Product product) {
 
         productService.save(product);
 
         return "redirect:/admin/product/index";
     }
+    //endregion
 
 
-    @GetMapping(path = {"/{id}/", "/{id}"})
-    public String show(Model model, @PathVariable int id) {
-
-        Product product = productService.findById(id);
-
-        model.addAttribute("product", product);
-
-        return "dashboard/product/show";
-    }
-
-
+    //region - Edit -
     @GetMapping(path = {"/{id}/edit/", "/{id}/edit"})
     public String edit(Model model, @PathVariable int id) {
 
@@ -82,7 +89,10 @@ public class ProductController {
 
         return "redirect:/admin/product/" + product.getId();
     }
+    //endregion
 
+
+    //region - Delete -
     @DeleteMapping(path = {"/{id}/", "/{id}"})
     public String delete(@PathVariable int id) {
 
@@ -90,5 +100,6 @@ public class ProductController {
 
         return "redirect:/admin/product/index";
     }
+    //endregion
 
 }

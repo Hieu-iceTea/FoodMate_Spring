@@ -55,7 +55,7 @@
                             <div class="card-body">
 
                                 <form method="post" enctype="multipart/form-data"
-                                      th:action="${#request.requestURI.endsWith('/create')} ? @{|/admin/product/create|} : @{|/admin/product/${product.id}|} "
+                                      th:action="${#request.requestURI.endsWith('/create')} ? @{|/admin/product|} : @{|/admin/product/${product.id}|} "
                                       th:object="${product}">
 
                                     <input type="hidden" th:field="*{id}">
