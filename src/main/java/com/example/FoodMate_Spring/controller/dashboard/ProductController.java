@@ -66,7 +66,16 @@ public class ProductController {
     }
 
     @PostMapping(path = {"", "/"})
-    public String store(@ModelAttribute Product product) {
+    public String store(@ModelAttribute Product product, @RequestParam("image_file") MultipartFile file) {
+
+        //Xử lý file
+        if (!file.isEmpty()) {
+            String path = "src/main/resources/static/front/data-images/products";
+
+            // 02. Lưu file mới:
+            String fileName =  storageService.store(file, path);
+            product.setImage(fileName);
+        }
 
         productService.save(product);
 
