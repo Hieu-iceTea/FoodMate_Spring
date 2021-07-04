@@ -76,7 +76,7 @@
                                                     <input name="image_file" id="image" type="file" onchange="changeImg(this)"
                                                            class="image form-control-file" style="display: none;">
 
-                                                    <input type="hidden" name="image_old" value="CocktailCafe.jpg">
+                                                    <input type="hidden" name="image_old" th:value="${product.image}">
                                                     <small class="form-text text-muted">
                                                         Look at it, it looks great! (Click on the image to change)
                                                     </small>

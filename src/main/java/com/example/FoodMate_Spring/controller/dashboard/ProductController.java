@@ -4,10 +4,12 @@ import com.example.FoodMate_Spring.model.Product;
 import com.example.FoodMate_Spring.service.product.ProductService;
 import com.example.FoodMate_Spring.service.productCategory.ProductCategoryService;
 import com.example.FoodMate_Spring.service.restaurant.RestaurantService;
+import com.example.FoodMate_Spring.utilities.storage.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -22,6 +24,9 @@ public class ProductController {
     private ProductCategoryService productCategoryService;
     @Autowired
     private RestaurantService restaurantService;
+
+    @Autowired
+    private StorageService storageService;
     //endregion
 
 
@@ -83,7 +88,19 @@ public class ProductController {
     }
 
     @PostMapping(path = {"/{id}/", "/{id}"})
-    public String update(@ModelAttribute Product product) {
+    public String update(@ModelAttribute Product product, @RequestParam("image_file") MultipartFile file, @RequestParam("image_old") String fileName_old) {
+
+        //Xử lý file
+        if (!file.isEmpty()) {
+            String path = "src/main/resources/static/front/data-images/products";
+
+            // 01. Xóa file cũ:
+            storageService.delete(fileName_old, path);
+
+            // 02. Lưu file mới:
+            String fileName =  storageService.store(file, path);
+            product.setImage(fileName);
+        }
 
         productService.save(product);
 
