@@ -13,9 +13,9 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "product_category_id")
+    //@Column(name = "product_category_id")
     private Integer productCategoryId;
-    @Column(name = "restaurant_id")
+    //@Column(name = "restaurant_id")
     private Integer restaurantId;
 
     private String name;
@@ -27,13 +27,13 @@ public class Product {
     private String description;
     private boolean featured;
 
-    @Column(name = "created_by")
+    //@Column(name = "created_by")
     private String createdBy;
-    @Column(name = "created_at")
+    //@Column(name = "created_at")
     private Date createdAt;
-    @Column(name = "updated_by")
+    //@Column(name = "updated_by")
     private String updatedBy;
-    @Column(name = "updated_at")
+    //@Column(name = "updated_at")
     private Date updatedAt;
     private int version;
     private boolean deleted;

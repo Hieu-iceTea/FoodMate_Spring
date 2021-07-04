@@ -16,13 +16,13 @@ public class ProductCategory {
     private String image;
     private boolean active;
 
-    @Column(name = "created_by")
+    //@Column(name = "created_by")
     private String createdBy;
-    @Column(name = "created_at")
+    //@Column(name = "created_at")
     private Date createdAt;
-    @Column(name = "updated_by")
+    //@Column(name = "updated_by")
     private String updatedBy;
-    @Column(name = "updated_at")
+    //@Column(name = "updated_at")
     private Date updatedAt;
     private int version;
     private boolean deleted;
