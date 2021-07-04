@@ -55,7 +55,7 @@
                             <div class="card-body">
 
                                 <form method="post" enctype="multipart/form-data"
-                                      th:action="${#request.requestURI.endsWith('/create')} ? @{|/admin/product|} : @{|/admin/product/${product.id}|} "
+                                      th:action="${#request.requestURI.endsWith('/create')} ? @{|/admin/product|} : @{|/admin/product/${product.id}|}"
                                       th:object="${product}">
 
                                     <input type="hidden" th:field="*{id}">
@@ -71,7 +71,7 @@
                                                          class="thumbnail"
                                                          data-toggle="tooltip" title="Click to add image"
                                                          data-placement="bottom"
-                                                         th:src="@{|../front/data-images/products/${product.image}|}"
+                                                         th:src="${product.image} ? @{|../front/data-images/products/${product.image}|} : @{|../dashboard/assets/images/add-image-icon.jpg|}"
                                                          alt="Add Image">
                                                     <input name="image_file" id="image" type="file" onchange="changeImg(this)"
                                                            class="image form-control-file" style="display: none;">
