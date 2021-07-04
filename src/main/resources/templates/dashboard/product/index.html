@@ -92,12 +92,9 @@
                                     </thead>
 
                                     <tbody>
-                                    <tr>
-                                        <td class="text-center text-muted">#
 
-                                            60
-                                        </td>
-
+                                    <tr th:each="product : ${products}">
+                                        <td class="text-center text-muted" th:text="${'#' + product.id}"></td>
                                         <td>
                                             <div class="widget-content p-0">
                                                 <div class="widget-content-wrapper">
@@ -106,445 +103,42 @@
                                                             <img width="80"
                                                                  data-toggle="tooltip" title="Image"
                                                                  data-placement="bottom"
-                                                                 src="../front/data-images/products/US-Beveragee.jpg"
+                                                                 th:src="@{|../front/data-images/products/${product.image}|}"
                                                                  alt="">
                                                         </div>
                                                     </div>
                                                     <div class="widget-content-left flex2">
-                                                        <div class="widget-heading">US-Beverages</div>
-
+                                                        <div class="widget-heading" th:text="${product.name}"></div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="text-center">$10.59</td>
+                                        <td class="text-center" th:text="${'$' + product.price}"></td>
                                         <td class="text-center">
-                                            <div
-                                                    class="badge badge-success mt-2">
-                                                yes
-                                            </div>
+                                            <div class="badge mt-2"
+                                                 th:classappend="${product.featured ? 'badge-success' : 'badge-warning'}"
+                                                 th:text="${product.featured ? 'Yes' : 'No'}"></div>
                                         </td>
                                         <td class="text-center">
-                                            <a href="../admin/product/60"
+                                            <a th:href="@{|/admin/product/${product.id}|}"
                                                class="btn btn-hover-shine btn-outline-primary border-0 btn-sm">
                                                 Details
                                             </a>
-                                            <a href="http://127.0.0.1:8000/admin/product/60/edit"
+                                            <a th:href="@{|/admin/product/${product.id}/edit|}"
                                                data-toggle="tooltip" title="Edit"
                                                data-placement="bottom" class="btn btn-outline-warning border-0 btn-sm">
                                                         <span class="btn-icon-wrapper opacity-8">
                                                             <i class="fa fa-edit fa-w-20"></i>
                                                         </span>
                                             </a>
-                                            <form class="d-inline" action="http://127.0.0.1:8000/admin/product/60"
+                                            <form class="d-inline" th:action="@{|/admin/product/${product.id}|}"
                                                   method="post">
-                                                <input type="hidden" name="_token" value="zHFtvpYPcCMdmPw2mfFlT0T1eNnqG0I2460gbDIS">                                            <input type="hidden" name="_method" value="DELETE">                                            <button class="btn btn-hover-shine btn-outline-danger border-0 btn-sm"
-                                                                                                                                                                                                                                                                                       type="submit" data-toggle="tooltip" title="Delete"
-                                                                                                                                                                                                                                                                                       data-placement="bottom"
-                                                                                                                                                                                                                                                                                       onclick="return confirm('Do you really want to delete this item?')">
-                                                            <span class="btn-icon-wrapper opacity-8">
-                                                                <i class="fa fa-trash fa-w-20"></i>
-                                                            </span>
-                                            </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center text-muted">#
-
-                                            59
-                                        </td>
-
-                                        <td>
-                                            <div class="widget-content p-0">
-                                                <div class="widget-content-wrapper">
-                                                    <div class="widget-content-left mr-3">
-                                                        <div class="widget-content-left">
-                                                            <img width="80"
-                                                                 data-toggle="tooltip" title="Image"
-                                                                 data-placement="bottom"
-                                                                 src="../front/data-images/products/CocktailCafe.jpg"
-                                                                 alt="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="widget-content-left flex2">
-                                                        <div class="widget-heading">Cocktail Cafe</div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-center">$16.39</td>
-                                        <td class="text-center">
-                                            <div
-                                                    class="badge badge-warning mt-2">
-                                                no
-                                            </div>
-                                        </td>
-                                        <td class="text-center">
-                                            <a href="../admin/product/59"
-                                               class="btn btn-hover-shine btn-outline-primary border-0 btn-sm">
-                                                Details
-                                            </a>
-                                            <a href="http://127.0.0.1:8000/admin/product/59/edit"
-                                               data-toggle="tooltip" title="Edit"
-                                               data-placement="bottom" class="btn btn-outline-warning border-0 btn-sm">
+                                                <button class="btn btn-hover-shine btn-outline-danger border-0 btn-sm"
+                                                    onclick="return confirm('Do you really want to delete this item?')">
                                                         <span class="btn-icon-wrapper opacity-8">
-                                                            <i class="fa fa-edit fa-w-20"></i>
+                                                            <i class="fa fa-trash fa-w-20"></i>
                                                         </span>
-                                            </a>
-                                            <form class="d-inline" action="http://127.0.0.1:8000/admin/product/59"
-                                                  method="post">
-                                                <input type="hidden" name="_token" value="zHFtvpYPcCMdmPw2mfFlT0T1eNnqG0I2460gbDIS">                                            <input type="hidden" name="_method" value="DELETE">                                            <button class="btn btn-hover-shine btn-outline-danger border-0 btn-sm"
-                                                                                                                                                                                                                                                                                       type="submit" data-toggle="tooltip" title="Delete"
-                                                                                                                                                                                                                                                                                       data-placement="bottom"
-                                                                                                                                                                                                                                                                                       onclick="return confirm('Do you really want to delete this item?')">
-                                                            <span class="btn-icon-wrapper opacity-8">
-                                                                <i class="fa fa-trash fa-w-20"></i>
-                                                            </span>
-                                            </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center text-muted">#
-
-                                            58
-                                        </td>
-
-                                        <td>
-                                            <div class="widget-content p-0">
-                                                <div class="widget-content-wrapper">
-                                                    <div class="widget-content-left mr-3">
-                                                        <div class="widget-content-left">
-                                                            <img width="80"
-                                                                 data-toggle="tooltip" title="Image"
-                                                                 data-placement="bottom"
-                                                                 src="../front/data-images/products/MatchaMojito.jpg"
-                                                                 alt="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="widget-content-left flex2">
-                                                        <div class="widget-heading">Matcha Mojito</div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-center">$15.29</td>
-                                        <td class="text-center">
-                                            <div
-                                                    class="badge badge-warning mt-2">
-                                                no
-                                            </div>
-                                        </td>
-                                        <td class="text-center">
-                                            <a href="../admin/product/58"
-                                               class="btn btn-hover-shine btn-outline-primary border-0 btn-sm">
-                                                Details
-                                            </a>
-                                            <a href="http://127.0.0.1:8000/admin/product/58/edit"
-                                               data-toggle="tooltip" title="Edit"
-                                               data-placement="bottom" class="btn btn-outline-warning border-0 btn-sm">
-                                                        <span class="btn-icon-wrapper opacity-8">
-                                                            <i class="fa fa-edit fa-w-20"></i>
-                                                        </span>
-                                            </a>
-                                            <form class="d-inline" action="http://127.0.0.1:8000/admin/product/58"
-                                                  method="post">
-                                                <input type="hidden" name="_token" value="zHFtvpYPcCMdmPw2mfFlT0T1eNnqG0I2460gbDIS">                                            <input type="hidden" name="_method" value="DELETE">                                            <button class="btn btn-hover-shine btn-outline-danger border-0 btn-sm"
-                                                                                                                                                                                                                                                                                       type="submit" data-toggle="tooltip" title="Delete"
-                                                                                                                                                                                                                                                                                       data-placement="bottom"
-                                                                                                                                                                                                                                                                                       onclick="return confirm('Do you really want to delete this item?')">
-                                                            <span class="btn-icon-wrapper opacity-8">
-                                                                <i class="fa fa-trash fa-w-20"></i>
-                                                            </span>
-                                            </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center text-muted">#
-
-                                            57
-                                        </td>
-
-                                        <td>
-                                            <div class="widget-content p-0">
-                                                <div class="widget-content-wrapper">
-                                                    <div class="widget-content-left mr-3">
-                                                        <div class="widget-content-left">
-                                                            <img width="80"
-                                                                 data-toggle="tooltip" title="Image"
-                                                                 data-placement="bottom"
-                                                                 src="../front/data-images/products/FruitJuice.jpg"
-                                                                 alt="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="widget-content-left flex2">
-                                                        <div class="widget-heading">Fruit Juice</div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-center">$18.39</td>
-                                        <td class="text-center">
-                                            <div
-                                                    class="badge badge-success mt-2">
-                                                yes
-                                            </div>
-                                        </td>
-                                        <td class="text-center">
-                                            <a href="../admin/product/57"
-                                               class="btn btn-hover-shine btn-outline-primary border-0 btn-sm">
-                                                Details
-                                            </a>
-                                            <a href="http://127.0.0.1:8000/admin/product/57/edit"
-                                               data-toggle="tooltip" title="Edit"
-                                               data-placement="bottom" class="btn btn-outline-warning border-0 btn-sm">
-                                                        <span class="btn-icon-wrapper opacity-8">
-                                                            <i class="fa fa-edit fa-w-20"></i>
-                                                        </span>
-                                            </a>
-                                            <form class="d-inline" action="http://127.0.0.1:8000/admin/product/57"
-                                                  method="post">
-                                                <input type="hidden" name="_token" value="zHFtvpYPcCMdmPw2mfFlT0T1eNnqG0I2460gbDIS">                                            <input type="hidden" name="_method" value="DELETE">                                            <button class="btn btn-hover-shine btn-outline-danger border-0 btn-sm"
-                                                                                                                                                                                                                                                                                       type="submit" data-toggle="tooltip" title="Delete"
-                                                                                                                                                                                                                                                                                       data-placement="bottom"
-                                                                                                                                                                                                                                                                                       onclick="return confirm('Do you really want to delete this item?')">
-                                                            <span class="btn-icon-wrapper opacity-8">
-                                                                <i class="fa fa-trash fa-w-20"></i>
-                                                            </span>
-                                            </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center text-muted">#
-
-                                            56
-                                        </td>
-
-                                        <td>
-                                            <div class="widget-content p-0">
-                                                <div class="widget-content-wrapper">
-                                                    <div class="widget-content-left mr-3">
-                                                        <div class="widget-content-left">
-                                                            <img width="80"
-                                                                 data-toggle="tooltip" title="Image"
-                                                                 data-placement="bottom"
-                                                                 src="../front/data-images/products/capuchino.jpg"
-                                                                 alt="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="widget-content-left flex2">
-                                                        <div class="widget-heading">Cappuccino</div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-center">$12.68</td>
-                                        <td class="text-center">
-                                            <div
-                                                    class="badge badge-success mt-2">
-                                                yes
-                                            </div>
-                                        </td>
-                                        <td class="text-center">
-                                            <a href="../admin/product/56"
-                                               class="btn btn-hover-shine btn-outline-primary border-0 btn-sm">
-                                                Details
-                                            </a>
-                                            <a href="http://127.0.0.1:8000/admin/product/56/edit"
-                                               data-toggle="tooltip" title="Edit"
-                                               data-placement="bottom" class="btn btn-outline-warning border-0 btn-sm">
-                                                        <span class="btn-icon-wrapper opacity-8">
-                                                            <i class="fa fa-edit fa-w-20"></i>
-                                                        </span>
-                                            </a>
-                                            <form class="d-inline" action="http://127.0.0.1:8000/admin/product/56"
-                                                  method="post">
-                                                <input type="hidden" name="_token" value="zHFtvpYPcCMdmPw2mfFlT0T1eNnqG0I2460gbDIS">                                            <input type="hidden" name="_method" value="DELETE">                                            <button class="btn btn-hover-shine btn-outline-danger border-0 btn-sm"
-                                                                                                                                                                                                                                                                                       type="submit" data-toggle="tooltip" title="Delete"
-                                                                                                                                                                                                                                                                                       data-placement="bottom"
-                                                                                                                                                                                                                                                                                       onclick="return confirm('Do you really want to delete this item?')">
-                                                            <span class="btn-icon-wrapper opacity-8">
-                                                                <i class="fa fa-trash fa-w-20"></i>
-                                                            </span>
-                                            </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center text-muted">#
-
-                                            55
-                                        </td>
-
-                                        <td>
-                                            <div class="widget-content p-0">
-                                                <div class="widget-content-wrapper">
-                                                    <div class="widget-content-left mr-3">
-                                                        <div class="widget-content-left">
-                                                            <img width="80"
-                                                                 data-toggle="tooltip" title="Image"
-                                                                 data-placement="bottom"
-                                                                 src="../front/data-images/products/MilkTea.jpg"
-                                                                 alt="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="widget-content-left flex2">
-                                                        <div class="widget-heading">Milk Tea</div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-center">$15.89</td>
-                                        <td class="text-center">
-                                            <div
-                                                    class="badge badge-warning mt-2">
-                                                no
-                                            </div>
-                                        </td>
-                                        <td class="text-center">
-                                            <a href="../admin/product/55"
-                                               class="btn btn-hover-shine btn-outline-primary border-0 btn-sm">
-                                                Details
-                                            </a>
-                                            <a href="http://127.0.0.1:8000/admin/product/55/edit"
-                                               data-toggle="tooltip" title="Edit"
-                                               data-placement="bottom" class="btn btn-outline-warning border-0 btn-sm">
-                                                        <span class="btn-icon-wrapper opacity-8">
-                                                            <i class="fa fa-edit fa-w-20"></i>
-                                                        </span>
-                                            </a>
-                                            <form class="d-inline" action="http://127.0.0.1:8000/admin/product/55"
-                                                  method="post">
-                                                <input type="hidden" name="_token" value="zHFtvpYPcCMdmPw2mfFlT0T1eNnqG0I2460gbDIS">                                            <input type="hidden" name="_method" value="DELETE">                                            <button class="btn btn-hover-shine btn-outline-danger border-0 btn-sm"
-                                                                                                                                                                                                                                                                                       type="submit" data-toggle="tooltip" title="Delete"
-                                                                                                                                                                                                                                                                                       data-placement="bottom"
-                                                                                                                                                                                                                                                                                       onclick="return confirm('Do you really want to delete this item?')">
-                                                            <span class="btn-icon-wrapper opacity-8">
-                                                                <i class="fa fa-trash fa-w-20"></i>
-                                                            </span>
-                                            </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center text-muted">#
-
-                                            06
-                                        </td>
-
-                                        <td>
-                                            <div class="widget-content p-0">
-                                                <div class="widget-content-wrapper">
-                                                    <div class="widget-content-left mr-3">
-                                                        <div class="widget-content-left">
-                                                            <img width="80"
-                                                                 data-toggle="tooltip" title="Image"
-                                                                 data-placement="bottom"
-                                                                 src="../front/data-images/products/Spicy Sweet Potato.jpg"
-                                                                 alt="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="widget-content-left flex2">
-                                                        <div class="widget-heading">Spicy Sweet Potato</div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-center">$12.89</td>
-                                        <td class="text-center">
-                                            <div
-                                                    class="badge badge-success mt-2">
-                                                yes
-                                            </div>
-                                        </td>
-                                        <td class="text-center">
-                                            <a href="../admin/product/6"
-                                               class="btn btn-hover-shine btn-outline-primary border-0 btn-sm">
-                                                Details
-                                            </a>
-                                            <a href="http://127.0.0.1:8000/admin/product/6/edit"
-                                               data-toggle="tooltip" title="Edit"
-                                               data-placement="bottom" class="btn btn-outline-warning border-0 btn-sm">
-                                                        <span class="btn-icon-wrapper opacity-8">
-                                                            <i class="fa fa-edit fa-w-20"></i>
-                                                        </span>
-                                            </a>
-                                            <form class="d-inline" action="http://127.0.0.1:8000/admin/product/6"
-                                                  method="post">
-                                                <input type="hidden" name="_token" value="zHFtvpYPcCMdmPw2mfFlT0T1eNnqG0I2460gbDIS">                                            <input type="hidden" name="_method" value="DELETE">                                            <button class="btn btn-hover-shine btn-outline-danger border-0 btn-sm"
-                                                                                                                                                                                                                                                                                       type="submit" data-toggle="tooltip" title="Delete"
-                                                                                                                                                                                                                                                                                       data-placement="bottom"
-                                                                                                                                                                                                                                                                                       onclick="return confirm('Do you really want to delete this item?')">
-                                                            <span class="btn-icon-wrapper opacity-8">
-                                                                <i class="fa fa-trash fa-w-20"></i>
-                                                            </span>
-                                            </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center text-muted">#
-
-                                            05
-                                        </td>
-
-                                        <td>
-                                            <div class="widget-content p-0">
-                                                <div class="widget-content-wrapper">
-                                                    <div class="widget-content-left mr-3">
-                                                        <div class="widget-content-left">
-                                                            <img width="80"
-                                                                 data-toggle="tooltip" title="Image"
-                                                                 data-placement="bottom"
-                                                                 src="../front/data-images/products/Spaghetti Squash Burrito Bowls.jpg"
-                                                                 alt="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="widget-content-left flex2">
-                                                        <div class="widget-heading">Spaghetti Squash Burrito Bowls</div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-center">$16.39</td>
-                                        <td class="text-center">
-                                            <div
-                                                    class="badge badge-success mt-2">
-                                                yes
-                                            </div>
-                                        </td>
-                                        <td class="text-center">
-                                            <a href="../admin/product/5"
-                                               class="btn btn-hover-shine btn-outline-primary border-0 btn-sm">
-                                                Details
-                                            </a>
-                                            <a href="http://127.0.0.1:8000/admin/product/5/edit"
-                                               data-toggle="tooltip" title="Edit"
-                                               data-placement="bottom" class="btn btn-outline-warning border-0 btn-sm">
-                                                        <span class="btn-icon-wrapper opacity-8">
-                                                            <i class="fa fa-edit fa-w-20"></i>
-                                                        </span>
-                                            </a>
-                                            <form class="d-inline" action="http://127.0.0.1:8000/admin/product/5"
-                                                  method="post">
-                                                <input type="hidden" name="_token" value="zHFtvpYPcCMdmPw2mfFlT0T1eNnqG0I2460gbDIS">                                            <input type="hidden" name="_method" value="DELETE">                                            <button class="btn btn-hover-shine btn-outline-danger border-0 btn-sm"
-                                                                                                                                                                                                                                                                                       type="submit" data-toggle="tooltip" title="Delete"
-                                                                                                                                                                                                                                                                                       data-placement="bottom"
-                                                                                                                                                                                                                                                                                       onclick="return confirm('Do you really want to delete this item?')">
-                                                            <span class="btn-icon-wrapper opacity-8">
-                                                                <i class="fa fa-trash fa-w-20"></i>
-                                                            </span>
-                                            </button>
+                                                </button>
                                             </form>
                                         </td>
                                     </tr>
