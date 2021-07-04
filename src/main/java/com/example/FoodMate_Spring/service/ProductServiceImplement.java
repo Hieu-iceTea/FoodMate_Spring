@@ -48,4 +48,9 @@ public class ProductServiceImplement implements ProductService {
     public void deleteById(int id) {
         productRepository.deleteById(id);
     }
+
+    @Override
+    public List<Product> findAllByNameContainsOrderByIdDesc(String name) {
+        return productRepository.findAllByNameContainsOrderByIdDesc(name);
+    }
 }

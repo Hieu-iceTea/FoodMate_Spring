@@ -14,4 +14,5 @@ public interface ProductService {
     public void deleteById(int id);
 
     public List<Product> findAllByOrderByIdDesc();
+    public List<Product> findAllByNameContainsOrderByIdDesc(String name);
 }

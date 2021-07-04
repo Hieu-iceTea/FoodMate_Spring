@@ -13,5 +13,6 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
 
     public List<Product> findAllByOrderByIdDesc();
 
-    public List<Product> findByNameContainsIgnoreCase(String fullName);
+    public List<Product> findAllByNameContainsIgnoreCaseOrderByIdDesc(String name);
+    public List<Product> findAllByNameContainsOrderByIdDesc(String name);
 }

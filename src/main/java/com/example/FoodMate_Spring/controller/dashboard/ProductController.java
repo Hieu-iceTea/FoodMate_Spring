@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -19,8 +20,14 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping(path = {"", "/", "/index"})
-    public String index(Model model) {
-        List<Product> products = productService.findAllByOrderByIdDesc();
+    public String index(Model model, @RequestParam(required = false) String search) { //Có thể bỏ @RequestParam nếu dùng [required = false]
+
+        List<Product> products;
+        if (search == null) {
+            products = productService.findAllByOrderByIdDesc();
+        } else {
+            products = productService.findAllByNameContainsOrderByIdDesc(search);
+        }
 
         model.addAttribute("products", products);
 
