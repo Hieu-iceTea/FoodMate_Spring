@@ -23,6 +23,10 @@ public class ResourceConfig implements WebMvcConfigurer {
             dirName = dirName.replace("../", "");
         }
 
+        if (urlName.startsWith("../")) {
+            urlName = urlName.replace("../", "");
+        }
+
         registry.addResourceHandler("/" + urlName + "/**").addResourceLocations("file:/" + uploadPath + "/");
     }
 
