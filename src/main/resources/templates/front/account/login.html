@@ -41,17 +41,13 @@
                                 <form th:action="@{/account/login}" method="post">
 
                                     <!-- Check for login error -->
-                                    <div th:if="${param.error}">
-                                        <div class="alert alert-danger col-xs-offset-1 col-xs-10">
-                                            Invalid username and password.
-                                        </div>
+                                    <div th:if="${param.error}" class="alert alert-danger" style="font-weight: 500" role="alert">
+                                        Bad credentials. Invalid username or password.
                                     </div>
 
                                     <!-- Check for logout -->
-                                    <div th:if="${param.logout}">
-                                        <div class="alert alert-success col-xs-offset-1 col-xs-10">
-                                            You have been logged out.
-                                        </div>
+                                    <div th:if="${param.logout}" class="alert alert-success" style="font-weight: 500" role="alert">
+                                        You have been signed out
                                     </div>
 
                                     <div class="row">

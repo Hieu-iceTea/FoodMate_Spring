@@ -57,11 +57,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
 
-                .antMatchers("/admin").hasAnyRole("HOST", "ADMIN", "STAFF")
-                .antMatchers("/account/profile").hasRole("CUSTOMER")
-                .antMatchers("/account/my-order").hasRole("CUSTOMER")
+                .antMatchers("/admin/**").hasAnyRole("HOST", "ADMIN", "STAFF")
+                .antMatchers("/account/profile/**").hasRole("CUSTOMER")
+                .antMatchers("/account/my-order/**").hasRole("CUSTOMER")
 
-                .antMatchers("/").permitAll()
+                //.antMatchers("/").permitAll()
                 //.anyRequest().authenticated()
 
                 .and()
