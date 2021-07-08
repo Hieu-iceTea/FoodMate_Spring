@@ -246,12 +246,16 @@ VALUES
 
 INSERT INTO authorities (username, authority)
 VALUES
-('host', 'ROLE_ADMIN'),
-('admin', 'ROLE_ADMIN'),
-('staff', 'ROLE_ADMIN'),
-('customer', 'ROLE_CUSTOMER'),
-('Hieu_iceTea', 'ROLE_USER'),
-('Hieu_iceTea', 'ROLE_ADMIN');
+('Host', 'ROLE_HOST'),
+('Admin', 'ROLE_ADMIN'),
+('Staff_A', 'ROLE_STAFF'),
+('Staff_B', 'ROLE_STAFF'),
+('Staff_C', 'ROLE_STAFF'),
+('Customer', 'ROLE_CUSTOMER'),
+('Hieu_iceTea', 'ROLE_HOST'),
+('Hieu_iceTea', 'ROLE_ADMIN'),
+('Hieu_iceTea', 'ROLE_STAFF'),
+('Hieu_iceTea', 'ROLE_CUSTOMER');
 
 
 INSERT INTO product_categories (Id, Name, Image, Active)

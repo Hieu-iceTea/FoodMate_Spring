@@ -11,8 +11,17 @@ public class AccountController {
 
     //region - Account -
     @GetMapping("login")
-    public String showMyLoginPage() {
+    public String login() {
+
         return "front/account/login";
+
+    }
+
+    @GetMapping("access-denied")
+    public String accessDenied() {
+
+        return "front/account/access-denied";
+
     }
 
     @GetMapping("register")

@@ -21,7 +21,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
-                //.withDefaultSchema()
+        //.withDefaultSchema()
                 /*.withUser(
                         User.withUsername("user")
                                 .password("123456")
@@ -57,8 +57,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
 
-                .antMatchers("/admin").hasRole("ADMIN")
-                .antMatchers("/user").hasAnyRole("ADMIN", "USER")
+                .antMatchers("/admin").hasAnyRole("HOST", "ADMIN", "STAFF")
+                .antMatchers("/account/profile").hasRole("CUSTOMER")
+                .antMatchers("/account/my-order").hasRole("CUSTOMER")
 
                 .antMatchers("/").permitAll()
                 //.anyRequest().authenticated()
@@ -70,7 +71,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .and()
                 .logout()
-                .permitAll();
+                .permitAll()
+
+                .and()
+                .exceptionHandling()
+                .accessDeniedPage("/account/access-denied")
+        ;
     }
     //endregion
 

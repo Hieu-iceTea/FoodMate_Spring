@@ -2,7 +2,8 @@
 
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <base href="/dashboard/">
@@ -74,7 +75,7 @@
                                        class="p-0 btn">
                                         <img width="42" class="rounded-circle"
                                              src="../front/data-images/user/admin.jpg"
-                                             alt="">
+                                             alt="Image">
                                         <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                     </a>
                                     <div tabindex="-1" role="menu" aria-hidden="true"
@@ -93,18 +94,14 @@
                                                                      alt="">
                                                             </div>
                                                             <div class="widget-content-left">
-                                                                <div
-                                                                        class="widget-heading">Admin
-                                                                </div>
-                                                                <div class="widget-subheading opacity-8">
-
-                                                                </div>
+                                                                <div class="widget-heading" sec:authentication="name"></div>
+                                                                <div class="widget-subheading opacity-8" sec:authentication="principal.authorities"></div>
                                                             </div>
-                                                            <div class="widget-content-right mr-2">
-                                                                <a href="../admin/logout"
-                                                                   class="btn-pill btn-shadow btn-shine btn btn-focus">
-                                                                    Logout
-                                                                </a>
+                                                            <div class="widget-content-right mr-2" sec:authorize="isAuthenticated()">
+                                                                <form th:action="@{/logout}" method="post">
+                                                                    <input type="submit" value="Logout"
+                                                                           class="btn-pill btn-shadow btn-shine btn btn-focus"/>
+                                                                </form>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -115,11 +112,8 @@
                                 </div>
                             </div>
                             <div class="widget-content-left  ml-3 header-user-info">
-                                <div class="widget-heading">Admin</div>
-                                <div class="widget-subheading">
-                                    System administrator account
-
-                                </div>
+                                <div class="widget-heading" sec:authentication="name"></div>
+                                <div class="widget-subheading" sec:authentication="principal.authorities"></div>
                             </div>
                         </div>
                     </div>
