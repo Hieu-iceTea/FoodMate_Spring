@@ -1,0 +1,19 @@
+package com.example.FoodMate_Spring.repository;
+
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.NoRepositoryBean;
+
+import java.util.List;
+
+@NoRepositoryBean
+public interface BaseRepository<T, ID> extends CrudRepository<T, ID> {
+
+    List<T> findAll();
+
+    List<T> findAllByOrderByIdDesc();
+
+    List<T> findAllByNameContainsOrderByIdDesc(String name);
+
+
+    //T findById(ID var1);
+}
