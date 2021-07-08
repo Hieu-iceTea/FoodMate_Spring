@@ -12,8 +12,5 @@ public interface BaseRepository<T, ID> extends CrudRepository<T, ID> {
 
     List<T> findAllByOrderByIdDesc();
 
-    List<T> findAllByNameContainsOrderByIdDesc(String name);
-
-
     //T findById(ID var1);
 }
