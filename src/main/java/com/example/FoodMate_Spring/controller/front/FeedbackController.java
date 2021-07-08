@@ -5,25 +5,26 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(path = "/")
-public class HomeFrontController {
+@RequestMapping(path = "/feedback")
+public class FeedbackController {
 
     @GetMapping(path = {"", "/", "/index"})
     public String index() {
 
-        return "front/index";
+        return "front/feedback/index";
+
     }
 
-    @GetMapping(path = {"/contact", "/contact/"})
-    public String contact() {
+    public String addFeedback() {
 
-        return "front/contact";
+        return "";
+
     }
 
-    @GetMapping(path = {"/about", "/about/"})
-    public String about() {
+    public String result() {
 
-        return "front/about";
+        return "";
+
     }
 
 }

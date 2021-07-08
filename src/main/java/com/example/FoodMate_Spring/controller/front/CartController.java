@@ -5,25 +5,38 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(path = "/")
-public class HomeFrontController {
+@RequestMapping(path = "/cart")
+public class CartController {
+
+    public String add() {
+
+        return "";
+
+    }
 
     @GetMapping(path = {"", "/", "/index"})
     public String index() {
 
-        return "front/index";
+        return "front/cart";
+
     }
 
-    @GetMapping(path = {"/contact", "/contact/"})
-    public String contact() {
+    public String delete() {
 
-        return "front/contact";
+        return "";
+
     }
 
-    @GetMapping(path = {"/about", "/about/"})
-    public String about() {
+    public String destroy() {
 
-        return "front/about";
+        return "";
+
+    }
+
+    public String update() {
+
+        return "";
+
     }
 
 }
