@@ -1,18 +1,15 @@
 package com.example.FoodMate_Spring.repository;
 
+
 import com.example.FoodMate_Spring.model.Product;
-import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface ProductRepository extends CrudRepository<Product, Integer> {
 
-    public List<Product> findAllByOrderByNameAsc();
+public interface ProductRepository extends BaseRepository<Product, Integer> {
 
-    public List<Product> findAll();
+    List<Product> findAllByNameContainsOrderByIdDesc(String name);
 
-    public List<Product> findAllByOrderByIdDesc();
+    //List<Product> findAllByNameContainsIgnoreCaseOrderByIdDesc(String name);
 
-    public List<Product> findAllByNameContainsIgnoreCaseOrderByIdDesc(String name);
-    public List<Product> findAllByNameContainsOrderByIdDesc(String name);
 }
