@@ -16,7 +16,7 @@ public class MenuController {
 
     }
 
-    @GetMapping(path = {"/{id}/", "/{id}"})
+    @GetMapping(path = {"/{id}/", "/{id}", "/{id}/{slug}.html"})
     public String show(@PathVariable int id) {
 
         return "front/menu/show";

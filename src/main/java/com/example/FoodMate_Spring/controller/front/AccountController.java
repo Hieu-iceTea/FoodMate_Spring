@@ -77,14 +77,14 @@ public class AccountController {
     @GetMapping("profile/edit")
     public String profileEdit() {
 
-        return "";
+        return "front/account/profile/edit";
 
     }
 
-    @GetMapping("change-password")
+    @GetMapping("profile/change-password")
     public String profileChangePassword() {
 
-        return "";
+        return "front/account/profile/change-password";
 
     }
 
