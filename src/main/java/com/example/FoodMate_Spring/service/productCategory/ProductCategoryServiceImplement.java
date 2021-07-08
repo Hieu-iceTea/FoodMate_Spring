@@ -3,51 +3,24 @@ package com.example.FoodMate_Spring.service.productCategory;
 
 import com.example.FoodMate_Spring.model.ProductCategory;
 import com.example.FoodMate_Spring.repository.ProductCategoryRepository;
+import com.example.FoodMate_Spring.service.base.BaseServiceImplement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @Service
-public class ProductCategoryServiceImplement implements ProductCategoryService {
+public class ProductCategoryServiceImplement extends BaseServiceImplement<ProductCategory, Integer> implements ProductCategoryService {
+
+    //region Initialization - Autowired
     @Autowired
     private ProductCategoryRepository productCategoryRepository;
 
-    @Override
-    public List<ProductCategory> findAll() {
-        return productCategoryRepository.findAll();
+    public ProductCategoryServiceImplement(ProductCategoryRepository repository) {
+        super(repository);
     }
-
-    @Override
-    public List<ProductCategory> findAllByOrderByIdDesc() {
-        return productCategoryRepository.findAllByOrderByIdDesc();
-    }
-
-    @Override
-    public ProductCategory findById(int id) {
-        Optional<ProductCategory> productCategoryOptional = productCategoryRepository.findById(id);
-
-        ProductCategory productCategory;
-        if (productCategoryOptional.isPresent()) {
-            productCategory = productCategoryOptional.get();
-        } else {
-            throw new RuntimeException("Did not find item id - " + id);
-        }
-
-        return productCategory;
-    }
-
-    @Override
-    public void save(ProductCategory product) {
-        productCategoryRepository.save(product);
-    }
-
-    @Override
-    public void deleteById(int id) {
-        productCategoryRepository.deleteById(id);
-    }
+    //endregion
 
     @Override
     public List<ProductCategory> findAllByNameContainsOrderByIdDesc(String name) {
