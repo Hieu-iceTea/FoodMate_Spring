@@ -1,6 +1,7 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org">
 
 <head>
     <base href="/front/">
@@ -178,14 +179,20 @@
                     <div class="col-lg-8 col-md-10 mb-0 mb-md-0 mx-auto">
                         <div class="example-box">
                             <div class="example-box-content">
-                                <form method="post">
-                                    <input type="hidden" name="_token" value="ps03pHRI6GO1GP1PcVHhN1izOOsaFciCygR2p5bV">
+                                <form th:action="@{/account/login}" method="post">
+
+                                    <div th:if="${param.error}">
+                                        Invalid username and password.
+                                    </div>
+                                    <div th:if="${param.logout}">
+                                        You have been logged out.
+                                    </div>
 
                                     <div class="row">
 
                                         <div class="form-group col-12">
                                             <label>Username or email</label>
-                                            <input name="user_name" value="" type="text"
+                                            <input name="username" value="" type="text"
                                                    class="form-control" required>
                                         </div>
                                         <div class="form-group col-12">

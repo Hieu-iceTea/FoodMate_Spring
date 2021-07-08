@@ -65,7 +65,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .and()
                 .formLogin()
-                //.loginPage("/login") //Bỏ dòng này sẽ dùng trang login mặc định
+                .loginPage("/account/login") //Bỏ dòng này sẽ dùng trang login mặc định
                 .permitAll()
 
                 .and()
