@@ -1,0 +1,871 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <base href="/dashboard/">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>User | Admin - Cloud Kitchen - TechWiz 2021 @ CODEDY</title>
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="../favicon-admin.png">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"/>
+    <meta name="description" content="CODEDY @ Cloud Kitchen - TechWiz 2021">
+
+    <!-- Disable tap highlight on IE -->
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <link href="tailwind.min.css" rel="stylesheet">
+
+    <link href="main.css" rel="stylesheet">
+    <link href="my_style.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="app-container app-theme-white body-tabs-shadow fixed-header fixed-sidebar">
+    <div class="app-header header-shadow">
+        <div class="app-header__logo">
+            <div class="logo-src"></div>
+            <div class="header__pane ml-auto">
+                <div>
+                    <button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
+                            data-class="closed-sidebar">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="app-header__mobile-menu">
+            <div>
+                <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                </button>
+            </div>
+        </div>
+        <div class="app-header__menu">
+                <span>
+                    <button type="button"
+                            class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                        <span class="btn-icon-wrapper">
+                            <i class="fa fa-ellipsis-v fa-w-6"></i>
+                        </span>
+                    </button>
+                </span>
+        </div>
+        <div class="app-header__content">
+            <div class="app-header-right">
+                <div class="header-btn-lg pr-0">
+                    <div class="widget-content p-0">
+                        <div class="widget-content-wrapper">
+                            <div class="widget-content-left">
+                                <div class="btn-group">
+                                    <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                       class="p-0 btn">
+                                        <img width="42" class="rounded-circle"
+                                             src="../front/data-images/user/admin.jpg"
+                                             alt="">
+                                        <i class="fa fa-angle-down ml-2 opacity-8"></i>
+                                    </a>
+                                    <div tabindex="-1" role="menu" aria-hidden="true"
+                                         class="rm-pointers dropdown-menu-lg dropdown-menu dropdown-menu-right">
+                                        <div class="dropdown-menu-header">
+                                            <div class="dropdown-menu-header-inner bg-info">
+                                                <div class="menu-header-image opacity-2"
+                                                     style="background-image: url('../dashboard/assets/images/dropdown-header/city3.jpg');">
+                                                </div>
+                                                <div class="menu-header-content text-left">
+                                                    <div class="widget-content p-0">
+                                                        <div class="widget-content-wrapper">
+                                                            <div class="widget-content-left mr-3">
+                                                                <img width="42" class="rounded-circle"
+                                                                     src="../front/data-images/user/admin.jpg"
+                                                                     alt="">
+                                                            </div>
+                                                            <div class="widget-content-left">
+                                                                <div
+                                                                        class="widget-heading">Admin</div>
+                                                                <div class="widget-subheading opacity-8">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="widget-content-right mr-2">
+                                                                <a href="../admin/logout"
+                                                                   class="btn-pill btn-shadow btn-shine btn btn-focus">
+                                                                    Logout
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="widget-content-left  ml-3 header-user-info">
+                                <div class="widget-heading">Admin</div>
+                                <div class="widget-subheading">
+                                    System administrator account
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-main">
+        <div class="app-sidebar sidebar-shadow">
+            <div class="app-header__logo">
+                <div class="logo-src"></div>
+                <div class="header__pane ml-auto">
+                    <div>
+                        <button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
+                                data-class="closed-sidebar">
+                                <span class="hamburger-box">
+                                    <span class="hamburger-inner"></span>
+                                </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="app-header__mobile-menu">
+                <div>
+                    <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                    </button>
+                </div>
+            </div>
+            <div class="app-header__menu">
+                    <span>
+                        <button type="button"
+                                class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                            <span class="btn-icon-wrapper">
+                                <i class="fa fa-ellipsis-v fa-w-6"></i>
+                            </span>
+                        </button>
+                    </span>
+            </div>
+            <div class="scrollbar-sidebar">
+                <div class="app-sidebar__inner">
+
+                    <ul class="vertical-nav-menu pt-3">
+                        <li>
+                            <a href="../admin"
+                               class="">
+                                <i class="metismenu-icon pe-7s-rocket"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../admin/report"
+                               class="">
+                                <i class="metismenu-icon pe-7s-display2"></i>
+                                Report
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../admin/feedback"
+                               class="">
+                                <i class="metismenu-icon pe-7s-light"></i>
+                                Feedback
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../admin/order"
+                               class="">
+                                <i class="metismenu-icon pe-7s-shopbag"></i>
+                                Order
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../admin/product"
+                               class="">
+                                <i class="metismenu-icon pe-7s-plugin"></i>
+                                Product
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../admin/category"
+                               class="">
+                                <i class="metismenu-icon pe-7s-ticket"></i>
+                                Category
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../admin/restaurant"
+                               class="">
+                                <i class="metismenu-icon pe-7s-map-2"></i>
+                                Restaurant
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../admin/user"
+                               class="mm-active">
+                                <i class="metismenu-icon pe-7s-users"></i>
+                                User
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="app-main__outer">
+
+
+            <!--  MAIN HERE -->
+
+
+            <!-- Main -->
+            <div class="app-main__inner">
+                <div class="app-page-title">
+                    <div class="page-title-wrapper">
+                        <div class="page-title-heading">
+                            <div class="page-title-icon">
+                                <i class="pe-7s-users icon-gradient bg-love-kiss"></i>
+                            </div>
+                            <div>
+                                User
+                                <div class="page-title-subheading">
+                                    View, create, update, delete and manage.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="page-title-actions">
+                            <a href="../admin/user/create" class="btn-shadow btn-hover-shine mr-3 btn btn-primary">
+                                    <span class="btn-icon-wrapper pr-2 opacity-7">
+                                        <i class="fa fa-plus fa-w-20"></i>
+                                    </span>
+                                Create
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="main-card mb-3 card">
+
+                            <div class="card-header">
+
+                                <form>
+                                    <div class="input-group">
+                                        <input type="search" name="search" id="search"
+                                               placeholder="Search ..." class="form-control"
+                                               value="">
+                                        <span class="input-group-append">
+                                                <button type="submit" class="btn btn-primary">
+                                                    <i class="fa fa-search"></i>&nbsp;
+                                                    Search
+                                                </button>
+                                            </span>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-center">ID</th>
+                                        <th class="">Image / Name</th>
+                                        <th class="text-center">Email</th>
+                                        <th class="text-center">Level</th>
+                                        <th class="text-center">Phone</th>
+                                        <th class="text-center">City</th>
+                                        <th class="text-center">Active</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <tr>
+                                        <td class="text-center text-muted">
+                                            #12</td>
+                                        <td>
+                                            <div class="widget-content p-0">
+                                                <div class="widget-content-wrapper">
+                                                    <div class="widget-content-left mr-3">
+                                                        <div class="widget-content-left">
+                                                            <img style="height: 60px;"
+                                                                 class="rounded-circle"
+                                                                 data-toggle="tooltip" title="Image"
+                                                                 data-placement="bottom"
+                                                                 src="../front/data-images/user/staff_c.jpg" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="widget-content-left flex2">
+                                                        <div class="widget-heading">Staff_C</div>
+                                                        <div class="widget-subheading opacity-7">
+                                                            CODEDY Staff C
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">staff_c.codedy@gmail.com</td>
+                                        <td class="text-center">Staff</td>
+                                        <td class="text-center">0868 6633 15</td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center">
+                                            <div
+                                                    class="badge badge-success mt-2">
+                                                yes
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="../admin/user/12"
+                                               class="btn btn-hover-shine btn-outline-primary border-0 btn-sm">
+                                                Details
+                                            </a>
+                                            <a href="http://127.0.0.1:8000/admin/user/12/edit"
+                                               data-toggle="tooltip" title="Edit"
+                                               data-placement="bottom" class="btn btn-outline-warning border-0 btn-sm">
+                                                        <span class="btn-icon-wrapper opacity-8">
+                                                            <i class="fa fa-edit fa-w-20"></i>
+                                                        </span>
+                                            </a>
+                                            <form class="d-inline" action="http://127.0.0.1:8000/admin/user/12"
+                                                  method="post">
+                                                <input type="hidden" name="_token" value="j4grsT51wFZcNdSwswHF0Bkgqk8S5EAtwu5TUt3g">                                            <input type="hidden" name="_method" value="DELETE">                                            <button class="btn btn-hover-shine btn-outline-danger border-0 btn-sm"
+                                                                                                                                                                                                                                                                                       type="submit" data-toggle="tooltip" title="Delete"
+                                                                                                                                                                                                                                                                                       data-placement="bottom"
+                                                                                                                                                                                                                                                                                       onclick="return confirm('Do you really want to delete this item?')">
+                                                            <span class="btn-icon-wrapper opacity-8">
+                                                                <i class="fa fa-trash fa-w-20"></i>
+                                                            </span>
+                                            </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center text-muted">
+                                            #11</td>
+                                        <td>
+                                            <div class="widget-content p-0">
+                                                <div class="widget-content-wrapper">
+                                                    <div class="widget-content-left mr-3">
+                                                        <div class="widget-content-left">
+                                                            <img style="height: 60px;"
+                                                                 class="rounded-circle"
+                                                                 data-toggle="tooltip" title="Image"
+                                                                 data-placement="bottom"
+                                                                 src="../front/data-images/user/ThiDK.jpg" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="widget-content-left flex2">
+                                                        <div class="widget-heading">ThiDK</div>
+                                                        <div class="widget-subheading opacity-7">
+                                                            Đặng Kim Thi
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">ThiDK@fpt.edu.vn </td>
+                                        <td class="text-center">Customer</td>
+                                        <td class="text-center">0868 6633 15</td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center">
+                                            <div
+                                                    class="badge badge-success mt-2">
+                                                yes
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="../admin/user/11"
+                                               class="btn btn-hover-shine btn-outline-primary border-0 btn-sm">
+                                                Details
+                                            </a>
+                                            <a href="http://127.0.0.1:8000/admin/user/11/edit"
+                                               data-toggle="tooltip" title="Edit"
+                                               data-placement="bottom" class="btn btn-outline-warning border-0 btn-sm">
+                                                        <span class="btn-icon-wrapper opacity-8">
+                                                            <i class="fa fa-edit fa-w-20"></i>
+                                                        </span>
+                                            </a>
+                                            <form class="d-inline" action="http://127.0.0.1:8000/admin/user/11"
+                                                  method="post">
+                                                <input type="hidden" name="_token" value="j4grsT51wFZcNdSwswHF0Bkgqk8S5EAtwu5TUt3g">                                            <input type="hidden" name="_method" value="DELETE">                                            <button class="btn btn-hover-shine btn-outline-danger border-0 btn-sm"
+                                                                                                                                                                                                                                                                                       type="submit" data-toggle="tooltip" title="Delete"
+                                                                                                                                                                                                                                                                                       data-placement="bottom"
+                                                                                                                                                                                                                                                                                       onclick="return confirm('Do you really want to delete this item?')">
+                                                            <span class="btn-icon-wrapper opacity-8">
+                                                                <i class="fa fa-trash fa-w-20"></i>
+                                                            </span>
+                                            </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center text-muted">
+                                            #10</td>
+                                        <td>
+                                            <div class="widget-content p-0">
+                                                <div class="widget-content-wrapper">
+                                                    <div class="widget-content-left mr-3">
+                                                        <div class="widget-content-left">
+                                                            <img style="height: 60px;"
+                                                                 class="rounded-circle"
+                                                                 data-toggle="tooltip" title="Image"
+                                                                 data-placement="bottom"
+                                                                 src="../front/data-images/user/DinhHieu8896.jpg" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="widget-content-left flex2">
+                                                        <div class="widget-heading">DinhHieu8896</div>
+                                                        <div class="widget-subheading opacity-7">
+                                                            Nguyễn Đình Hiếu
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">HieuNDTH1908028@fpt.edu.vn</td>
+                                        <td class="text-center">Customer</td>
+                                        <td class="text-center">0868 6633 15</td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center">
+                                            <div
+                                                    class="badge badge-success mt-2">
+                                                yes
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="../admin/user/10"
+                                               class="btn btn-hover-shine btn-outline-primary border-0 btn-sm">
+                                                Details
+                                            </a>
+                                            <a href="http://127.0.0.1:8000/admin/user/10/edit"
+                                               data-toggle="tooltip" title="Edit"
+                                               data-placement="bottom" class="btn btn-outline-warning border-0 btn-sm">
+                                                        <span class="btn-icon-wrapper opacity-8">
+                                                            <i class="fa fa-edit fa-w-20"></i>
+                                                        </span>
+                                            </a>
+                                            <form class="d-inline" action="http://127.0.0.1:8000/admin/user/10"
+                                                  method="post">
+                                                <input type="hidden" name="_token" value="j4grsT51wFZcNdSwswHF0Bkgqk8S5EAtwu5TUt3g">                                            <input type="hidden" name="_method" value="DELETE">                                            <button class="btn btn-hover-shine btn-outline-danger border-0 btn-sm"
+                                                                                                                                                                                                                                                                                       type="submit" data-toggle="tooltip" title="Delete"
+                                                                                                                                                                                                                                                                                       data-placement="bottom"
+                                                                                                                                                                                                                                                                                       onclick="return confirm('Do you really want to delete this item?')">
+                                                            <span class="btn-icon-wrapper opacity-8">
+                                                                <i class="fa fa-trash fa-w-20"></i>
+                                                            </span>
+                                            </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center text-muted">
+                                            #09</td>
+                                        <td>
+                                            <div class="widget-content p-0">
+                                                <div class="widget-content-wrapper">
+                                                    <div class="widget-content-left mr-3">
+                                                        <div class="widget-content-left">
+                                                            <img style="height: 60px;"
+                                                                 class="rounded-circle"
+                                                                 data-toggle="tooltip" title="Image"
+                                                                 data-placement="bottom"
+                                                                 src="../front/data-images/user/HungNPMTH1908050.jpg" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="widget-content-left flex2">
+                                                        <div class="widget-heading">HungNPMTH1908050</div>
+                                                        <div class="widget-subheading opacity-7">
+                                                            Nông Phan Mạnh Hùng
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">HungNPMTH1908050@fpt.edu.vn</td>
+                                        <td class="text-center">Customer</td>
+                                        <td class="text-center">0868 6633 15</td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center">
+                                            <div
+                                                    class="badge badge-success mt-2">
+                                                yes
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="../admin/user/9"
+                                               class="btn btn-hover-shine btn-outline-primary border-0 btn-sm">
+                                                Details
+                                            </a>
+                                            <a href="http://127.0.0.1:8000/admin/user/9/edit"
+                                               data-toggle="tooltip" title="Edit"
+                                               data-placement="bottom" class="btn btn-outline-warning border-0 btn-sm">
+                                                        <span class="btn-icon-wrapper opacity-8">
+                                                            <i class="fa fa-edit fa-w-20"></i>
+                                                        </span>
+                                            </a>
+                                            <form class="d-inline" action="http://127.0.0.1:8000/admin/user/9"
+                                                  method="post">
+                                                <input type="hidden" name="_token" value="j4grsT51wFZcNdSwswHF0Bkgqk8S5EAtwu5TUt3g">                                            <input type="hidden" name="_method" value="DELETE">                                            <button class="btn btn-hover-shine btn-outline-danger border-0 btn-sm"
+                                                                                                                                                                                                                                                                                       type="submit" data-toggle="tooltip" title="Delete"
+                                                                                                                                                                                                                                                                                       data-placement="bottom"
+                                                                                                                                                                                                                                                                                       onclick="return confirm('Do you really want to delete this item?')">
+                                                            <span class="btn-icon-wrapper opacity-8">
+                                                                <i class="fa fa-trash fa-w-20"></i>
+                                                            </span>
+                                            </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center text-muted">
+                                            #08</td>
+                                        <td>
+                                            <div class="widget-content p-0">
+                                                <div class="widget-content-wrapper">
+                                                    <div class="widget-content-left mr-3">
+                                                        <div class="widget-content-left">
+                                                            <img style="height: 60px;"
+                                                                 class="rounded-circle"
+                                                                 data-toggle="tooltip" title="Image"
+                                                                 data-placement="bottom"
+                                                                 src="../front/data-images/user/HuyVQTH1909003.jpg" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="widget-content-left flex2">
+                                                        <div class="widget-heading">HuyVQTH1909003</div>
+                                                        <div class="widget-subheading opacity-7">
+                                                            Vũ Quang Huy
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">HuyVQTH1909003@fpt.edu.vn</td>
+                                        <td class="text-center">Customer</td>
+                                        <td class="text-center">0868 6633 15</td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center">
+                                            <div
+                                                    class="badge badge-success mt-2">
+                                                yes
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="../admin/user/8"
+                                               class="btn btn-hover-shine btn-outline-primary border-0 btn-sm">
+                                                Details
+                                            </a>
+                                            <a href="http://127.0.0.1:8000/admin/user/8/edit"
+                                               data-toggle="tooltip" title="Edit"
+                                               data-placement="bottom" class="btn btn-outline-warning border-0 btn-sm">
+                                                        <span class="btn-icon-wrapper opacity-8">
+                                                            <i class="fa fa-edit fa-w-20"></i>
+                                                        </span>
+                                            </a>
+                                            <form class="d-inline" action="http://127.0.0.1:8000/admin/user/8"
+                                                  method="post">
+                                                <input type="hidden" name="_token" value="j4grsT51wFZcNdSwswHF0Bkgqk8S5EAtwu5TUt3g">                                            <input type="hidden" name="_method" value="DELETE">                                            <button class="btn btn-hover-shine btn-outline-danger border-0 btn-sm"
+                                                                                                                                                                                                                                                                                       type="submit" data-toggle="tooltip" title="Delete"
+                                                                                                                                                                                                                                                                                       data-placement="bottom"
+                                                                                                                                                                                                                                                                                       onclick="return confirm('Do you really want to delete this item?')">
+                                                            <span class="btn-icon-wrapper opacity-8">
+                                                                <i class="fa fa-trash fa-w-20"></i>
+                                                            </span>
+                                            </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center text-muted">
+                                            #07</td>
+                                        <td>
+                                            <div class="widget-content p-0">
+                                                <div class="widget-content-wrapper">
+                                                    <div class="widget-content-left mr-3">
+                                                        <div class="widget-content-left">
+                                                            <img style="height: 60px;"
+                                                                 class="rounded-circle"
+                                                                 data-toggle="tooltip" title="Image"
+                                                                 data-placement="bottom"
+                                                                 src="../front/data-images/user/AnhNTTH1908059.jpg" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="widget-content-left flex2">
+                                                        <div class="widget-heading">AnhNTTH1908059</div>
+                                                        <div class="widget-subheading opacity-7">
+                                                            Nguyễn Trung Anh
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">AnhNTTH1908059@fpt.edu.vn</td>
+                                        <td class="text-center">Customer</td>
+                                        <td class="text-center">0868 6633 15</td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center">
+                                            <div
+                                                    class="badge badge-success mt-2">
+                                                yes
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="../admin/user/7"
+                                               class="btn btn-hover-shine btn-outline-primary border-0 btn-sm">
+                                                Details
+                                            </a>
+                                            <a href="http://127.0.0.1:8000/admin/user/7/edit"
+                                               data-toggle="tooltip" title="Edit"
+                                               data-placement="bottom" class="btn btn-outline-warning border-0 btn-sm">
+                                                        <span class="btn-icon-wrapper opacity-8">
+                                                            <i class="fa fa-edit fa-w-20"></i>
+                                                        </span>
+                                            </a>
+                                            <form class="d-inline" action="http://127.0.0.1:8000/admin/user/7"
+                                                  method="post">
+                                                <input type="hidden" name="_token" value="j4grsT51wFZcNdSwswHF0Bkgqk8S5EAtwu5TUt3g">                                            <input type="hidden" name="_method" value="DELETE">                                            <button class="btn btn-hover-shine btn-outline-danger border-0 btn-sm"
+                                                                                                                                                                                                                                                                                       type="submit" data-toggle="tooltip" title="Delete"
+                                                                                                                                                                                                                                                                                       data-placement="bottom"
+                                                                                                                                                                                                                                                                                       onclick="return confirm('Do you really want to delete this item?')">
+                                                            <span class="btn-icon-wrapper opacity-8">
+                                                                <i class="fa fa-trash fa-w-20"></i>
+                                                            </span>
+                                            </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center text-muted">
+                                            #06</td>
+                                        <td>
+                                            <div class="widget-content p-0">
+                                                <div class="widget-content-wrapper">
+                                                    <div class="widget-content-left mr-3">
+                                                        <div class="widget-content-left">
+                                                            <img style="height: 60px;"
+                                                                 class="rounded-circle"
+                                                                 data-toggle="tooltip" title="Image"
+                                                                 data-placement="bottom"
+                                                                 src="../front/data-images/user/customer.jpg" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="widget-content-left flex2">
+                                                        <div class="widget-heading">Customer</div>
+                                                        <div class="widget-subheading opacity-7">
+                                                            CODEDY Customer
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">codedy.demo@gmail.com</td>
+                                        <td class="text-center">Customer</td>
+                                        <td class="text-center">0868 6633 15</td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center">
+                                            <div
+                                                    class="badge badge-success mt-2">
+                                                yes
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="../admin/user/6"
+                                               class="btn btn-hover-shine btn-outline-primary border-0 btn-sm">
+                                                Details
+                                            </a>
+                                            <a href="http://127.0.0.1:8000/admin/user/6/edit"
+                                               data-toggle="tooltip" title="Edit"
+                                               data-placement="bottom" class="btn btn-outline-warning border-0 btn-sm">
+                                                        <span class="btn-icon-wrapper opacity-8">
+                                                            <i class="fa fa-edit fa-w-20"></i>
+                                                        </span>
+                                            </a>
+                                            <form class="d-inline" action="http://127.0.0.1:8000/admin/user/6"
+                                                  method="post">
+                                                <input type="hidden" name="_token" value="j4grsT51wFZcNdSwswHF0Bkgqk8S5EAtwu5TUt3g">                                            <input type="hidden" name="_method" value="DELETE">                                            <button class="btn btn-hover-shine btn-outline-danger border-0 btn-sm"
+                                                                                                                                                                                                                                                                                       type="submit" data-toggle="tooltip" title="Delete"
+                                                                                                                                                                                                                                                                                       data-placement="bottom"
+                                                                                                                                                                                                                                                                                       onclick="return confirm('Do you really want to delete this item?')">
+                                                            <span class="btn-icon-wrapper opacity-8">
+                                                                <i class="fa fa-trash fa-w-20"></i>
+                                                            </span>
+                                            </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center text-muted">
+                                            #05</td>
+                                        <td>
+                                            <div class="widget-content p-0">
+                                                <div class="widget-content-wrapper">
+                                                    <div class="widget-content-left mr-3">
+                                                        <div class="widget-content-left">
+                                                            <img style="height: 60px;"
+                                                                 class="rounded-circle"
+                                                                 data-toggle="tooltip" title="Image"
+                                                                 data-placement="bottom"
+                                                                 src="../front/data-images/user/staff_b.jpg" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="widget-content-left flex2">
+                                                        <div class="widget-heading">Staff_B</div>
+                                                        <div class="widget-subheading opacity-7">
+                                                            CODEDY Staff B
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">staff_b.codedy@gmail.com</td>
+                                        <td class="text-center">Staff</td>
+                                        <td class="text-center">0868 6633 15</td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center">
+                                            <div
+                                                    class="badge badge-success mt-2">
+                                                yes
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="../admin/user/5"
+                                               class="btn btn-hover-shine btn-outline-primary border-0 btn-sm">
+                                                Details
+                                            </a>
+                                            <a href="http://127.0.0.1:8000/admin/user/5/edit"
+                                               data-toggle="tooltip" title="Edit"
+                                               data-placement="bottom" class="btn btn-outline-warning border-0 btn-sm">
+                                                        <span class="btn-icon-wrapper opacity-8">
+                                                            <i class="fa fa-edit fa-w-20"></i>
+                                                        </span>
+                                            </a>
+                                            <form class="d-inline" action="http://127.0.0.1:8000/admin/user/5"
+                                                  method="post">
+                                                <input type="hidden" name="_token" value="j4grsT51wFZcNdSwswHF0Bkgqk8S5EAtwu5TUt3g">                                            <input type="hidden" name="_method" value="DELETE">                                            <button class="btn btn-hover-shine btn-outline-danger border-0 btn-sm"
+                                                                                                                                                                                                                                                                                       type="submit" data-toggle="tooltip" title="Delete"
+                                                                                                                                                                                                                                                                                       data-placement="bottom"
+                                                                                                                                                                                                                                                                                       onclick="return confirm('Do you really want to delete this item?')">
+                                                            <span class="btn-icon-wrapper opacity-8">
+                                                                <i class="fa fa-trash fa-w-20"></i>
+                                                            </span>
+                                            </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="d-block card-footer">
+                                <nav role="navigation" aria-label="Pagination Navigation"
+                                     class="flex items-center justify-between">
+                                    <div class="flex justify-between flex-1 sm:hidden">
+                                            <span
+                                                    class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 cursor-default leading-5 rounded-md">
+                                                « Previous
+                                            </span>
+
+                                        <a href="../#page=2"
+                                           class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
+                                            Next »
+                                        </a>
+                                    </div>
+                                </nav>
+                                <nav role="navigation" aria-label="Pagination Navigation" class="flex items-center justify-between">
+                                    <div class="flex justify-between flex-1 sm:hidden">
+                            <span class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 cursor-default leading-5 rounded-md">
+                    &laquo; Previous
+                </span>
+
+                                        <a href="http://127.0.0.1:8000/admin/user?page=2" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
+                                            Next &raquo;
+                                        </a>
+                                    </div>
+
+                                    <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+                                        <div>
+                                            <p class="text-sm text-gray-700 leading-5">
+                                                Showing
+                                                <span class="font-medium">1</span>
+                                                to
+                                                <span class="font-medium">8</span>
+                                                of
+                                                <span class="font-medium">12</span>
+                                                results
+                                            </p>
+                                        </div>
+
+                                        <div>
+                <span class="relative z-0 inline-flex shadow-sm rounded-md">
+                    
+                                            <span aria-disabled="true" aria-label="&amp;laquo; Previous">
+                            <span class="relative inline-flex items-center px-2 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 cursor-default rounded-l-md leading-5" aria-hidden="true">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                        </span>
+                    
+                    
+                                            
+                        
+                        
+                                                                                                                        <span aria-current="page">
+                                        <span class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-500 bg-white border border-gray-300 cursor-default leading-5">1</span>
+                                    </span>
+                                                                                                                                <a href="http://127.0.0.1:8000/admin/user?page=2" class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-500 focus:z-10 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150" aria-label="Go to page 2">
+                                        2
+                                    </a>
+                                                                                                        
+                    
+                                            <a href="http://127.0.0.1:8000/admin/user?page=2" rel="next" class="relative inline-flex items-center px-2 py-2 -ml-px text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-r-md leading-5 hover:text-gray-400 focus:z-10 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150" aria-label="Next &amp;raquo;">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                                    </span>
+                                        </div>
+                                    </div>
+                                </nav>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- End Main -->
+
+
+                <!--  end MAIN HERE -->
+
+            </div>
+        </div>
+
+    </div>
+    <div class="app-drawer-overlay d-none animated fadeIn"></div>
+
+    <script src="../dashboard/assets/scripts/jquery-3.2.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="../dashboard/assets/scripts/main.js"></script>
+    <script type="text/javascript" src="../dashboard/assets/scripts/my_script.js"></script>
+</body>
+
+</html>
