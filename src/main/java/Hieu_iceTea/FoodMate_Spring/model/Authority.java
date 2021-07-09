@@ -6,10 +6,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "authorities")
-public class Authority extends BaseModel {
+public class Authority extends BaseModel implements Serializable {
 
     //region - Define Fields -
     //private String username; //Foreign key - Relationship
@@ -22,7 +23,7 @@ public class Authority extends BaseModel {
 
     //region - Relationship -
     @ManyToOne
-    @JoinColumn(name = "username") //updatable = false, insertable = false
+    @JoinColumn(name = "username", referencedColumnName = "username") //updatable = false, insertable = false
     private User user;
     //endregion
 

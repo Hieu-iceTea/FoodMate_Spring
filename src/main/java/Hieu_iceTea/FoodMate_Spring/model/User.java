@@ -4,12 +4,13 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "users")
-public class User extends BaseModel {
+public class User extends BaseModel implements Serializable {
 
     //region - Define Fields -
     //private int restaurantId; //Foreign key - Relationship
