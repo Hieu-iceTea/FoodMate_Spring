@@ -235,4 +235,21 @@ public class User extends BaseModel {
     }
     //endregion
 
+
+    //region - Method Extend -
+    public String getAuthoritiesString() {
+        if (authorities.isEmpty()) {
+            return "Empty role";
+        }
+
+        String strAuthorities = "";
+
+        for (Authority authority : authorities) {
+            strAuthorities += (authority.getAuthority() + ", ");
+        }
+
+        return strAuthorities;
+    }
+    //endregion
+
 }
