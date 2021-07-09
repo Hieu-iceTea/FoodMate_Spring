@@ -1,7 +1,8 @@
 package Hieu_iceTea.FoodMate_Spring.model;
 
 import javax.persistence.*;
-import java.util.Date;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -9,8 +10,14 @@ import java.util.List;
 public class ProductCategory extends BaseModel {
 
     //region - Define Fields -
+    @NotNull
+    @Size(min = 2, max = 64)
     private String name;
+
+    @NotNull
+    @Size(max = 128)
     private String image;
+
     private boolean active;
     //endregion
 

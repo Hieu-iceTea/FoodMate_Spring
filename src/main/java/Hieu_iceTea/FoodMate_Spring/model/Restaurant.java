@@ -1,6 +1,8 @@
 package Hieu_iceTea.FoodMate_Spring.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -8,9 +10,16 @@ import java.util.List;
 public class Restaurant extends BaseModel {
 
     //region - Define Fields -
+    @NotNull
+    @Size(min = 2, max = 64)
     private String name;
+
+    @Size(max = 128)
     private String image;
+
+    @Size(min = 2, max = 64)
     private String address;
+
     private String description;
     //endregion
 
@@ -18,6 +27,12 @@ public class Restaurant extends BaseModel {
     //region - Relationship -
     @OneToMany(mappedBy = "restaurant")
     private List<Product> products;
+
+    @OneToMany(mappedBy = "restaurant")
+    private List<Order> orders;
+
+    @OneToMany(mappedBy = "restaurant")
+    private List<User> users;
     //endregion
 
 
@@ -60,6 +75,22 @@ public class Restaurant extends BaseModel {
 
     public void setProducts(List<Product> products) {
         this.products = products;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
     //endregion
 

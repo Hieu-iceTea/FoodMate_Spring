@@ -1,6 +1,6 @@
 # Created_by: Hieu_iceTea
 # Created_at: 08:00 2021-07-04
-# Updated_at: 08:00 2021-07-04
+# Updated_at: 15:45 2021-07-09
 
 # = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = #
 #                                           Create DataBase                                           #
@@ -31,10 +31,10 @@ CREATE TABLE IF NOT EXISTS `users`
 
     `restaurant_id`       INT UNSIGNED,
 
-    `username`            VARCHAR(64) UNIQUE NOT NULL,
-    `email`               VARCHAR(64) UNIQUE NOT NULL,
-    `password`            VARCHAR(128)       NOT NULL,
-    `level`               TINYINT UNSIGNED   NOT NULL,
+    `username`            VARCHAR(64) UNIQUE         NOT NULL,
+    `email`               VARCHAR(64) UNIQUE         NOT NULL,
+    `password`            VARCHAR(128)               NOT NULL,
+    `level`               TINYINT UNSIGNED           NOT NULL,
 
     `email_verified_at`   DATETIME,
     `verification_code`   VARCHAR(8)   DEFAULT NULL,
@@ -48,9 +48,9 @@ CREATE TABLE IF NOT EXISTS `users`
     `phone`               VARCHAR(16),
     `address`             VARCHAR(128),
 
-    `enabled`             BOOLEAN      DEFAULT FALSE,
+    `enabled`             BOOLEAN      DEFAULT FALSE NOT NULL,
 
-    `created_by`          NVARCHAR(32) DEFAULT 'codedy_techwiz_foodmate',
+    `created_by`          NVARCHAR(32) DEFAULT 'Hieu_iceTea',
     `created_at`          TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
     `updated_by`          NVARCHAR(32) DEFAULT NULL,
     `updated_at`          TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
@@ -65,10 +65,17 @@ CREATE TABLE IF NOT EXISTS `users`
 DROP TABLE IF EXISTS `authorities`;
 CREATE TABLE IF NOT EXISTS `authorities`
 (
-    `id`        INT AUTO_INCREMENT,
+    `id`         INT AUTO_INCREMENT,
 
-    `username`  VARCHAR(64)  NOT NULL,
-    `authority` VARCHAR(128) NOT NULL,
+    `username`   VARCHAR(64)  NOT NULL,
+    `authority`  VARCHAR(128) NOT NULL,
+
+    `created_by` NVARCHAR(32) DEFAULT 'Hieu_iceTea',
+    `created_at` TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
+    `updated_by` NVARCHAR(32) DEFAULT NULL,
+    `updated_at` TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
+    `version`    INT          DEFAULT 1,
+    `deleted`    BOOLEAN      DEFAULT FALSE,
 
     PRIMARY KEY (`id`)
 ) ENGINE InnoDB;
@@ -92,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `products`
     `description`         TEXT,
     `featured`            BOOLEAN      DEFAULT FALSE NOT NULL,
 
-    `created_by`          NVARCHAR(32) DEFAULT 'codedy_techwiz_foodmate',
+    `created_by`          NVARCHAR(32) DEFAULT 'Hieu_iceTea',
     `created_at`          TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
     `updated_by`          NVARCHAR(32) DEFAULT NULL,
     `updated_at`          TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
@@ -113,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `product_categories`
     `image`      CHAR(128)   NOT NULL,
     `active`     BOOLEAN      DEFAULT TRUE,
 
-    `created_by` NVARCHAR(32) DEFAULT 'codedy_techwiz_foodmate',
+    `created_by` NVARCHAR(32) DEFAULT 'Hieu_iceTea',
     `created_at` TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
     `updated_by` NVARCHAR(32) DEFAULT NULL,
     `updated_at` TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
@@ -141,7 +148,7 @@ CREATE TABLE IF NOT EXISTS `orders`
     `status`           INT UNSIGNED            NOT NULL,
     `reason_reject`    VARCHAR(128),
 
-    `created_by`       NVARCHAR(32) DEFAULT 'codedy_techwiz_foodmate',
+    `created_by`       NVARCHAR(32) DEFAULT 'Hieu_iceTea',
     `created_at`       TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
     `updated_by`       NVARCHAR(32) DEFAULT NULL,
     `updated_at`       TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
@@ -165,7 +172,7 @@ CREATE TABLE IF NOT EXISTS `order_details`
     `amount`       DECIMAL(16, 2) UNSIGNED NOT NULL,
     `total_amount` DECIMAL(16, 2) UNSIGNED NOT NULL,
 
-    `created_by`   NVARCHAR(32) DEFAULT 'codedy_techwiz_foodmate',
+    `created_by`   NVARCHAR(32) DEFAULT 'Hieu_iceTea',
     `created_at`   TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
     `updated_by`   NVARCHAR(32) DEFAULT NULL,
     `updated_at`   TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
@@ -182,12 +189,12 @@ CREATE TABLE IF NOT EXISTS `restaurants`
 (
     `id`          INT AUTO_INCREMENT,
 
-    `name`        VARCHAR(64),
+    `name`        VARCHAR(64) NOT NULL,
     `image`       CHAR(128),
     `address`     VARCHAR(64),
     `description` TEXT,
 
-    `created_by`  NVARCHAR(32) DEFAULT 'codedy_techwiz_foodmate',
+    `created_by`  NVARCHAR(32) DEFAULT 'Hieu_iceTea',
     `created_at`  TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
     `updated_by`  NVARCHAR(32) DEFAULT NULL,
     `updated_at`  TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
@@ -206,12 +213,12 @@ CREATE TABLE IF NOT EXISTS `feedbacks`
 
     `user_id`    INT UNSIGNED,
 
-    `name`       VARCHAR(64),
-    `email`      CHAR(128),
-    `message`    TEXT,
-    `rating`     INT,
+    `name`       VARCHAR(64) NOT NULL,
+    `email`      CHAR(128)   NOT NULL,
+    `message`    TEXT        NOT NULL,
+    `rating`     INT         NOT NULL,
 
-    `created_by` NVARCHAR(32) DEFAULT 'codedy_techwiz_foodmate',
+    `created_by` NVARCHAR(32) DEFAULT 'Hieu_iceTea',
     `created_at` TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
     `updated_by` NVARCHAR(32) DEFAULT NULL,
     `updated_at` TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
@@ -472,4 +479,3 @@ VALUES
 (14, NULL, 'Ha Van Vu', 'havanvu@gmail.com', 'diversified food', 4),
 (15, NULL, 'Truong Lam', 'truonglam@gmail.com', 'Fast delivery and very good food', 5),
 (16, NULL, 'Vu Thanh Lam', 'vuthanhlam@gmial.com', 'delicious food', 4);
-

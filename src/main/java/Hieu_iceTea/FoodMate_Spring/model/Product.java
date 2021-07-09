@@ -1,18 +1,19 @@
 package Hieu_iceTea.FoodMate_Spring.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
 public class Product extends BaseModel {
 
     //region - Define Fields -
-    //private Integer productCategoryId; //Foreign key - Relationship
-    //private Integer restaurantId; //Foreign key - Relationship
+    //private int productCategoryId; //Foreign key - Relationship
+    //private int restaurantId; //Foreign key - Relationship
 
     @NotNull
     @Size(min = 2, max = 128)
@@ -23,6 +24,7 @@ public class Product extends BaseModel {
     private String ingredients;
 
     @NotNull
+    @Digits(integer = 16, fraction = 2)
     @Min(1)
     private double price;
 
@@ -35,7 +37,6 @@ public class Product extends BaseModel {
     @Size(min = 2, max = 128)
     private String tag;
 
-    @Size(min = 8)
     private String description;
 
     @NotNull
@@ -51,34 +52,13 @@ public class Product extends BaseModel {
     @ManyToOne
     @JoinColumn(name = "restaurantId") //updatable = false, insertable = false
     private Restaurant restaurant;
+
+    @OneToMany(mappedBy = "product")
+    private List<OrderDetail> orderDetails;
     //endregion
 
 
     //region - Getter, Setter -
-    public Integer getProductCategoryId() {
-        //return productCategoryId;
-
-        return productCategory.getId(); //Relationship
-    }
-
-    public void setProductCategoryId(Integer productCategoryId) {
-        //this.productCategoryId = productCategoryId;
-
-        productCategory.setId(productCategoryId); //Relationship
-    }
-
-    public Integer getRestaurantId() {
-        //return restaurantId;
-
-        return restaurant.getId(); //Relationship
-    }
-
-    public void setRestaurantId(Integer restaurantId) {
-        //this.restaurantId = restaurantId;
-
-        restaurant.setId(restaurantId); //Relationship
-    }
-
     public String getName() {
         return name;
     }
@@ -157,6 +137,14 @@ public class Product extends BaseModel {
 
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
+    }
+
+    public List<OrderDetail> getOrderDetails() {
+        return orderDetails;
+    }
+
+    public void setOrderDetails(List<OrderDetail> orderDetails) {
+        this.orderDetails = orderDetails;
     }
     //endregion
 
