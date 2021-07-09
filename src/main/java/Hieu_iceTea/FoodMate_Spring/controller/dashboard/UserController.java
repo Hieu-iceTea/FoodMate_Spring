@@ -1,5 +1,7 @@
 package Hieu_iceTea.FoodMate_Spring.controller.dashboard;
 
+import Hieu_iceTea.FoodMate_Spring.model.User;
+import Hieu_iceTea.FoodMate_Spring.service.user.UserService;
 import Hieu_iceTea.FoodMate_Spring.utilities.storage.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,8 +18,8 @@ public class UserController {
     private final String _imagePath = "src/main/resources/static/" + "front/data-images/user";
 
     //region - Autowired Service -
-    /*@Autowired
-    private UserService userService;*/
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private StorageService storageService;
@@ -28,9 +30,10 @@ public class UserController {
     @GetMapping(path = {"", "/", "/index"})
     public String index(Model model, @RequestParam(required = false) String search) { //Có thể bỏ @RequestParam nếu dùng [required = false]
 
-        /*List<User> users = userService.getAll(search);
+        List<User> users = userService.findAllByOrderByIdDesc();
+        //List<User> users = userService.getAll(search);
 
-        model.addAttribute("users", users);*/
+        model.addAttribute("users", users);
 
         return "dashboard/user/index";
     }
@@ -38,9 +41,9 @@ public class UserController {
     @GetMapping(path = {"/{id}/", "/{id}"})
     public String show(Model model, @PathVariable int id) {
 
-        /*User user = userService.findById(id);
+        User user = userService.findById(id);
 
-        model.addAttribute("user", user);*/
+        model.addAttribute("user", user);
 
         return "dashboard/user/show";
     }
@@ -51,22 +54,22 @@ public class UserController {
     @GetMapping(path = {"/create/", "/create"})
     public String create(Model model) {
 
-        //model.addAttribute("user", new User());
+        model.addAttribute("user", new User());
 
         return "dashboard/user/create-edit";
     }
 
     @PostMapping(path = {"", "/"})
-    public String store(/*@ModelAttribute User user, */@RequestParam("image_file") MultipartFile file) {
+    public String store(@ModelAttribute User user, @RequestParam("image_file") MultipartFile file) {
 
         //Xử lý file
-        /*if (!file.isEmpty()) {
-            // 02. Lưu file mới:
+        if (!file.isEmpty()) {
+            //Lưu file mới:
             String fileName =  storageService.store(file, _imagePath);
             user.setImage(fileName);
         }
 
-        userService.save(user);*/
+        userService.save(user);
 
         return "redirect:/admin/user/index";
     }
@@ -77,15 +80,15 @@ public class UserController {
     @GetMapping(path = {"/{id}/edit/", "/{id}/edit"})
     public String edit(Model model, @PathVariable int id) {
 
-        //model.addAttribute("user", userService.findById(id));
+        model.addAttribute("user", userService.findById(id));
 
         return "dashboard/user/create-edit";
     }
 
     @PostMapping(path = {"/{id}/", "/{id}"})
-    public String update(/*@ModelAttribute User user,*/ @RequestParam("image_file") MultipartFile file, @RequestParam("image_old") String fileName_old) {
+    public String update(@ModelAttribute User user, @RequestParam("image_file") MultipartFile file, @RequestParam("image_old") String fileName_old) {
 
-        /*//Xử lý file
+        //Xử lý file
         if (!file.isEmpty()) {
             // 01. Xóa file cũ:
             storageService.delete(fileName_old, _imagePath);
@@ -95,9 +98,9 @@ public class UserController {
             user.setImage(fileName);
         }
 
-        userService.save(user);*/
+        userService.save(user);
 
-        return "redirect:/admin/user/" /*+ user.getId()*/;
+        return "redirect:/admin/user/" + user.getId();
     }
     //endregion
 
@@ -107,10 +110,10 @@ public class UserController {
     public String delete(@PathVariable int id) {
 
         // 01. Xóa file:
-        /*storageService.delete(userService.findById(id).getImage(), _imagePath);
+        storageService.delete(userService.findById(id).getImage(), _imagePath);
 
         // 02. Xóa bản ghi database
-        userService.deleteById(id);*/
+        userService.deleteById(id);
 
         return "redirect:/admin/user/index";
     }
