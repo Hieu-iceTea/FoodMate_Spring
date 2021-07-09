@@ -93,7 +93,9 @@
                                             </div>
                                         </td>
                                         <td class="text-center">
-                                            <div class="badge badge-success mt-2" th:text="${productCategory.active}"></div>
+                                            <div class="badge mt-2"
+                                                 th:classappend="${productCategory.active ? 'badge-success' : 'badge-warning'}"
+                                                 th:text="${productCategory.active ? 'Yes' : 'No'}"></div>
                                         </td>
 
                                         <td class="text-center">

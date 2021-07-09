@@ -93,10 +93,9 @@
                                                     <div class="widget-content-left flex2">
                                                         <div class="widget-heading" th:text="${order.orderDetails[0].product.name}"></div>
 
-                                                        <div class="widget-subheading opacity-9">
-                                                            (and # other items)
-                                                        </div>
-
+                                                        <div class="widget-subheading opacity-9"
+                                                             th:if="${order.orderDetails.size() > 1}"
+                                                             th:text="${'(and ' + (order.orderDetails.size() - 1) + ' other items)'}"></div>
                                                     </div>
                                                 </div>
                                             </div>

@@ -72,7 +72,7 @@
                                         <th class="text-center">Phone</th>
                                         <th class="text-center">Address</th>
                                         <th class="text-center">Enabled</th>
-                                        <th class="text-center">Actions</th>
+                                        <th class="text-center" style="min-width: 140px">Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -84,7 +84,7 @@
                                                 <div class="widget-content-wrapper">
                                                     <div class="widget-content-left mr-3">
                                                         <div class="widget-content-left">
-                                                            <img style="height: 60px;"
+                                                            <img style="height: 60px; min-width: 60px"
                                                                  class="rounded-circle"
                                                                  data-toggle="tooltip" title="Image"
                                                                  data-placement="bottom"
@@ -104,7 +104,9 @@
                                         <td class="text-center" th:text="${user.phone}">0868 6633 15</td>
                                         <td class="text-center" th:text="${user.address}">Ha Noi</td>
                                         <td class="text-center">
-                                            <div class="badge badge-success mt-2" th:text="${user.enabled}"></div>
+                                            <div class="badge mt-2"
+                                                 th:classappend="${user.enabled ? 'badge-success' : 'badge-warning'}"
+                                                 th:text="${user.enabled ? 'Yes' : 'No'}"></div>
                                         </td>
                                         <td class="text-center">
                                             <a th:href="@{|/admin/user/${user.id}|}"
