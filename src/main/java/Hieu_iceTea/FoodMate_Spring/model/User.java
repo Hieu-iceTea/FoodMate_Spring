@@ -5,6 +5,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -240,16 +241,16 @@ public class User extends BaseModel implements Serializable {
     //region - Method Extend -
     public String getAuthoritiesString() {
         if (authorities.isEmpty()) {
-            return "Empty role";
+            return "";
         }
 
-        String strAuthorities = "";
+        List<String> arrAuthorities = new ArrayList<>();
 
         for (Authority authority : authorities) {
-            strAuthorities += (authority.getAuthority() + ", ");
+            arrAuthorities.add(authority.getAuthority().replace("ROLE_", ""));
         }
 
-        return strAuthorities;
+        return arrAuthorities.toString().replace("[", "").replace("]", "");
     }
     //endregion
 
