@@ -1,241 +1,20 @@
-
 <!doctype html>
-<html lang="en">
+
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{dashboard/layout/master}">
 
 <head>
-    <base href="/dashboard/">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Language" content="en">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Order | Admin - Cloud Kitchen - TechWiz 2021 @ CODEDY</title>
 
-    <!-- Favicons -->
-    <link rel="shortcut icon" href="../favicon-admin.png">
+    <title>Order</title>
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"/>
-    <meta name="description" content="CODEDY @ Cloud Kitchen - TechWiz 2021">
-
-    <!-- Disable tap highlight on IE -->
-    <meta name="msapplication-tap-highlight" content="no">
-
-    <link href="tailwind.min.css" rel="stylesheet">
-
-    <link href="main.css" rel="stylesheet">
-    <link href="my_style.css" rel="stylesheet">
 </head>
 
 <body>
-<div class="app-container app-theme-white body-tabs-shadow fixed-header fixed-sidebar">
-    <div class="app-header header-shadow">
-        <div class="app-header__logo">
-            <div class="logo-src"></div>
-            <div class="header__pane ml-auto">
-                <div>
-                    <button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
-                            data-class="closed-sidebar">
-                            <span class="hamburger-box">
-                                <span class="hamburger-inner"></span>
-                            </span>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="app-header__mobile-menu">
-            <div>
-                <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
-                        <span class="hamburger-box">
-                            <span class="hamburger-inner"></span>
-                        </span>
-                </button>
-            </div>
-        </div>
-        <div class="app-header__menu">
-                <span>
-                    <button type="button"
-                            class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
-                        <span class="btn-icon-wrapper">
-                            <i class="fa fa-ellipsis-v fa-w-6"></i>
-                        </span>
-                    </button>
-                </span>
-        </div>
-        <div class="app-header__content">
-            <div class="app-header-right">
-                <div class="header-btn-lg pr-0">
-                    <div class="widget-content p-0">
-                        <div class="widget-content-wrapper">
-                            <div class="widget-content-left">
-                                <div class="btn-group">
-                                    <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                       class="p-0 btn">
-                                        <img width="42" class="rounded-circle"
-                                             src="../front/data-images/user/staff_a.jpg"
-                                             alt="">
-                                        <i class="fa fa-angle-down ml-2 opacity-8"></i>
-                                    </a>
-                                    <div tabindex="-1" role="menu" aria-hidden="true"
-                                         class="rm-pointers dropdown-menu-lg dropdown-menu dropdown-menu-right">
-                                        <div class="dropdown-menu-header">
-                                            <div class="dropdown-menu-header-inner bg-info">
-                                                <div class="menu-header-image opacity-2"
-                                                     style="background-image: url('../dashboard/assets/images/dropdown-header/city3.jpg');">
-                                                </div>
-                                                <div class="menu-header-content text-left">
-                                                    <div class="widget-content p-0">
-                                                        <div class="widget-content-wrapper">
-                                                            <div class="widget-content-left mr-3">
-                                                                <img width="42" class="rounded-circle"
-                                                                     src="../front/data-images/user/staff_a.jpg"
-                                                                     alt="">
-                                                            </div>
-                                                            <div class="widget-content-left">
-                                                                <div
-                                                                        class="widget-heading">Staff_A</div>
-                                                                <div class="widget-subheading opacity-8">
-                                                                    Essence Restaurant
-                                                                </div>
-                                                            </div>
-                                                            <div class="widget-content-right mr-2">
-                                                                <a href="../admin/logout"
-                                                                   class="btn-pill btn-shadow btn-shine btn btn-focus">
-                                                                    Logout
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="widget-content-left  ml-3 header-user-info">
-                                <div class="widget-heading">Staff_A</div>
-                                <div class="widget-subheading">
-                                    Staff of:
-                                    <span class="font-weight-bold">
-                                        Essence Restaurant
-                                    </span>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="app-main">
-        <div class="app-sidebar sidebar-shadow">
-            <div class="app-header__logo">
-                <div class="logo-src"></div>
-                <div class="header__pane ml-auto">
-                    <div>
-                        <button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
-                                data-class="closed-sidebar">
-                                <span class="hamburger-box">
-                                    <span class="hamburger-inner"></span>
-                                </span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="app-header__mobile-menu">
-                <div>
-                    <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
-                            <span class="hamburger-box">
-                                <span class="hamburger-inner"></span>
-                            </span>
-                    </button>
-                </div>
-            </div>
-            <div class="app-header__menu">
-                    <span>
-                        <button type="button"
-                                class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
-                            <span class="btn-icon-wrapper">
-                                <i class="fa fa-ellipsis-v fa-w-6"></i>
-                            </span>
-                        </button>
-                    </span>
-            </div>
-            <div class="scrollbar-sidebar">
-                <div class="app-sidebar__inner">
-
-                    <ul class="vertical-nav-menu pt-3">
-                        <li>
-                            <a href="../admin"
-                               class="">
-                                <i class="metismenu-icon pe-7s-rocket"></i>
-                                Dashboard
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../admin/report"
-                               class="">
-                                <i class="metismenu-icon pe-7s-display2"></i>
-                                Report
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../admin/feedback"
-                               class="">
-                                <i class="metismenu-icon pe-7s-light"></i>
-                                Feedback
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../admin/order"
-                               class="mm-active">
-                                <i class="metismenu-icon pe-7s-shopbag"></i>
-                                Order
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../admin/product"
-                               class="">
-                                <i class="metismenu-icon pe-7s-plugin"></i>
-                                Product
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../admin/category"
-                               class="">
-                                <i class="metismenu-icon pe-7s-ticket"></i>
-                                Category
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../admin/restaurant"
-                               class="">
-                                <i class="metismenu-icon pe-7s-map-2"></i>
-                                Restaurant
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../admin/user"
-                               class="">
-                                <i class="metismenu-icon pe-7s-users"></i>
-                                User
-                            </a>
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="app-main__outer">
-
-
-            <!--  MAIN HERE -->
-
 
             <!-- Main -->
-            <div class="app-main__inner">
+            <div layout:fragment="content" class="app-main__inner">
                 <div class="app-page-title mb-3">
                     <div class="page-title-wrapper">
                         <div class="page-title-heading">
@@ -250,10 +29,7 @@
                         </div>
 
                         <div class="page-title-actions mt-3">
-                            <div
-                                    class="badge badge-success opacity-9 mt-2 mr-3">
-                                Accept
-                            </div>
+                            <div class="badge badge-success opacity-9 mt-2 mr-3" th:text="${order.status}"></div>
                         </div>
 
                     </div>
@@ -279,7 +55,7 @@
                                         </thead>
                                         <tbody>
 
-                                        <tr>
+                                        <tr th:each="orderDetail : ${order.orderDetails}">
                                             <td>
                                                 <div class="widget-content p-0">
                                                     <div class="widget-content-wrapper">
@@ -288,68 +64,19 @@
                                                                 <img style="height: 60px;"
                                                                      data-toggle="tooltip" title="Image"
                                                                      data-placement="bottom"
-                                                                     src="../front/data-images/products/Crispy Baked Falafel.jpg"
-                                                                     alt="">
+                                                                     th:src="@{|../front/data-images/products/${orderDetail.product.image}|}"
+                                                                     alt="orderDetail.product.image">
                                                             </div>
                                                         </div>
                                                         <div class="widget-content-left flex2">
-                                                            <div
-                                                                    class="widget-heading">Crispy Baked Falafel</div>
+                                                            <div class="widget-heading" th:text="${orderDetail.product.name}"></div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="text-center">1</td>
-                                            <td class="text-center">13.89$</td>
-                                            <td class="text-center">13.89$</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="widget-content p-0">
-                                                    <div class="widget-content-wrapper">
-                                                        <div class="widget-content-left mr-3">
-                                                            <div class="widget-content-left">
-                                                                <img style="height: 60px;"
-                                                                     data-toggle="tooltip" title="Image"
-                                                                     data-placement="bottom"
-                                                                     src="../front/data-images/products/Peanut Slaw with Soba Noodles.jpg"
-                                                                     alt="">
-                                                            </div>
-                                                        </div>
-                                                        <div class="widget-content-left flex2">
-                                                            <div
-                                                                    class="widget-heading">Peanut Slaw with Soba Noodles</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="text-center">2</td>
-                                            <td class="text-center">18.39$</td>
-                                            <td class="text-center">25.36$</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="widget-content p-0">
-                                                    <div class="widget-content-wrapper">
-                                                        <div class="widget-content-left mr-3">
-                                                            <div class="widget-content-left">
-                                                                <img style="height: 60px;"
-                                                                     data-toggle="tooltip" title="Image"
-                                                                     data-placement="bottom"
-                                                                     src="../front/data-images/products/Black Bean Sweet Potato Enchiladas.jpg"
-                                                                     alt="">
-                                                            </div>
-                                                        </div>
-                                                        <div class="widget-content-left flex2">
-                                                            <div
-                                                                    class="widget-heading">Black Bean Sweet Potato Enchiladas</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="text-center">1</td>
-                                            <td class="text-center">15.29$</td>
-                                            <td class="text-center">15.29$</td>
+                                            <td class="text-center" th:text="${orderDetail.qty}"></td>
+                                            <td class="text-center" th:text="${orderDetail.amount + '$'}"></td>
+                                            <td class="text-center" th:text="${(orderDetail.amount * orderDetail.qty) + '$'}"></td>
                                         </tr>
 
                                         </tbody>
@@ -360,55 +87,50 @@
                                 <hr>
 
                                 <div class="position-relative row form-group">
-                                    <label for="name" class="col-md-3 text-md-right col-form-label">
+                                    <label class="col-md-3 text-md-right col-form-label">
                                         Full Name
                                     </label>
                                     <div class="col-md-9 col-xl-8">
-                                        <p>Hiếu, Nguyễn Đình</p>
+                                        <p th:text="${order.user.first_name + ', ' + order.user.last_name}"></p>
                                     </div>
                                 </div>
 
                                 <div class="position-relative row form-group">
-                                    <label for="description"
-                                           class="col-md-3 text-md-right col-form-label">Phone</label>
+                                    <label class="col-md-3 text-md-right col-form-label">Phone</label>
                                     <div class="col-md-9 col-xl-8">
-                                        <p>0868 6633 15</p>
+                                        <p th:text="${order.user.phone}"></p>
                                     </div>
                                 </div>
 
                                 <div class="position-relative row form-group">
-                                    <label for="description"
-                                           class="col-md-3 text-md-right col-form-label">Email</label>
+                                    <label class="col-md-3 text-md-right col-form-label">Email</label>
                                     <div class="col-md-9 col-xl-8">
-                                        <p>HieuNDTH1908028@fpt.edu.vn</p>
+                                        <p th:text="${order.user.email}"></p>
                                     </div>
                                 </div>
 
                                 <div class="position-relative row form-group">
-                                    <label for="company_name" class="col-md-3 text-md-right col-form-label">
+                                    <label class="col-md-3 text-md-right col-form-label">
                                         Delivery address
                                     </label>
                                     <div class="col-md-9 col-xl-8">
-                                        <p>8, Ton That Thuyet, My Dinh, Ha Noi</p>
+                                        <p th:text="${order.deliveryAddress}"></p>
                                     </div>
                                 </div>
 
                                 <div class="position-relative row form-group">
-                                    <label for="postcode_zip" class="col-md-3 text-md-right col-form-label">
+                                    <label class="col-md-3 text-md-right col-form-label">
                                         Total Amount</label>
                                     <div class="col-md-9 col-xl-8">
-                                        <p>54.54$</p>
+                                        <p th:text="${'$' + order.totalAmount}"></p>
                                     </div>
                                 </div>
 
                                 <div class="position-relative row form-group">
-                                    <label for="postcode_zip" class="col-md-3 text-md-right col-form-label">
+                                    <label class="col-md-3 text-md-right col-form-label">
                                         Status</label>
                                     <div class="col-md-9 col-xl-8">
-                                        <div
-                                                class="badge badge-success opacity-9 mt-2">
-                                            Accept
-                                        </div>
+                                        <div class="badge badge-success opacity-9 mt-2" th:text="${order.status}"></div>
                                     </div>
                                 </div>
 
@@ -420,20 +142,6 @@
             </div>
             <!-- End Main -->
 
-
-            <!--  end MAIN HERE -->
-
-        </div>
-    </div>
-
-</div>
-<div class="app-drawer-overlay d-none animated fadeIn"></div>
-
-<script src="../dashboard/assets/scripts/jquery-3.2.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-<script type="text/javascript" src="../dashboard/assets/scripts/main.js"></script>
-<script type="text/javascript" src="../dashboard/assets/scripts/my_script.js"></script>
 </body>
 
 </html>
