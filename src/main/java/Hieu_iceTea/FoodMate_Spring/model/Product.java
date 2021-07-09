@@ -1,7 +1,10 @@
 package Hieu_iceTea.FoodMate_Spring.model;
 
 import javax.persistence.*;
-import java.util.Date;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "products")
@@ -11,13 +14,31 @@ public class Product extends BaseModel {
     //private Integer productCategoryId; //Foreign key - Relationship
     //private Integer restaurantId; //Foreign key - Relationship
 
+    @NotNull
+    @Size(min = 2, max = 128)
     private String name;
+
+    @NotNull
+    @Size(min = 2, max = 256)
     private String ingredients;
+
+    @NotNull
+    @Min(1)
     private double price;
+
+    @Size(max = 128)
     private String image;
+
+    @Size(min = 2, max = 32)
     private String country;
+
+    @Size(min = 2, max = 128)
     private String tag;
+
+    @Size(min = 8)
     private String description;
+
+    @NotNull
     private boolean featured;
     //endregion
 

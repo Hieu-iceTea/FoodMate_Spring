@@ -8,9 +8,11 @@ import Hieu_iceTea.FoodMate_Spring.utilities.storage.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -67,8 +69,18 @@ public class ProductController {
         return "dashboard/product/create-edit";
     }
 
-    @PostMapping(path = {"", "/"})
-    public String store(@ModelAttribute Product product, @RequestParam("image_file") MultipartFile file) {
+    @PostMapping(path = {"/create/", "/create"})
+    public String store(@Valid @ModelAttribute Product product,
+                        BindingResult bindingResult, Model model,
+                        @RequestParam("image_file") MultipartFile file) {
+
+        //Xử lý Validating-Form
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("productCategories", productCategoryService.findAllByOrderByIdDesc());
+            model.addAttribute("restaurants", restaurantService.findAllByOrderByIdDesc());
+
+            return "dashboard/product/create-edit";
+        }
 
         //Xử lý file
         if (!file.isEmpty()) {
@@ -96,8 +108,19 @@ public class ProductController {
         return "dashboard/product/create-edit";
     }
 
-    @PostMapping(path = {"/{id}/", "/{id}"})
-    public String update(@ModelAttribute Product product, @RequestParam("image_file") MultipartFile file, @RequestParam("image_old") String fileName_old) {
+    @PostMapping(path = {"/{id}/edit/", "/{id}/edit"})
+    public String update(@Valid @ModelAttribute Product product,
+                         BindingResult bindingResult, Model model,
+                         @RequestParam("image_file") MultipartFile file,
+                         @RequestParam("image_old") String fileName_old) {
+
+        //Xử lý Form-Validation
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("productCategories", productCategoryService.findAllByOrderByIdDesc());
+            model.addAttribute("restaurants", restaurantService.findAllByOrderByIdDesc());
+
+            return "dashboard/product/create-edit";
+        }
 
         //Xử lý file
         if (!file.isEmpty()) {

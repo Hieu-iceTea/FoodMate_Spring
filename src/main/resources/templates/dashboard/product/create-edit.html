@@ -55,7 +55,7 @@
                             <div class="card-body">
 
                                 <form method="post" enctype="multipart/form-data"
-                                      th:action="${#request.requestURI.endsWith('/create')} ? @{|/admin/product|} : @{|/admin/product/${product.id}|}"
+                                      th:action="${#request.requestURI.endsWith('/create')} ? @{|/admin/product/create|} : @{|/admin/product/${product.id}/edit|}"
                                       th:object="${product}">
 
                                     <input type="hidden" th:field="*{id}">
@@ -64,14 +64,14 @@
                                     <div class="position-relative row form-group">
                                         <label for="image" class="col-md-3 text-md-right col-form-label">Images</label>
                                         <div class="col-md-9 col-xl-8">
-                                            <ul class="text-nowrap overflow-auto" id="image">
+                                            <ul class="text-nowrap overflow-auto">
 
                                                 <li class="d-inline-block" id="add-image-icon">
                                                     <img id="thumbnail" style="height: 150px; cursor: pointer;"
                                                          class="thumbnail"
                                                          data-toggle="tooltip" title="Click to add image"
                                                          data-placement="bottom"
-                                                         th:src="${product.image} ? @{|../front/data-images/products/${product.image}|} : @{|../dashboard/assets/images/add-image-icon.jpg|}"
+                                                         th:src="${product.image != null && product.image != ''} ? @{|../front/data-images/products/${product.image}|} : @{|../dashboard/assets/images/add-image-icon.jpg|}"
                                                          alt="Add Image">
                                                     <input name="image_file" id="image" type="file" onchange="changeImg(this)" accept="image/*"
                                                            class="image form-control-file" style="display: none;">
@@ -80,6 +80,8 @@
                                                     <small class="form-text text-muted">
                                                         Look at it, it looks great! (Click on the image to change)
                                                     </small>
+
+                                                    <div th:if="${#fields.hasErrors('image')}" th:errors="*{image}" class="invalid-feedback d-inline-block"></div>
                                                 </li>
                                             </ul>
                                         </div>
@@ -91,6 +93,7 @@
                                         <div class="col-md-9 col-xl-8">
                                             <input th:field="*{name}" required name="name" id="name" placeholder="Name" type="text"
                                                    class="form-control" value="Cocktail Cafe">
+                                            <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="invalid-feedback d-inline-block"></div>
                                         </div>
                                     </div>
 
@@ -105,6 +108,7 @@
                                                         th:value="${productCategory.id}"
                                                         th:text="${productCategory.name}"></option>
                                             </select>
+                                            <div th:if="${#fields.hasErrors('productCategory')}" th:errors="*{productCategory}" class="invalid-feedback d-inline-block"></div>
                                         </div>
                                     </div>
 
@@ -121,6 +125,7 @@
                                                         th:value="${restaurant.id}"
                                                         th:text="${restaurant.name}"></option>
                                             </select>
+                                            <div th:if="${#fields.hasErrors('restaurant')}" th:errors="*{restaurant}" class="invalid-feedback d-inline-block"></div>
                                         </div>
                                     </div>
 
@@ -130,8 +135,8 @@
                                                class="col-md-3 text-md-right col-form-label">Price</label>
                                         <div class="col-md-9 col-xl-8">
                                             <input th:field="*{price}" required name="price" id="price"
-                                                   placeholder="$ Price" type="number" class="form-control"
-                                                   value="16.39">
+                                                   placeholder="$ Price" type="number" class="form-control">
+                                            <div th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="invalid-feedback d-inline-block"></div>
                                         </div>
                                     </div>
 
@@ -142,6 +147,7 @@
                                             <input th:field="*{ingredients}" required name="ingredients" id="ingredients"
                                                    placeholder="ingredients" type="text" class="form-control"
                                                    value="Base wines, colorants, fragrances, coffee and decorations">
+                                            <div th:if="${#fields.hasErrors('ingredients')}" th:errors="*{ingredients}" class="invalid-feedback d-inline-block"></div>
                                         </div>
                                     </div>
 
@@ -150,8 +156,8 @@
                                                class="col-md-3 text-md-right col-form-label">Country</label>
                                         <div class="col-md-9 col-xl-8">
                                             <input th:field="*{country}" required name="country" id="country"
-                                                   placeholder="country" type="text" class="form-control"
-                                                   value="Korean">
+                                                   placeholder="country" type="text" class="form-control">
+                                            <div th:if="${#fields.hasErrors('country')}" th:errors="*{country}" class="invalid-feedback d-inline-block"></div>
                                         </div>
                                     </div>
 
@@ -159,16 +165,16 @@
                                         <label for="description"
                                                class="col-md-3 text-md-right col-form-label">Description</label>
                                         <div class="col-md-9 col-xl-8">
-                                    <textarea th:field="*{description}" required name="description" id="description">
-                                        A cocktail is an alcoholic mixed drink, which is either a combination of spirits, or one or more spirits mixed with other ingredients such as fruit juice, flavored syrup, or cream.
-                                    </textarea>
+                                            <textarea th:field="*{description}" required name="description" id="description">
+                                                A cocktail is an alcoholic mixed drink, which is either a combination of spirits, or one or more spirits mixed with other ingredients such as fruit juice, flavored syrup, or cream.
+                                            </textarea>
+                                            <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="invalid-feedback d-inline-block"></div>
                                         </div>
                                     </div>
 
 
                                     <div class="position-relative row form-group">
-                                        <label for="featured"
-                                               class="col-md-3 text-md-right col-form-label">Feature</label>
+                                        <label class="col-md-3 text-md-right col-form-label">Feature</label>
 
                                         <div class="form-check ml-3 mr-3">
                                             <input th:field="*{featured}" class="form-check-input" type="radio" name="featured" value="1"
@@ -184,6 +190,7 @@
                                                 No
                                             </label>
                                         </div>
+                                        <div th:if="${#fields.hasErrors('featured')}" th:errors="*{featured}" class="invalid-feedback d-inline-block"></div>
                                     </div>
 
 
