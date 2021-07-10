@@ -6,6 +6,7 @@ import Hieu_iceTea.FoodMate_Spring.utilities.storage.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -58,8 +59,15 @@ public class CategoryController {
         return "dashboard/category/create-edit";
     }
 
-    @PostMapping(path = {"", "/"})
-    public String store(@ModelAttribute ProductCategory productCategory, @RequestParam("image_file") MultipartFile file) {
+    @PostMapping(path = {"/create/", "/create"})
+    public String store(@ModelAttribute ProductCategory productCategory,
+                        BindingResult bindingResult,
+                        @RequestParam("image_file") MultipartFile file) {
+
+        //Xử lý Validating-Form
+        if (bindingResult.hasErrors()) {
+            return "dashboard/category/create-edit";
+        }
 
         //Xử lý file
         if (!file.isEmpty()) {
@@ -84,13 +92,23 @@ public class CategoryController {
         return "dashboard/category/create-edit";
     }
 
-    @PostMapping(path = {"/{id}/", "/{id}"})
-    public String update(@ModelAttribute ProductCategory productCategory, @RequestParam("image_file") MultipartFile file, @RequestParam("image_old") String fileName_old) {
+    @PostMapping(path = {"/{id}/edit/", "/{id}/edit"})
+    public String update(@ModelAttribute ProductCategory productCategory,
+                         BindingResult bindingResult,
+                         @RequestParam("image_file") MultipartFile file,
+                         @RequestParam("image_old") String fileName_old) {
+
+        //Xử lý Form-Validation
+        if (bindingResult.hasErrors()) {
+            return "dashboard/category/create-edit";
+        }
 
         //Xử lý file
         if (!file.isEmpty()) {
             // 01. Xóa file cũ:
-            storageService.delete(fileName_old, _imagePath);
+            if (fileName_old != null && !fileName_old.isBlank()) {
+                storageService.delete(fileName_old, _imagePath);
+            }
 
             // 02. Lưu file mới:
             String fileName =  storageService.store(file, _imagePath);
@@ -109,7 +127,10 @@ public class CategoryController {
     public String delete(@PathVariable int id) {
 
         // 01. Xóa file:
-        storageService.delete(productCategoryService.findById(id).getImage(), _imagePath);
+        String fileName_old = productCategoryService.findById(id).getImage();
+        if (fileName_old != null && !fileName_old.isBlank()) {
+            storageService.delete(fileName_old, _imagePath);
+        }
 
         // 02. Xóa bản ghi database
         productCategoryService.deleteById(id);
