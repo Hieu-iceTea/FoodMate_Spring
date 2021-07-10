@@ -130,6 +130,14 @@
                                             </div>
                                             <div class="form-check mr-3 d-inline-block">
                                                 <input class="form-check-input" type="checkbox"
+                                                       name="arrAuthorities[]" value="ROLE_ADMIN_ReadOnly"
+                                                       id="admin_ReadOnly" th:checked="${user.authoritiesListString.contains('ROLE_ADMIN_ReadOnly')}">
+                                                <label class="form-check-label" for="admin_ReadOnly">
+                                                    Admin_ReadOnly
+                                                </label>
+                                            </div>
+                                            <div class="form-check mr-3 d-inline-block">
+                                                <input class="form-check-input" type="checkbox"
                                                        name="arrAuthorities[]" value="ROLE_STAFF"
                                                        id="staff" th:checked="${user.authoritiesListString.contains('ROLE_STAFF')}">
                                                 <label class="form-check-label" for="staff">

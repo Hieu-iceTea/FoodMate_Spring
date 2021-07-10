@@ -31,9 +31,6 @@ public class User extends BaseModel implements Serializable {
     //@Size(min = 2, max = 128)
     private String password;
 
-    //@NotNull
-    private int level;
-
 
     // - - - - -
     private Date emailVerifiedAt;
@@ -106,14 +103,6 @@ public class User extends BaseModel implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
     }
 
     public Date getEmailVerifiedAt() {
