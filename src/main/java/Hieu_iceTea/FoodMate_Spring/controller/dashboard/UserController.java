@@ -123,7 +123,7 @@ public class UserController {
 
         //Xử lý mật khẩu:
         String password = user.getPassword();
-        if (!password.isBlank()) {
+        if (password != null && !password.isBlank()) {
             String passwordEncode = new BCryptPasswordEncoder().encode(password); //mã hóa mật khẩu kiểu 'BCrypt'
 
             user.setPassword("{bcrypt}" + passwordEncode);
