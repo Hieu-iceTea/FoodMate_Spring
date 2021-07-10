@@ -127,6 +127,8 @@ public class UserController {
             String passwordEncode = new BCryptPasswordEncoder().encode(password); //mã hóa mật khẩu kiểu 'BCrypt'
 
             user.setPassword("{bcrypt}" + passwordEncode);
+        } else {
+            user.setPassword(userService.findById(user.getId()).getPassword()); //Giữ nguyên mật khẩu hiện tại
         }
 
         //Gọi đến service, lưu vào database

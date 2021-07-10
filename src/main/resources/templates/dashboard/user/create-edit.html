@@ -42,7 +42,6 @@
 
                                     <input type="hidden" th:field="*{id}">
                                     <input type="hidden" th:field="*{image}">
-                                    <input type="hidden" th:field="*{password}" sec:authorize="!hasAnyRole('ROLE_HOST')">
                                     <input type="hidden" th:field="*{authorities}" sec:authorize="!hasAnyRole('ROLE_HOST', 'ROLE_ADMIN')">
 
                                     <div class="position-relative row form-group">
