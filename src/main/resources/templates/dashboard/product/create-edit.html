@@ -6,27 +6,9 @@
       layout:decorate="~{dashboard/layout/master}">
 
 <head>
-    <base href="/dashboard/">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Language" content="en">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Dashboard</title>
 
-    <!-- Favicons -->
-    <link rel="shortcut icon" href="../favicon-admin.png">
+    <title>Product</title>
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"/>
-    <meta name="description" content="CODEDY @ Cloud Kitchen - TechWiz 2021">
-
-    <!-- Disable tap highlight on IE -->
-    <meta name="msapplication-tap-highlight" content="no">
-
-    <link href="tailwind.min.css" rel="stylesheet">
-
-    <link href="main.css" rel="stylesheet">
-    <link href="my_style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -221,15 +203,7 @@
                 <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
 
                 <script>
-                    CKEDITOR.replace('description', {
-                        filebrowserBrowseUrl: '../plugins/ckfinder_php_3.5.1.1/ckfinder.html',
-                        filebrowserImageBrowseUrl: '../plugins/ckfinder_php_3.5.1.1/ckfinder.html?type=Images',
-                        filebrowserFlashBrowseUrl: '../plugins/ckfinder_php_3.5.1.1/ckfinder.html?type=Flash',
-                        filebrowserUploadUrl: '../plugins/ckfinder_php_3.5.1.1/connector?command=QuickUpload&type=Files',
-                        filebrowserImageUploadUrl: '../plugins/ckfinder_php_3.5.1.1/connector?command=QuickUpload&type=Images',
-                        filebrowserFlashUploadUrl: '../plugins/ckfinder_php_3.5.1.1/connector?command=QuickUpload&type=Flash'
-                    });
-
+                    CKEDITOR.replace('description');
                     //https://ckeditor.com/docs/ckfinder/ckfinder3/#!/guide/dev_ckeditor
                 </script>
             </div>
