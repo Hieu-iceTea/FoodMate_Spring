@@ -29,7 +29,7 @@
                             </div>
                         </div>
 
-                        <div class="page-title-actions">
+                        <div class="page-title-actions" sec:authorize="hasAnyRole('ROLE_HOST')">
                             <a href="../admin/user/create" class="btn-shadow btn-hover-shine mr-3 btn btn-primary">
                                     <span class="btn-icon-wrapper pr-2 opacity-7">
                                         <i class="fa fa-plus fa-w-20"></i>
@@ -94,7 +94,7 @@
                                                     </div>
                                                     <div class="widget-content-left flex2">
                                                         <div class="widget-heading" th:text="${user.username}"></div>
-                                                        <div class="widget-subheading opacity-7" th:text="${user.first_name + ', ' + user.last_name}"></div>
+                                                        <div class="widget-subheading opacity-7" th:text="${user.firstName + ', ' + user.lastName}"></div>
                                                     </div>
                                                 </div>
                                             </div>

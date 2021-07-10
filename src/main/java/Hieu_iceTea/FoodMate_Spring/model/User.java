@@ -27,19 +27,19 @@ public class User extends BaseModel implements Serializable {
     @Size(min = 2, max = 64)
     private String email;
 
-    @NotNull
-    @Size(min = 2, max = 128)
+    //@NotNull
+    //@Size(min = 2, max = 128)
     private String password;
 
-    @NotNull
+    //@NotNull
     private int level;
 
 
     // - - - - -
-    private Date email_verified_at;
-    private String verification_code;
-    private String reset_password_code;
-    private String remember_token;
+    private Date emailVerifiedAt;
+    private String verificationCode;
+    private String resetPasswordCode;
+    private String rememberToken;
 
 
     // - - - - -
@@ -49,10 +49,10 @@ public class User extends BaseModel implements Serializable {
     private Boolean gender;
 
     @Size(min = 2, max = 64)
-    private String first_name;
+    private String firstName;
 
     @Size(min = 2, max = 64)
-    private String last_name;
+    private String lastName;
 
     @Size(min = 2, max = 16)
     private String phone;
@@ -116,36 +116,36 @@ public class User extends BaseModel implements Serializable {
         this.level = level;
     }
 
-    public Date getEmail_verified_at() {
-        return email_verified_at;
+    public Date getEmailVerifiedAt() {
+        return emailVerifiedAt;
     }
 
-    public void setEmail_verified_at(Date email_verified_at) {
-        this.email_verified_at = email_verified_at;
+    public void setEmailVerifiedAt(Date emailVerifiedAt) {
+        this.emailVerifiedAt = emailVerifiedAt;
     }
 
-    public String getVerification_code() {
-        return verification_code;
+    public String getVerificationCode() {
+        return verificationCode;
     }
 
-    public void setVerification_code(String verification_code) {
-        this.verification_code = verification_code;
+    public void setVerificationCode(String verificationCode) {
+        this.verificationCode = verificationCode;
     }
 
-    public String getReset_password_code() {
-        return reset_password_code;
+    public String getResetPasswordCode() {
+        return resetPasswordCode;
     }
 
-    public void setReset_password_code(String reset_password_code) {
-        this.reset_password_code = reset_password_code;
+    public void setResetPasswordCode(String resetPasswordCode) {
+        this.resetPasswordCode = resetPasswordCode;
     }
 
-    public String getRemember_token() {
-        return remember_token;
+    public String getRememberToken() {
+        return rememberToken;
     }
 
-    public void setRemember_token(String remember_token) {
-        this.remember_token = remember_token;
+    public void setRememberToken(String rememberToken) {
+        this.rememberToken = rememberToken;
     }
 
     public String getImage() {
@@ -164,20 +164,20 @@ public class User extends BaseModel implements Serializable {
         this.gender = gender;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getPhone() {
