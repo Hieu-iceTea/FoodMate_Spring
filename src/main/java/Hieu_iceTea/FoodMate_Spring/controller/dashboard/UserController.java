@@ -1,9 +1,11 @@
 package Hieu_iceTea.FoodMate_Spring.controller.dashboard;
 
 import Hieu_iceTea.FoodMate_Spring.model.User;
+import Hieu_iceTea.FoodMate_Spring.service.authority.AuthorityService;
 import Hieu_iceTea.FoodMate_Spring.service.user.UserService;
 import Hieu_iceTea.FoodMate_Spring.utilities.storage.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,6 +23,8 @@ public class UserController {
     //region - Autowired Service -
     @Autowired
     private UserService userService;
+    @Autowired
+    private AuthorityService authorityService;
 
     @Autowired
     private StorageService storageService;
@@ -97,7 +101,8 @@ public class UserController {
     public String update(@ModelAttribute User user,
                          BindingResult bindingResult,
                          @RequestParam("image_file") MultipartFile file,
-                         @RequestParam("image_old") String fileName_old) {
+                         @RequestParam("image_old") String fileName_old,
+                         @RequestParam(value = "arrAuthorities[]", required = false) String[] arrAuthorities) {
 
         //Xử lý Form-Validation
         if (bindingResult.hasErrors()) {
@@ -116,6 +121,16 @@ public class UserController {
             user.setImage(fileName);
         }
 
+        //Xử lý mật khẩu:
+        String password = user.getPassword();
+        if (!password.isBlank()) {
+            String passwordEncode = new BCryptPasswordEncoder().encode(password); //mã hóa mật khẩu kiểu 'BCrypt'
+
+            user.setPassword("{bcrypt}" + passwordEncode);
+        }
+
+        //Gọi đến service, lưu vào database
+        authorityService.updateUserAuthority(userService.findById(user.getId()), arrAuthorities);
         userService.save(user);
 
         return "redirect:/admin/user/" + user.getId();

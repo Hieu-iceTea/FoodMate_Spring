@@ -43,7 +43,7 @@
                                     <input type="hidden" th:field="*{id}">
                                     <input type="hidden" th:field="*{image}">
                                     <input type="hidden" th:field="*{password}" sec:authorize="!hasAnyRole('ROLE_HOST')">
-                                    <input type="hidden" th:field="*{authorities}" sec:authorize="!hasAnyRole('ROLE_HOST')">
+                                    <input type="hidden" th:field="*{authorities}" sec:authorize="!hasAnyRole('ROLE_HOST', 'ROLE_ADMIN')">
 
                                     <div class="position-relative row form-group">
                                         <label for="image"
@@ -92,7 +92,7 @@
                                                class="col-md-3 text-md-right col-form-label">Password</label>
                                         <div class="col-md-9 col-xl-8">
                                             <input th:field="*{password}" name="password" id="password" placeholder="Password" type="password"
-                                                   class="form-control">
+                                                   autocomplete="new-password" class="form-control">
 
                                             <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="invalid-feedback d-inline-block"></div>
                                         </div>
@@ -115,32 +115,32 @@
                                         <div class="col-md-9 col-xl-8 mt-2">
                                             <div class="form-check mr-3 d-inline-block">
                                                 <input class="form-check-input" type="checkbox"
-                                                       name="arrAuthorities[]" value="host"
-                                                       id="host">
+                                                       name="arrAuthorities[]" value="ROLE_HOST"
+                                                       id="host" th:checked="${user.authoritiesListString.contains('ROLE_HOST')}">
                                                 <label class="form-check-label" for="host">
                                                     Host
                                                 </label>
                                             </div>
                                             <div class="form-check mr-3 d-inline-block">
                                                 <input class="form-check-input" type="checkbox"
-                                                       name="arrAuthorities[]" value="admin"
-                                                       id="admin">
+                                                       name="arrAuthorities[]" value="ROLE_ADMIN"
+                                                       id="admin" th:checked="${user.authoritiesListString.contains('ROLE_ADMIN')}">
                                                 <label class="form-check-label" for="admin">
                                                     Admin
                                                 </label>
                                             </div>
                                             <div class="form-check mr-3 d-inline-block">
                                                 <input class="form-check-input" type="checkbox"
-                                                       name="arrAuthorities[]" value="staff"
-                                                       id="staff">
+                                                       name="arrAuthorities[]" value="ROLE_STAFF"
+                                                       id="staff" th:checked="${user.authoritiesListString.contains('ROLE_STAFF')}">
                                                 <label class="form-check-label" for="staff">
                                                     Staff
                                                 </label>
                                             </div>
                                             <div class="form-check mr-3 d-inline-block">
                                                 <input class="form-check-input" type="checkbox"
-                                                       name="arrAuthorities[]" value="customer"
-                                                       id="customer">
+                                                       name="arrAuthorities[]" value="ROLE_CUSTOMER"
+                                                       id="customer" th:checked="${user.authoritiesListString.contains('ROLE_CUSTOMER')}">
                                                 <label class="form-check-label" for="customer">
                                                     Customer
                                                 </label>

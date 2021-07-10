@@ -252,6 +252,16 @@ public class User extends BaseModel implements Serializable {
 
         return arrAuthorities.toString().replace("[", "").replace("]", "");
     }
+
+    public List<String> getAuthoritiesListString() {
+        List<String> arrAuthorities = new ArrayList<>();
+
+        for (Authority authority : authorities) {
+            arrAuthorities.add(authority.getAuthority());
+        }
+
+        return arrAuthorities;
+    }
     //endregion
 
 }
