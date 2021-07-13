@@ -25,10 +25,6 @@ public class MenuController {
     //region - Autowired Service -
     @Autowired
     private ProductService productService;
-    @Autowired
-    private ProductCategoryService productCategoryService;
-    @Autowired
-    private RestaurantService restaurantService;
     //endregion
 
 
