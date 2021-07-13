@@ -200,84 +200,13 @@
                 ]
             }'>
                 <!-- Menu Sample -->
-                <div class="menu-sample " style="width: 100%; display: inline-block;">
-                    <a href="../menu#Vegetarian">
+                <div th:each="productCategory : ${productCategories}"
+                     class="menu-sample" style="width: 100%; display: inline-block;">
+                    <a th:href="@{|/menu${'#' + productCategory.name}|}">
                         <img style="opacity: 0.5; width: 100%; height: 350px; display: inline-block;"
-                             src="data-images/categories/Vegetarian.jpg"
-                             alt="" class="image">
-                        <h3 class="title">Vegetarian</h3>
-                    </a>
-                </div>
-                <div class="menu-sample " style="width: 100%; display: inline-block;">
-                    <a href="../menu#Vegan">
-                        <img style="opacity: 0.5; width: 100%; height: 350px; display: inline-block;"
-                             src="data-images/categories/Vegan.jpg"
-                             alt="" class="image">
-                        <h3 class="title">Vegan</h3>
-                    </a>
-                </div>
-                <div class="menu-sample " style="width: 100%; display: inline-block;">
-                    <a href="../menu#Chinese">
-                        <img style="opacity: 0.5; width: 100%; height: 350px; display: inline-block;"
-                             src="data-images/categories/Chinese.jpg"
-                             alt="" class="image">
-                        <h3 class="title">Chinese</h3>
-                    </a>
-                </div>
-                <div class="menu-sample " style="width: 100%; display: inline-block;">
-                    <a href="../menu#Mexican">
-                        <img style="opacity: 0.5; width: 100%; height: 350px; display: inline-block;"
-                             src="data-images/categories/Mexican.jpg"
-                             alt="" class="image">
-                        <h3 class="title">Mexican</h3>
-                    </a>
-                </div>
-                <div class="menu-sample " style="width: 100%; display: inline-block;">
-                    <a href="../menu#Burgers">
-                        <img style="opacity: 0.5; width: 100%; height: 350px; display: inline-block;"
-                             src="data-images/categories/menu-title-burgers.jpg"
-                             alt="" class="image">
-                        <h3 class="title">Burgers</h3>
-                    </a>
-                </div>
-                <div class="menu-sample " style="width: 100%; display: inline-block;">
-                    <a href="../menu#Pasta">
-                        <img style="opacity: 0.5; width: 100%; height: 350px; display: inline-block;"
-                             src="data-images/categories/menu-title-pasta.jpg"
-                             alt="" class="image">
-                        <h3 class="title">Pasta</h3>
-                    </a>
-                </div>
-                <div class="menu-sample " style="width: 100%; display: inline-block;">
-                    <a href="../menu#Pizza">
-                        <img style="opacity: 0.5; width: 100%; height: 350px; display: inline-block;"
-                             src="data-images/categories/menu-title-pizza.jpg"
-                             alt="" class="image">
-                        <h3 class="title">Pizza</h3>
-                    </a>
-                </div>
-                <div class="menu-sample " style="width: 100%; display: inline-block;">
-                    <a href="../menu#Sushi">
-                        <img style="opacity: 0.5; width: 100%; height: 350px; display: inline-block;"
-                             src="data-images/categories/menu-title-sushi.jpg"
-                             alt="" class="image">
-                        <h3 class="title">Sushi</h3>
-                    </a>
-                </div>
-                <div class="menu-sample " style="width: 100%; display: inline-block;">
-                    <a href="../menu#Desserts">
-                        <img style="opacity: 0.5; width: 100%; height: 350px; display: inline-block;"
-                             src="data-images/categories/menu-title-desserts.jpg"
-                             alt="" class="image">
-                        <h3 class="title">Desserts</h3>
-                    </a>
-                </div>
-                <div class="menu-sample " style="width: 100%; display: inline-block;">
-                    <a href="../menu#Drinks">
-                        <img style="opacity: 0.5; width: 100%; height: 350px; display: inline-block;"
-                             src="data-images/categories/menu-title-drinks.jpg"
-                             alt="" class="image">
-                        <h3 class="title">Drinks</h3>
+                             th:src="@{|/front/data-images/categories/${productCategory.image}|}"
+                             alt="productCategory.image" class="image">
+                        <h3 class="title" th:text="${productCategory.name}"></h3>
                     </a>
                 </div>
             </div>
@@ -289,107 +218,20 @@
             <div class="container">
                 <h1 class="text-center mb-6">Our chain of stores</h1>
                 <div class="carousel" data-slick='{"dots": true}'>
-                    <!-- Special Offer -->
 
-                    <a href="../restaurant/1">
+                    <!-- Special Offer -->
+                    <a th:each="restaurant : ${restaurants}" th:href="@{|/restaurant/${restaurant.id}|}">
                         <div class="special-offer">
-                            <img src="data-images/restaurants/EssenceRestaurant.PNG" alt=""
+                            <img th:src="@{|../front/data-images/restaurants/${restaurant.image}|}" alt="restaurant.image"
                                  class="special-offer-image">
                             <div class="special-offer-content">
-                                <h2 class="mb-2">Essence Restaurant</h2>
-                                <h5 class="text-muted mb-5">154 East 79th Street, Manhattan New York, USA</h5>
-                                <h5>With an extensive drink menu including fresh fruit shakes, coffee, cocktails and wines, the restaurant guarantees a nutritious meal with delicious food, great service in the right space and brandy , all with the most affordable prices in town.</h5>
+                                <h2 class="mb-2" th:text="${restaurant.name}"></h2>
+                                <h5 class="text-muted mb-5" th:text="${restaurant.address}"></h5>
+                                <h5 th:utext="${restaurant.description}"></h5>
                             </div>
                         </div>
                     </a>
-                    <a href="../restaurant/2">
-                        <div class="special-offer">
-                            <img src="data-images/restaurants/ChestnutRestaurant.PNG" alt=""
-                                 class="special-offer-image">
-                            <div class="special-offer-content">
-                                <h2 class="mb-2">Chestnut Restaurant &amp; Sky Bar</h2>
-                                <h5 class="text-muted mb-5">35-4, Insadong-gil, Jongno-gu, Seoul, South Korea</h5>
-                                <h5>Vegan Chestnut &amp; Sky Bar restaurant serves a variety of meals including salads, skin rolls, sandwiches, vegetarian burgers, lentils bowls and pasta dinner. Serves craft beers, tap water kombucha, cold-pressed smoothies and juices. The kitchen stopped at 9pm.</h5>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="../restaurant/3">
-                        <div class="special-offer">
-                            <img src="data-images/restaurants/poke_hanoi.PNG" alt=""
-                                 class="special-offer-image">
-                            <div class="special-offer-content">
-                                <h2 class="mb-2">Poke Hanoi</h2>
-                                <h5 class="text-muted mb-5">11B Hang Khay | Alley | Level 3 Hoan Kiem, Hanoi Vietnam</h5>
-                                <h5>Poke Hanoi serves Hawaiian Poke. Poke Is a Hawaiian dish made of raw cube of fish marinated, in sauces. We serve our poke with rice, salads and a variety of toppings which you can choose yourself. Perfect place to eat healthy, we also serve smoothie bowls.</h5>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="../restaurant/4">
-                        <div class="special-offer">
-                            <img src="data-images/restaurants/chopsolder.PNG" alt=""
-                                 class="special-offer-image">
-                            <div class="special-offer-content">
-                                <h2 class="mb-2">Chops Old Quarter</h2>
-                                <h5 class="text-muted mb-5">12 Hang Bac Hanoi Old Quarter, Hoan Kiem, Hanoi</h5>
-                                <h5>Serving food from 8am until late Chops has got you covered. With our daily brunch menu serving delights from French Toast to a good old English Fry Up. And our burger menu that runs all day serving up the best burgers Hanoi has to offer, or if your feeling a bit healthier they try one of our amazing salads</h5>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="../restaurant/5">
-                        <div class="special-offer">
-                            <img src="data-images/restaurants/BurgersBerlin.jpg" alt=""
-                                 class="special-offer-image">
-                            <div class="special-offer-content">
-                                <h2 class="mb-2">Burgers Berlin</h2>
-                                <h5 class="text-muted mb-5">112 Sonntag, Berlin, Germany</h5>
-                                <h5>Burgers Berlin is currently a major fast food restaurant. Every day, more than 1000 diners come to Burgers Berlin restaurants to enjoy high quality food, excellent taste and affordable prices. The predecessor was Insta-Burger King, founded by Matthew Burns and Keith J.</h5>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="../restaurant/6">
-                        <div class="special-offer">
-                            <img src="data-images/restaurants/HoangCuisine.PNG" alt=""
-                                 class="special-offer-image">
-                            <div class="special-offer-content">
-                                <h2 class="mb-2">Hoang Cuisine</h2>
-                                <h5 class="text-muted mb-5">2nd Floor, 20 Bat Dan Street Hang Bo Ward, Hanoi, Vietnam</h5>
-                                <h5>Based on our experiences working in tourism industry, we have many chances to know more about not only culture but also customs from people all over the world coming to Vietnam. We would like to introduce our pride - Vietnamese cuisine to all our friends from different countries.</h5>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="../restaurant/7">
-                        <div class="special-offer">
-                            <img src="data-images/restaurants/tungkitchen.jpg" alt=""
-                                 class="special-offer-image">
-                            <div class="special-offer-content">
-                                <h2 class="mb-2">Green Cuisine</h2>
-                                <h5 class="text-muted mb-5">15 Ta Hien, Hang Buom, Hoan Kiem, Hanoi</h5>
-                                <h5>Even if diners are willing to pay a minimum of $ 325 per person, it can be difficult to book a table at this food temple. However, it is hard to resist the appeal of Thomas Kellers famous &quot;&quot;Chicken egg salad&quot;&quot;, accompanied by 8 perfect dishes without any repeating ingredients in each dish.</h5>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="../restaurant/8">
-                        <div class="special-offer">
-                            <img src="data-images/restaurants/TheHandpulledNoodle.PNG" alt=""
-                                 class="special-offer-image">
-                            <div class="special-offer-content">
-                                <h2 class="mb-2">The Handpulled Noodle</h2>
-                                <h5 class="text-muted mb-5">196 Spring St Soho, New York City, USA</h5>
-                                <h5>The Sichuan dishes here look very nice with delicious taste. Diners coming here not only can enjoy the food but also watch the artists performing the painting on the zither in the evening. Sitting on a luxury restaurant, diners eat and drink while watching the skyline.</h5>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="../restaurant/9">
-                        <div class="special-offer">
-                            <img src="data-images/restaurants/xianfood.png" alt=""
-                                 class="special-offer-image">
-                            <div class="special-offer-content">
-                                <h2 class="mb-2">Xian Famous Foods</h2>
-                                <h5 class="text-muted mb-5">778 Wall Street, New York, NY, USA</h5>
-                                <h5>In fact, Xian Famous Foods has many similarities with Sichuan, but the flavor is different because of its sour taste, many salt grains and the dish often has a small bacon added. When visiting a famous high-class restaurant, visitors should enjoy the restaurants famous dishes such as fish head cooked with crushed eggplant, sauteed pork.</h5>
-                            </div>
-                        </div>
-                    </a>
+
                 </div>
             </div>
 
