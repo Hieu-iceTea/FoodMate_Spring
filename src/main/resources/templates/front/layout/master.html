@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <base href="/front/">
@@ -94,17 +95,50 @@
                             <li><a href="../feedback">Feedback</a></li>
                             <li><a href="../contact">Contact</a></li>
                             <li class="has-dropdown">
-                                <a href="../#">Account</a>
+
+                                <!--Chưa đăng nhập:-->
+                                <a href="../#" sec:authorize="isAnonymous()">Account</a>
+
+                                <!--Đã đăng nhập:-->
+                                <a href="../#" sec:authorize="isAuthenticated()"
+                                   style="text-transform: none" class="font-weight-bold">
+                                    Welcome, <span sec:authentication="name"></span>
+                                </a>
 
                                 <div class="dropdown-container">
-                                    <ul class="dropdown-mega">
 
+                                    <!--Chưa đăng nhập:-->
+                                    <ul class="dropdown-mega" sec:authorize="isAnonymous()">
                                         <li><a href="../account/login">Login</a></li>
                                         <li><a href="../account/register">Register</a></li>
-
                                         <li><a href="../account/my-order">Orders History</a></li>
-
                                     </ul>
+
+                                    <!--Đã đăng nhập:-->
+                                    <ul class="dropdown-mega" sec:authorize="isAuthenticated()">
+                                        <li>
+                                            <div class="mt-2 mb-3">
+                                                <img style="height: 80px;" class="rounded-circle"
+                                                     src="data-images/user/DinhHieu8896.jpg"
+                                                     alt="image-user">
+                                            </div>
+                                            <div class="mb-4">
+                                                <span style="text-transform: none" class="font-weight-bold" >
+                                                    Welcome, <span sec:authentication="name"></span>
+                                                </span>
+                                            </div>
+                                        </li>
+
+                                        <li><a href="../account/profile">Profile</a></li>
+                                        <li>
+                                            <form th:action="@{/logout}" method="post" id="logout_form">
+                                                <a href="javascript:void(0)" onclick="document.getElementById('logout_form').submit();"
+                                                   class="px-0">Logout</a>
+                                            </form>
+                                        </li>
+                                        <li><a href="../account/my-order">Orders History</a></li>
+                                    </ul>
+
                                     <div class="dropdown-image">
                                         <img src="data-images/photos/dropdown-more.jpg" alt="">
                                     </div>
