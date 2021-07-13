@@ -1,5 +1,7 @@
 package Hieu_iceTea.FoodMate_Spring.controller.front;
 
+import Hieu_iceTea.FoodMate_Spring.model.Product;
+import Hieu_iceTea.FoodMate_Spring.model.ProductCategory;
 import Hieu_iceTea.FoodMate_Spring.model.Restaurant;
 import Hieu_iceTea.FoodMate_Spring.service.restaurant.RestaurantService;
 import Hieu_iceTea.FoodMate_Spring.utilities.Common;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Controller
@@ -20,7 +23,6 @@ public class RestaurantController {
     //region - Autowired Service -
     @Autowired
     private RestaurantService restaurantService;
-
     //endregion
 
 
@@ -39,6 +41,7 @@ public class RestaurantController {
     @GetMapping(path = {"/{id}/", "/{id}", "/{id}/{slug}.html"})
     public String show(Model model, @PathVariable int id, @PathVariable(required = false) String slug) {
 
+        // Restaurant info
         Restaurant restaurant = restaurantService.findById(id);
 
         if  (slug == null || slug.isBlank()) {
@@ -47,6 +50,17 @@ public class RestaurantController {
         }
 
         model.addAttribute("restaurant", restaurant);
+
+        // Product list of this restaurant:
+        List<Product> products = restaurant.getProducts();
+        model.addAttribute("products", products);
+
+        List<ProductCategory> productCategories = products.stream()
+                .map(Product::getProductCategory)
+                .sorted(Comparator.comparingInt(ProductCategory::getId))
+                .distinct()
+                .toList();
+        model.addAttribute("productCategories", productCategories);
 
         return "front/restaurant/show";
 
