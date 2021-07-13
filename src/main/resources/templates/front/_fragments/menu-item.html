@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>menu-item | Component</title>
+</head>
+
+<body>
+
+    <!-- Menu Item -->
+    <div class="menu-item menu-grid-item" th:fragment="menu-item (product)">
+
+        <a th:href="@{|/menu/${product.id}|}">
+            <img class="mb-4"
+                 th:src="@{|/front/data-images/products/${product.image}|}"
+                 alt="product.image">
+        </a>
+
+        <h6 class="mb-0">
+            <a th:href="@{|/menu/${product.id}|}" th:text="${product.name}"></a>
+        </h6>
+
+        <span class="text-muted text-sm" th:text="${product.ingredients}"></span>
+
+        <h6 class="pt-1">
+                                                                <span class="text-muted text-sm">
+                                                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                                                    Restaurant:
+                                                                </span>
+            <a th:href="@{|/restaurant/${product.restaurant.id}|}">
+                <span class="text-sm" th:text="${product.restaurant.name}"></span>
+            </a>
+        </h6>
+
+        <div class="row align-items-center mt-4">
+            <div class="col-sm-6">
+                                                        <span class="text-md mr-4">
+                                                            <span class="text-muted">price</span>
+                                                            $
+                                                            <span data-product-base-price th:text="${product.price}"></span>
+                                                        </span>
+            </div>
+            <div class="col-sm-6 text-sm-right mt-2 mt-sm-0">
+                <button class="btn btn-outline-secondary btn-sm"
+                        th:onclick="|addCart(${product.id})|">
+                    <span>Add to cart</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

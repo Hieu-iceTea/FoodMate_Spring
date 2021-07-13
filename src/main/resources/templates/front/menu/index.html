@@ -103,81 +103,9 @@
                     </div>
                 </form>
 
-                <div class="row no-gutters">
-                    <div class="col-md-3">
-                        <!-- Menu Navigation -->
-                        <nav id="menu-navigation" class="stick-to-content" data-local-scroll>
-                            <ul class="nav nav-menu bg-dark dark">
-                                <li th:each="productCategory : ${productCategories}">
-                                    <a th:href="@{|${'#' + productCategory.name}|}"
-                                       th:text="${productCategory.name}"></a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <div class="col-md-9">
+                <div th:replace="front/_fragments/menu-list :: menu-list (products = ${products}, productCategories = ${productCategories})"
+                     class="row no-gutters"></div>
 
-                        <!-- Menu Category -->
-                        <div th:each="productCategory : ${productCategories}" th:id="${productCategory.name}" class="menu-category">
-                            <div class="menu-category-title">
-                                <div class="bg-image"><img
-                                        th:src="@{|/front/data-images/categories/${productCategory.image}|}" alt="productCategory.image">
-                                </div>
-                                <h2 class="title" th:text="${productCategory.name}"></h2>
-                            </div>
-
-                            <div class="menu-category-content padded">
-                                <div class="row gutters-sm">
-
-                                    <div th:each="product : ${productCategory.products}" th:if="${products.contains(product)}" class="col-lg-4 col-6">
-                                        <!-- Menu Item -->
-                                        <div class="menu-item menu-grid-item">
-                                            <a th:href="@{|/menu/${product.id}|}">
-                                                <img class="mb-4"
-                                                     th:src="@{|/front/data-images/products/${product.image}|}"
-                                                     alt="product.image">
-                                            </a>
-
-                                            <h6 class="mb-0">
-                                                <a th:href="@{|/menu/${product.id}|}" th:text="${product.name}"></a>
-                                            </h6>
-                                            <span class="text-muted text-sm" th:text="${product.ingredients}"></span>
-
-                                            <h6 class="pt-1">
-                                                            <span class="text-muted text-sm">
-                                                                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                                                Restaurant:
-                                                            </span>
-                                                <a th:href="@{|/restaurant/${product.restaurant.id}|}">
-                                                                <span class="text-sm" th:text="${product.restaurant.name}"></span>
-                                                </a>
-                                            </h6>
-
-
-                                            <div class="row align-items-center mt-4">
-                                                <div class="col-sm-6">
-                                                    <span class="text-md mr-4">
-                                                        <span class="text-muted">price</span>
-                                                        $
-                                                        <span data-product-base-price th:text="${product.price}"></span>
-                                                    </span>
-                                                </div>
-                                                <div class="col-sm-6 text-sm-right mt-2 mt-sm-0">
-                                                    <button class="btn btn-outline-secondary btn-sm"
-                                                            th:onclick="|addCart(${product.id})|">
-                                                        <span>Add to cart</span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
             </div>
         </div>
 

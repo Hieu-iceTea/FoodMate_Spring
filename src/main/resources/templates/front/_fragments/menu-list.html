@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>menu-list | Component</title>
+</head>
+
+<body>
+
+    <div class="row no-gutters" th:fragment="menu-list (products, productCategories)">
+        <div class="col-md-3">
+            <!-- Menu Navigation -->
+            <nav id="menu-navigation" class="stick-to-content" data-local-scroll>
+                <ul class="nav nav-menu bg-dark dark">
+                    <li th:each="productCategory : ${productCategories}">
+                        <a th:href="@{|${'#' + productCategory.name}|}"
+                           th:text="${productCategory.name}"></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md-9">
+
+            <!-- Menu Category -->
+            <div th:each="productCategory : ${productCategories}" th:id="${productCategory.name}" class="menu-category">
+                <div class="menu-category-title">
+                    <div class="bg-image"><img
+                            th:src="@{|/front/data-images/categories/${productCategory.image}|}" alt="productCategory.image">
+                    </div>
+                    <h2 class="title" th:text="${productCategory.name}"></h2>
+                </div>
+
+                <div class="menu-category-content padded">
+                    <div class="row gutters-sm">
+
+                        <div th:each="product : ${productCategory.products}" th:if="${products.contains(product)}" class="col-lg-4 col-6">
+
+                            <!-- Menu Item -->
+                            <div class="menu-item menu-grid-item" th:replace="front/_fragments/menu-item :: menu-item (product = ${product})"></div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
