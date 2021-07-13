@@ -44,8 +44,8 @@ public class MenuController {
                 .map(Product::getProductCategory)
                 //.sorted((o1, o2) -> ((Integer)o1.getId()).compareTo(o2.getId())) //Muốn sắp xếp ngược lại thì đảo [o1, o2] ở vế sau
                 //.sorted((o1, o2) -> Integer.compare(o1.getId(), o2.getId()))
-                //.sorted(Comparator.comparingInt(BaseModel::getId))
-                .sorted(Comparator.comparingInt(productCategory -> productCategory.getId()))
+                //.sorted(Comparator.comparingInt(productCategory -> productCategory.getId()))
+                .sorted(Comparator.comparingInt(ProductCategory::getId))
                 .distinct()
                 .toList();
         model.addAttribute("productCategories", productCategories);
