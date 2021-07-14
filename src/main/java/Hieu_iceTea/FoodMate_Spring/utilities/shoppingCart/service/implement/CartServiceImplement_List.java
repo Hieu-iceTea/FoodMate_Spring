@@ -20,7 +20,7 @@ public class CartServiceImplement_List implements CartService {
     //endregion
 
 
-    //region - Common Method -
+    //region - Common Method (Getter, Setter) -
     private List<Cart> getCarts() {
         List<Cart> carts = (List<Cart>) session.getAttribute("carts");
 
@@ -39,7 +39,7 @@ public class CartServiceImplement_List implements CartService {
         List<Cart> carts = this.getCarts();
 
         return carts.stream()
-                .filter(c -> c.getProduct().getId() == id)
+                .filter(c -> c.getId() == id)
                 .findFirst()
                 .orElse(null);
     }
@@ -67,21 +67,23 @@ public class CartServiceImplement_List implements CartService {
 
     //region - Public - Main Method -
     @Override
-    public void add(Product product, int qty, double price, HashMap<String, Object> options) {
-
+    public Cart add(int id, String name, int qty, double price, double weight, HashMap<String, Object> options) {
         List<Cart> carts = this.getCarts();
 
         //Check if the product is in the List<Cart>
-        Cart cart = this.getCartByProductId(product.getId());
+        Cart cart = this.getCartByProductId(id);
 
         if (cart == null) {
-            Cart newCart = new Cart(product, qty, price, options);
+            Cart newCart = new Cart(id, name, weight, qty, price, options);
 
             carts.add(newCart);
             this.setCarts(carts);
 
+            return newCart;
         } else {
             this.setCartQty(cart, cart.getQty() + qty);
+
+            return cart;
         }
     }
 
@@ -135,14 +137,14 @@ public class CartServiceImplement_List implements CartService {
         List<Cart> carts = this.getCarts();
 
         return carts.stream()
-                .map(Cart::getPrice)
+                .map(cart -> (cart.getPrice() * cart.getQty()))
                 .reduce(Double::sum)
                 .orElse(0.0);
     }
 
     @Override
     public double subtotal() {
-        return this.total();
+        return this.total(); //Tạm thời làm thế này đã, hihi.
     }
     //endregion
 

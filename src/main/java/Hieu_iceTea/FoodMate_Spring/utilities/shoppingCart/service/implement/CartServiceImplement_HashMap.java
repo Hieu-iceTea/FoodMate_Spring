@@ -35,22 +35,8 @@ public class CartServiceImplement_HashMap implements CartService {
     }
 
     @Override
-    public void add(Product product, int qty, double price, HashMap<String, Object> options) {
-        //Check if the product is in the HashMap
-        Cart fromCart = this.getCarts().values().stream()
-                .filter(cart -> cart.getProduct().getId() == product.getId())
-                .findFirst()
-                .orElse(null);
-
-        if (fromCart == null) {
-            Cart newCart = new Cart(product, qty, price, options);
-
-            HashMap<Integer, Cart> carts = this.getCarts();
-            carts.put(product.getId(), newCart);
-            this.setCarts(carts);
-        } else {
-            fromCart.setQty(fromCart.getQty() + qty);
-        }
+    public Cart add(int id, String name, int qty, double price, double weight, HashMap<String, Object> options) {
+        return null;
     }
 
     @Override
