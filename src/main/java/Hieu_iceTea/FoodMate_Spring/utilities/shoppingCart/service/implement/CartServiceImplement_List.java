@@ -1,6 +1,7 @@
 package Hieu_iceTea.FoodMate_Spring.utilities.shoppingCart.service.implement;
 
 import Hieu_iceTea.FoodMate_Spring.model.Product;
+import Hieu_iceTea.FoodMate_Spring.utilities.Common;
 import Hieu_iceTea.FoodMate_Spring.utilities.shoppingCart.model.Cart;
 import Hieu_iceTea.FoodMate_Spring.utilities.shoppingCart.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -138,10 +139,14 @@ public class CartServiceImplement_List implements CartService {
     public double total() {
         List<Cart> carts = this.getCarts();
 
-        return carts.stream()
+        double total = carts.stream()
                 .map(cart -> (cart.getPrice() * cart.getQty()))
                 .reduce(Double::sum)
                 .orElse(0.0);
+
+        total = Common.round(total, 2); //Làm tròn đến chữ số thập phân thứ 2
+
+        return total;
     }
 
     @Override
