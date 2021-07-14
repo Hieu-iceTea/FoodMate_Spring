@@ -53,7 +53,7 @@ public class CartServiceImplement_List implements CartService {
                 .orElse(null);
     }
 
-    private void setCartQty(Cart cart, int qty) {
+    private Cart setCartQty(Cart cart, int qty) {
         List<Cart> carts = this.getCarts();
 
         int index = carts.indexOf(cart);
@@ -61,6 +61,8 @@ public class CartServiceImplement_List implements CartService {
         carts.set(index, cart);
 
         this.setCarts(carts);
+
+        return cart;
     }
     //endregion
 
@@ -93,10 +95,10 @@ public class CartServiceImplement_List implements CartService {
     }
 
     @Override
-    public void update(String rowId, int qty) {
+    public Cart update(String rowId, int qty) {
         Cart cart = this.getCartByRowId(rowId);
 
-        this.setCartQty(cart, qty);
+        return this.setCartQty(cart, qty);
     }
 
     @Override

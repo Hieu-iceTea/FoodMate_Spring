@@ -45,8 +45,8 @@ public class CartServiceImplement_HashMap implements CartService {
     }
 
     @Override
-    public void update(String rowId, int qty) {
-
+    public Cart update(String rowId, int qty) {
+        return null;
     }
 
     @Override

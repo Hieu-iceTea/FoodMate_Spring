@@ -11,7 +11,7 @@ public interface CartService {
 
     List<Cart> content();
 
-    void update(String rowId, int qty);
+    Cart update(String rowId, int qty);
 
     void remove(String rowId);
 
