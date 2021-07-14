@@ -1,5 +1,5 @@
-
 <!DOCTYPE html>
+
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
@@ -152,10 +152,9 @@
                     <a href="../#" class="module module-cart right" data-toggle="panel-cart">
                         <span class="cart-icon">
                             <i class="ti ti-shopping-cart"></i>
-                            <span
-                                    class="notification d-none">0</span>
+                            <span class="notification" th:classappend="${cartCount > 0 ? '' : 'd-none'}" th:text="${cartCount}"></span>
                         </span>
-                        <span class="cart-value">$<span class="value-show">0.00</span></span>
+                        <span class="cart-value">$<span class="value-show" th:text="${cartTotal}"></span></span>
                     </a>
                 </div>
             </div>
@@ -181,7 +180,7 @@
 
         <a href="../#" class="module module-cart" data-toggle="panel-cart">
             <i class="ti ti-shopping-cart"></i>
-            <span class="notification d-none">0</span>
+            <span th:classappend="${cartCount > 0 ? '' : 'd-none'}" class="notification" th:text="${cartCount}"></span>
         </a>
 
     </header>
@@ -300,13 +299,32 @@
             </div>
             <div class="panel-cart-content cart-details">
 
-                <table class="cart-table-show d-none">
+                <table th:classappend="${cartCount > 0 ? '' : 'd-none'}" class="cart-table-show">
+
+                    <tr th:each="cart : ${carts}" th:data-rowid="${cart.rowId}">
+                        <td class="title">
+                            <span class="name">
+                                <a href="../#product-modal-hide"
+                                   data-toggle="modal" th:text="${cart.name}"></a></span>
+                            <span class="caption text-muted" th:text="|${cart.qty} item x $${cart.price}|"></span>
+                        </td>
+                        <td class="price" th:text="|$${cart.qty * cart.price}|"></td>
+                        <td class="actions">
+                            <button class="close border-0 bg-transparent"
+                                    th:data-rowId="|${cart.rowId}|"
+                                    th:onclick="|confirm('Delete this item?') === true ? deleteCart(this.getAttribute('data-rowId')) : ''|">
+                                <i class="ti ti-close"></i>
+                            </button>
+                        </td>
+                    </tr>
+
                 </table>
-                <div class="cart-summary d-none">
+
+                <div th:classappend="${cartCount > 0 ? '' : 'd-none'}" class="cart-summary">
                     <div class="row">
                         <div class="col-7 text-right text-muted">Order total:</div>
                         <div class="col-5"><strong>$<span
-                                class="cart-products-total-show">0.00</span></strong></div>
+                                class="cart-products-total-show" th:text="${cartTotal}"></span></strong></div>
                     </div>
                     <div class="row">
                         <div class="col-7 text-right text-muted">Devliery:</div>
@@ -316,12 +334,11 @@
                     <div class="row text-lg">
                         <div class="col-7 text-right text-muted">Total:</div>
                         <div class="col-5"><strong>$<span
-                                class="cart-total-show">0.00</span></strong></div>
+                                class="cart-total-show" th:text="${cartTotal}"></span></strong></div>
                     </div>
                 </div>
 
-
-                <div class="cart-empty ">
+                <div th:classappend="${cartCount <= 0 ? '' : 'd-none'}" class="cart-empty">
                     <i class="ti ti-shopping-cart"></i>
                     <p>Your cart is empty...</p>
                 </div>
