@@ -117,7 +117,7 @@
                                                 </form>
 
                                             </td>
-                                            <td class="price cart-item-total-show" th:text="${'$' + (cart.price * cart.qty)}"></td>
+                                            <td class="price cart-item-total-show" th:text="${'$' + #numbers.formatDecimal(cart.price * cart.qty, 1, 2)}"></td>
                                             <td class="actions">
                                                 <button class="action-icon"
                                                         th:data-rowId="|${cart.rowId}|"
