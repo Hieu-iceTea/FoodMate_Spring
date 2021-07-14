@@ -1,180 +1,22 @@
-
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{front/_layout/master}">
 
 <head>
-    <base href="/front/">
-    <!-- Meta -->
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="description" content=" - Cloud Kitchen @ Codedy - TechWiz 2021 - FPT Aptech">
-    <meta name="keywords" content=", CODEDY, Cloud Kitchen, TechWiz, FPT Aptech"/>
-
-    <meta name="language" content="vi">
-    <meta name="language" content="en">
-    <meta http-equiv="content-language" content="vi">
-    <meta http-equiv="content-language" content="en">
-
-    <meta name="copyright" content="CODEDY">
-    <meta name="author" content="Hieu iceTea, DinhHieu8896@gmail.com">
 
     <!-- Title -->
-    <title>Cloud Kitchen | Check Out</title>
+    <title>Check Out</title>
 
-    <meta name="robots" content="noodp,index,follow"/>
-    <meta name='revisit-after' content='1 days'/>
-
-    <meta name="geo.region" content="VN-HN"/>
-    <meta name="geo.placename" content="Hà Nội"/>
-    <meta name="geo.position" content="21.024813;105.853297"/>
-    <meta name="ICBM" content="21.024813, 105.853297"/>
-
-    <meta property="og:title" content="Check Out | Cloud Kitchen - TechWiz 2021 @ CODEDY"/>
-    <meta property="og:type" content="food"/>
-    <meta property="og:url" content="http://127.0.0.1:8000/cart"/>
-    <meta property="og:image" content=""/>
-    <meta name="url" content="http://127.0.0.1:8000/">
-
-    <meta name="fb:page_id" content="107928264386009"/>
-
-    <meta name="og:email" content="codedy.dev@gmail.com"/>
-    <meta name="og:phone_number" content="+84868663315"/>
-
-    <!-- Favicons -->
-    <link rel="shortcut icon" href="../favicon-front.png" type="image/x-icon">
-    <!--<link rel="apple-touch-icon" href="assets/img/favicon_60x60.png">-->
-    <!--<link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicon_76x76.png">-->
-    <!--<link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicon_120x120.png">-->
-    <!--<link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicon_152x152.png">-->
-
-    <!-- Fonts -->
-    <link
-            href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&amp;family=Raleway:wght@100;200;400;500&amp;display=swap"
-            rel="stylesheet">
-
-    <!-- CSS Core -->
-    <link rel="stylesheet" href="dist/css/core.css"/>
-
-    <!-- CSS Theme -->
-    <link id="theme" rel="stylesheet" href="dist/css/theme-beige.css"/>
-
-    <!-- CSS Custom -->
-    <link rel="stylesheet" href="dist/css/custom.css"/>
 </head>
 
 <body>
 
-<!-- Body Wrapper -->
-<div id="body-wrapper" class="animsition">
-
-    <!-- Header -->
-    <header id="header" class="light">
-
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <!-- Logo -->
-                    <div class="module module-logo dark">
-                        <a href="../">
-                            <img src="assets/img/logo-cloud-kitchen.png" alt="" width="120">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-7">
-                    <!-- Navigation -->
-                    <nav class="module module-navigation left">
-                        <ul id="nav-main" class="nav nav-main">
-                            <li><a href="../">Home</a></li>
-                            <li><a href="../menu">Menu</a></li>
-                            <li><a href="../restaurant">Restaurant</a></li>
-                            <li><a href="../about">About</a></li>
-                            <li><a href="../feedback">Feedback</a></li>
-                            <li><a href="../contact">Contact</a></li>
-                            <li class="has-dropdown">
-
-                                <a href="../#" style="text-transform: none" class="font-weight-bold">
-                                    Welcome, DinhHieu8896
-                                </a>
-
-                                <div class="dropdown-container">
-                                    <ul class="dropdown-mega">
-
-                                        <li>
-                                            <div class="mt-2 mb-3">
-                                                <img style="height: 80px;" class="rounded-circle"
-                                                     src="data-images/user/DinhHieu8896.jpg"
-                                                     alt="image-user">
-                                            </div>
-                                            <div class="mb-4">
-                                                <span style="text-transform: none" class="font-weight-bold">
-                                                    Welcome, DinhHieu8896
-                                                </span>
-                                            </div>
-                                        </li>
-
-                                        <li><a href="../account/profile">Profile</a></li>
-
-                                        <li><a href="../account/logout">Logout</a></li>
-
-                                        <li><a href="../account/my-order">Orders History</a></li>
-
-                                    </ul>
-                                    <div class="dropdown-image">
-                                        <img src="data-images/photos/dropdown-more.jpg" alt="">
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </nav>
-
-                </div>
-                <div class="col-md-2">
-                    <a href="../#" class="module module-cart right" data-toggle="panel-cart">
-                        <span class="cart-icon">
-                            <i class="ti ti-shopping-cart"></i>
-                            <span
-                                    class="notification ">8</span>
-                        </span>
-                        <span class="cart-value">$<span class="value-show">116.61</span></span>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-
-    </header>
-    <!-- Header / End -->
-
-    <!-- Header -->
-    <header id="header-mobile" class="light">
-
-        <div class="module module-nav-toggle">
-            <a href="../#" id="nav-toggle"
-               data-toggle="panel-mobile"><span></span><span></span><span></span><span></span></a>
-        </div>
-
-        <div class="module module-logo">
-            <a href="../">
-                <img src="assets/img/logo-cloud-kitchen-black.png" alt="">
-            </a>
-        </div>
-
-        <a href="../#" class="module module-cart" data-toggle="panel-cart">
-            <i class="ti ti-shopping-cart"></i>
-            <span class="notification ">8</span>
-        </a>
-
-    </header>
-    <!-- Header / End -->
-
-    <!-- Content -->
-    <div id="content">
-
-
         <!--  MAIN HERE -->
 
-
+    <main layout:fragment="content">
 
         <!-- Page Title -->
         <div class="page-title bg-dark dark">
@@ -215,32 +57,31 @@
 
                         </div>
 
-                        <div class="cart-details-all ">
-                            <div class="cart-details shadow bg-white mb-4">
+                        <div th:if="${cartsGroupByRestaurant.size() > 0}"
+                             class="cart-details-all" >
+                            <div th:each="carts : ${cartsGroupByRestaurant}" class="cart-details shadow bg-white mb-4">
                                 <div class="bg-white p-4 border-bottom">
                                     <h5 class="mb-0 text-warning">
-                                        <a href="../restaurant/1">
-                                            Essence Restaurant
+                                        <a th:href="@{|/restaurant/${carts.get(0).options.get('restaurant_id')}|}" >
+                                            <span th:text="${carts.get(0).options.get('restaurant_name')}"></span>
                                             <i class="ti ti-angle-right" style="font-size: 80%"></i>
                                         </a>
 
                                         <span class="float-right">
-                                        <form action="../cart/destroy">
-                                                                                                <input type="hidden" name="rowIds[]"
-                                                                                                       value="e3ebf3d852378ab23be313c52d42dde2">
-                                                                                            <input type="hidden" name="rowIds[]"
-                                                                                                   value="571f0f176be63f145f2b1bc216904d25">
-                                                                                            <input type="hidden" name="rowIds[]"
-                                                                                                   value="4079fd33ec614e2a8a4f66608ff0890f">
-                                                                                            <button class="action-icon border-0 bg-transparent"
-                                                                                                    onclick="return confirm('Delete cart Restaurant: Essence Restaurant')">
+                                            <form action="/cart/destroy">
+                                                <input th:each="cart : ${carts}" type="hidden"
+                                                       name="rowIds[]" th:value="${cart.rowId}">
+
+                                                <button th:data-confirm="|Delete cart Restaurant: ${carts.get(0).options.get('restaurant_name')}?|"
+                                                        onclick="return confirm(this.getAttribute('data-confirm'))"
+                                                        class="action-icon border-0 bg-transparent">
                                                     <i class="ti ti-close"></i>
                                                 </button>
                                             </form>
-                                    </span>
+                                        </span>
                                     </h5>
-
                                 </div>
+
                                 <div class="table-responsive">
                                     <table class="cart-table-show table-hover">
                                         <tr>
@@ -251,237 +92,59 @@
                                             <th class="text-right">Total</th>
                                             <th class="text-right"></th>
                                         </tr>
-                                        <tr data-rowId="e3ebf3d852378ab23be313c52d42dde2">
+
+                                        <tr th:each="cart : ${carts}" th:data-rowId="${cart.rowId}">
                                             <td>
-                                                <img src="data-images/products/Crispy Baked Falafel.jpg"
-                                                     style="max-height: 80px; min-width: 90px" alt="">
+                                                <img th:src="@{|/front/data-images/products/${cart.options.get('image')}|}"
+                                                     alt="product.image" style="max-height: 80px; min-width: 90px">
                                             </td>
                                             <td class="title">
-                                        <span class="name">
-                                            <a href="../menu/2" data-toggle="modal">Crispy Baked Falafel</a>
-                                        </span>
+                                                <span class="name">
+                                                    <a th:href="@{|/menu/${cart.id}|}" data-toggle="modal" th:text="${cart.name}"></a>
+                                                </span>
                                             </td>
-                                            <td class="price">$13.89</td>
+                                            <td class="price" th:text="${'$' + cart.price}"></td>
                                             <td class="price" style="width: 110px">
-                                                <form action="../cart/update/e3ebf3d852378ab23be313c52d42dde2" onkeydown="return event.key !== 'Enter';">
+                                                <form th:action="@{|/cart/update/${cart.rowId}|}"
+                                                      onkeydown="return event.key !== 'Enter';">
                                                     <input class="form-control border-light"
                                                            style="font-weight: bold; width: 65px"
-                                                           type="number" name="qty" value="2" min=1
-                                                           onchange="updateCart('e3ebf3d852378ab23be313c52d42dde2', this.form['qty'].value)">
+                                                           type="number" name="qty" min=1
+                                                           th:value="${cart.qty}"
+
+                                                           th:data-rowId="|${cart.rowId}|"
+                                                           th:onchange="|updateCart(this.getAttribute('data-rowId'), this.form['qty'].value)|">
                                                 </form>
 
                                             </td>
-                                            <td class="price cart-item-total-show">
-                                                $27.78</td>
+                                            <td class="price cart-item-total-show" th:text="${'$' + (cart.price * cart.qty)}"></td>
                                             <td class="actions">
                                                 <button class="action-icon"
-                                                        onclick="confirm('Delete this item?') === true ? deleteCart('e3ebf3d852378ab23be313c52d42dde2') : ''">
+                                                        th:data-rowId="|${cart.rowId}|"
+                                                        th:onclick="|confirm('Delete this item?') === true ? deleteCart(this.getAttribute('data-rowId')) : ''|">
                                                     <i class="ti ti-close"></i>
                                                 </button>
                                             </td>
                                         </tr>
-                                        <tr data-rowId="571f0f176be63f145f2b1bc216904d25">
-                                            <td>
-                                                <img src="data-images/products/Spaghetti Squash Burrito Bowls.jpg"
-                                                     style="max-height: 80px; min-width: 90px" alt="">
-                                            </td>
-                                            <td class="title">
-                                        <span class="name">
-                                            <a href="../menu/5" data-toggle="modal">Spaghetti Squash Burrito Bowls</a>
-                                        </span>
-                                            </td>
-                                            <td class="price">$16.39</td>
-                                            <td class="price" style="width: 110px">
-                                                <form action="../cart/update/571f0f176be63f145f2b1bc216904d25" onkeydown="return event.key !== 'Enter';">
-                                                    <input class="form-control border-light"
-                                                           style="font-weight: bold; width: 65px"
-                                                           type="number" name="qty" value="1" min=1
-                                                           onchange="updateCart('571f0f176be63f145f2b1bc216904d25', this.form['qty'].value)">
-                                                </form>
 
-                                            </td>
-                                            <td class="price cart-item-total-show">
-                                                $16.39</td>
-                                            <td class="actions">
-                                                <button class="action-icon"
-                                                        onclick="confirm('Delete this item?') === true ? deleteCart('571f0f176be63f145f2b1bc216904d25') : ''">
-                                                    <i class="ti ti-close"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr data-rowId="4079fd33ec614e2a8a4f66608ff0890f">
-                                            <td>
-                                                <img src="data-images/products/capuchino.jpg"
-                                                     style="max-height: 80px; min-width: 90px" alt="">
-                                            </td>
-                                            <td class="title">
-                                        <span class="name">
-                                            <a href="../menu/56" data-toggle="modal">Cappuccino</a>
-                                        </span>
-                                            </td>
-                                            <td class="price">$12.68</td>
-                                            <td class="price" style="width: 110px">
-                                                <form action="../cart/update/4079fd33ec614e2a8a4f66608ff0890f" onkeydown="return event.key !== 'Enter';">
-                                                    <input class="form-control border-light"
-                                                           style="font-weight: bold; width: 65px"
-                                                           type="number" name="qty" value="1" min=1
-                                                           onchange="updateCart('4079fd33ec614e2a8a4f66608ff0890f', this.form['qty'].value)">
-                                                </form>
-
-                                            </td>
-                                            <td class="price cart-item-total-show">
-                                                $12.68</td>
-                                            <td class="actions">
-                                                <button class="action-icon"
-                                                        onclick="confirm('Delete this item?') === true ? deleteCart('4079fd33ec614e2a8a4f66608ff0890f') : ''">
-                                                    <i class="ti ti-close"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="cart-details shadow bg-white mb-4">
-                                <div class="bg-white p-4 border-bottom">
-                                    <h5 class="mb-0 text-warning">
-                                        <a href="../restaurant/2">
-                                            Chestnut Restaurant &amp; Sky Bar
-                                            <i class="ti ti-angle-right" style="font-size: 80%"></i>
-                                        </a>
-
-                                        <span class="float-right">
-                                        <form action="../cart/destroy">
-                                                                                                <input type="hidden" name="rowIds[]"
-                                                                                                       value="5cca668a6553075d14da36d0df7677ba">
-                                                                                            <button class="action-icon border-0 bg-transparent"
-                                                                                                    onclick="return confirm('Delete cart Restaurant: Chestnut Restaurant &amp; Sky Bar')">
-                                                    <i class="ti ti-close"></i>
-                                                </button>
-                                            </form>
-                                    </span>
-                                    </h5>
-
-                                </div>
-                                <div class="table-responsive">
-                                    <table class="cart-table-show table-hover">
-                                        <tr>
-                                            <th>Image</th>
-                                            <th>Name</th>
-                                            <th class="text-right">Price</th>
-                                            <th class="text-center">Qty</th>
-                                            <th class="text-right">Total</th>
-                                            <th class="text-right"></th>
-                                        </tr>
-                                        <tr data-rowId="5cca668a6553075d14da36d0df7677ba">
-                                            <td>
-                                                <img src="data-images/products/engg.jpg"
-                                                     style="max-height: 80px; min-width: 90px" alt="">
-                                            </td>
-                                            <td class="title">
-                                        <span class="name">
-                                            <a href="../menu/7" data-toggle="modal">Vegan Eggplant Salad</a>
-                                        </span>
-                                            </td>
-                                            <td class="price">$10.59</td>
-                                            <td class="price" style="width: 110px">
-                                                <form action="../cart/update/5cca668a6553075d14da36d0df7677ba" onkeydown="return event.key !== 'Enter';">
-                                                    <input class="form-control border-light"
-                                                           style="font-weight: bold; width: 65px"
-                                                           type="number" name="qty" value="1" min=1
-                                                           onchange="updateCart('5cca668a6553075d14da36d0df7677ba', this.form['qty'].value)">
-                                                </form>
-
-                                            </td>
-                                            <td class="price cart-item-total-show">
-                                                $10.59</td>
-                                            <td class="actions">
-                                                <button class="action-icon"
-                                                        onclick="confirm('Delete this item?') === true ? deleteCart('5cca668a6553075d14da36d0df7677ba') : ''">
-                                                    <i class="ti ti-close"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="cart-details shadow bg-white mb-4">
-                                <div class="bg-white p-4 border-bottom">
-                                    <h5 class="mb-0 text-warning">
-                                        <a href="../restaurant/3">
-                                            Poke Hanoi
-                                            <i class="ti ti-angle-right" style="font-size: 80%"></i>
-                                        </a>
-
-                                        <span class="float-right">
-                                        <form action="../cart/destroy">
-                                                                                                <input type="hidden" name="rowIds[]"
-                                                                                                       value="eb3747c91020967c56a2490e96a04bc5">
-                                                                                            <button class="action-icon border-0 bg-transparent"
-                                                                                                    onclick="return confirm('Delete cart Restaurant: Poke Hanoi')">
-                                                    <i class="ti ti-close"></i>
-                                                </button>
-                                            </form>
-                                    </span>
-                                    </h5>
-
-                                </div>
-                                <div class="table-responsive">
-                                    <table class="cart-table-show table-hover">
-                                        <tr>
-                                            <th>Image</th>
-                                            <th>Name</th>
-                                            <th class="text-right">Price</th>
-                                            <th class="text-center">Qty</th>
-                                            <th class="text-right">Total</th>
-                                            <th class="text-right"></th>
-                                        </tr>
-                                        <tr data-rowId="eb3747c91020967c56a2490e96a04bc5">
-                                            <td>
-                                                <img src="data-images/products/porkmeatsoupdumplings.jpg"
-                                                     style="max-height: 80px; min-width: 90px" alt="">
-                                            </td>
-                                            <td class="title">
-                                        <span class="name">
-                                            <a href="../menu/17" data-toggle="modal">Pork Meat Soup Dumplings</a>
-                                        </span>
-                                            </td>
-                                            <td class="price">$16.39</td>
-                                            <td class="price" style="width: 110px">
-                                                <form action="../cart/update/eb3747c91020967c56a2490e96a04bc5" onkeydown="return event.key !== 'Enter';">
-                                                    <input class="form-control border-light"
-                                                           style="font-weight: bold; width: 65px"
-                                                           type="number" name="qty" value="3" min=1
-                                                           onchange="updateCart('eb3747c91020967c56a2490e96a04bc5', this.form['qty'].value)">
-                                                </form>
-
-                                            </td>
-                                            <td class="price cart-item-total-show">
-                                                $49.17</td>
-                                            <td class="actions">
-                                                <button class="action-icon"
-                                                        onclick="confirm('Delete this item?') === true ? deleteCart('eb3747c91020967c56a2490e96a04bc5') : ''">
-                                                    <i class="ti ti-close"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
                                     </table>
                                 </div>
                             </div>
                         </div>
 
                         <div class="cart-details shadow bg-white mb-4">
-                            <div class="cart-empty d-none">
+                            <div th:if="${cartsGroupByRestaurant.size() <= 0}" class="cart-empty">
                                 <i class="ti ti-shopping-cart"></i>
                                 <p>Your cart is empty...</p>
                             </div>
                         </div>
 
                         <div class="cart-details shadow bg-white mb-4">
-                            <div class="cart-summary ">
+                            <div th:if="${cartsGroupByRestaurant.size() > 0}" class="cart-summary ">
                                 <div class="row">
                                     <div class="col-8 text-right text-muted">Order total:</div>
                                     <div class="col-4"><strong>$<span
-                                            class="cart-products-total-show">116.61</span></strong>
+                                            class="cart-products-total-show" th:text="${total}"></span></strong>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -493,23 +156,26 @@
                                 <div class="row text-lg">
                                     <div class="col-8 text-right text-muted">Total:</div>
                                     <div class="col-4"><strong>$<span
-                                            class="cart-total-show">116.61</span></strong>
+                                            class="cart-total-show" th:text="${total}"></span></strong>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="mb-3 mr-1 text-right cart-note">
+                        <div th:if="${cartsGroupByRestaurant.size() > 1}" class="mb-3 mr-1 text-right cart-note">
                             <span class="text-warning font-weight-bold" style="font-size: 110%">
                                * Note: Your cart is separated into
-                                <span style="text-decoration: underline; font-size: 110%">
-                                     3 orders
-                                </span>
+                                <span style="text-decoration: underline; font-size: 110%"
+                                      th:text="${cartsGroupByRestaurant.size() + ' orders'}"></span>
                                 because you have selected the product of many different restaurants.
                             </span>
                         </div>
 
-                        <a href="../checkout" class="panel-cart-action btn btn-secondary btn-block btn-lg"><span>Go to checkout</span></a>
+                        <a th:if="${cartsGroupByRestaurant.size() > 0}"
+                           href="../checkout" class="panel-cart-action btn btn-secondary btn-block btn-lg"><span>Go to checkout</span></a>
+
+                        <a th:if="${cartsGroupByRestaurant.size() <= 0}"
+                           href="../menu" class="panel-cart-action btn btn-secondary btn-block btn-lg"><span>Go to menu</span></a>
 
                     </div>
                 </div>
@@ -517,345 +183,9 @@
 
         </section>
 
-
+    </main>
 
         <!--  end MAIN HERE -->
-
-
-        <!-- Footer -->
-        <footer id="footer" class="bg-dark dark">
-
-            <div class="container">
-                <!-- Footer 1st Row -->
-                <div class="footer-first-row row">
-                    <div class="col-lg-3 text-center">
-                        <a href="../"><img src="assets/img/logo-cloud-kitchen.png" alt="" width="88"
-                                           class="mt-5 mb-5"></a>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <h4 class="text-muted">Get Started</h4>
-                        <ul class="list-posts">
-                            <li>
-                                <span><a href="../" class="title text-primary">Home</a></span>
-                            </li>
-                            <li>
-                                <span><a href="../menu" class="title text-primary">Menu</a></span>
-                            </li>
-                            <li>
-                                <span><a href="../restaurant" class="title text-primary">Restaurant</a></span>
-                            </li>
-                            <li>
-                                <span><a href="../about" class="title text-primary">About</a></span>
-                            </li>
-                            <li>
-                                <span><a href="../feedback" class="title text-primary">Feedback</a></span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <h4 class="text-muted">Your Account</h4>
-                        <ul class="list-posts">
-                            <li><span><a href="../account/login" class="title text-primary">Login</a></span></li>
-                            <li><span><a href="../account/register" class="title text-primary">Register</a></span></li>
-                            <li><span><a href="../account/my-order" class="title text-primary">Order history</a></span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6">
-
-                        <h4 class="text-muted">Contact Us</h4>
-                        <ul class="list-posts">
-                            <li>
-                                <span class="title text-primary">Could Kitchen</span>
-                            </li>
-                            <li>
-                                <span class="title text-primary">8, Ton That Thuyet, My Dinh, Ha Noi</span>
-                            </li>
-                            <li>
-                                <span style="font-variant: lining-nums;"
-                                      class="title text-primary"><strong>Phone: </strong>
-                                    <a href="../contact">+84 868 6633 15</a>
-                                </span>
-                            </li>
-                            <li>
-                                <span class="title text-primary"><strong>Email: </strong>
-                                    <a href="../contact">codedy.dev@gmail.com</a>
-                                </span>
-                            </li>
-
-                        </ul>
-
-                        <a href="../" class="icon icon-social icon-circle icon-sm icon-facebook"><i
-                                class="fa fa-facebook"></i></a>
-                        <a href="../" class="icon icon-social icon-circle icon-sm icon-google"><i
-                                class="fa fa-google"></i></a>
-                        <a href="../" class="icon icon-social icon-circle icon-sm icon-twitter"><i
-                                class="fa fa-twitter"></i></a>
-                        <a href="../" class="icon icon-social icon-circle icon-sm icon-youtube"><i
-                                class="fa fa-youtube"></i></a>
-                        <a href="../" class="icon icon-social icon-circle icon-sm icon-instagram"><i
-                                class="fa fa-instagram"></i></a>
-                    </div>
-                </div>
-                <!-- Footer 2nd Row -->
-                <div class="footer-second-row">
-                    <span class="text-muted">Copyright © Codedy TechWiz 2021</span>
-                </div>
-            </div>
-
-            <!-- Back To Top -->
-            <button id="back-to-top" class="back-to-top"><i class="ti ti-angle-up"></i></button>
-
-        </footer>
-        <!-- Footer / End -->
-
-    </div>
-    <!-- Content / End -->
-
-    <!-- Panel Cart -->
-    <div id="panel-cart">
-        <div class="panel-cart-container">
-            <div class="panel-cart-title">
-                <h5 class="title">Your Cart</h5>
-                <button class="close" data-toggle="panel-cart"><i class="ti ti-close"></i></button>
-            </div>
-            <div class="panel-cart-content cart-details">
-
-                <table class="cart-table-show ">
-                    <tr data-rowId="e3ebf3d852378ab23be313c52d42dde2">
-                        <td class="title">
-                                    <span class="name">
-                                        <a href="../#product-modal-hide"
-                                           data-toggle="modal">Crispy Baked Falafel</a></span>
-                            <span class="caption text-muted">2 item x $13.89</span>
-                        </td>
-                        <td class="price">$27.78</td>
-                        <td class="actions">
-                            <button class="close border-0 bg-transparent"
-                                    onclick="confirm('Delete this item?') === true ? deleteCart('e3ebf3d852378ab23be313c52d42dde2') : ''">
-                                <i class="ti ti-close"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr data-rowId="571f0f176be63f145f2b1bc216904d25">
-                        <td class="title">
-                                    <span class="name">
-                                        <a href="../#product-modal-hide"
-                                           data-toggle="modal">Spaghetti Squash Burrito Bowls</a></span>
-                            <span class="caption text-muted">1 item x $16.39</span>
-                        </td>
-                        <td class="price">$16.39</td>
-                        <td class="actions">
-                            <button class="close border-0 bg-transparent"
-                                    onclick="confirm('Delete this item?') === true ? deleteCart('571f0f176be63f145f2b1bc216904d25') : ''">
-                                <i class="ti ti-close"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr data-rowId="5cca668a6553075d14da36d0df7677ba">
-                        <td class="title">
-                                    <span class="name">
-                                        <a href="../#product-modal-hide"
-                                           data-toggle="modal">Vegan Eggplant Salad</a></span>
-                            <span class="caption text-muted">1 item x $10.59</span>
-                        </td>
-                        <td class="price">$10.59</td>
-                        <td class="actions">
-                            <button class="close border-0 bg-transparent"
-                                    onclick="confirm('Delete this item?') === true ? deleteCart('5cca668a6553075d14da36d0df7677ba') : ''">
-                                <i class="ti ti-close"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr data-rowId="eb3747c91020967c56a2490e96a04bc5">
-                        <td class="title">
-                                    <span class="name">
-                                        <a href="../#product-modal-hide"
-                                           data-toggle="modal">Pork Meat Soup Dumplings</a></span>
-                            <span class="caption text-muted">3 item x $16.39</span>
-                        </td>
-                        <td class="price">$49.17</td>
-                        <td class="actions">
-                            <button class="close border-0 bg-transparent"
-                                    onclick="confirm('Delete this item?') === true ? deleteCart('eb3747c91020967c56a2490e96a04bc5') : ''">
-                                <i class="ti ti-close"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr data-rowId="4079fd33ec614e2a8a4f66608ff0890f">
-                        <td class="title">
-                                    <span class="name">
-                                        <a href="../#product-modal-hide"
-                                           data-toggle="modal">Cappuccino</a></span>
-                            <span class="caption text-muted">1 item x $12.68</span>
-                        </td>
-                        <td class="price">$12.68</td>
-                        <td class="actions">
-                            <button class="close border-0 bg-transparent"
-                                    onclick="confirm('Delete this item?') === true ? deleteCart('4079fd33ec614e2a8a4f66608ff0890f') : ''">
-                                <i class="ti ti-close"></i>
-                            </button>
-                        </td>
-                    </tr>
-                </table>
-                <div class="cart-summary ">
-                    <div class="row">
-                        <div class="col-7 text-right text-muted">Order total:</div>
-                        <div class="col-5"><strong>$<span
-                                class="cart-products-total-show">116.61</span></strong></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-7 text-right text-muted">Devliery:</div>
-                        <div class="col-5"><strong>$<span class="cart-delivery-show">0.00</span></strong></div>
-                    </div>
-                    <hr class="hr-sm">
-                    <div class="row text-lg">
-                        <div class="col-7 text-right text-muted">Total:</div>
-                        <div class="col-5"><strong>$<span
-                                class="cart-total-show">116.61</span></strong></div>
-                    </div>
-                </div>
-
-
-                <div class="cart-empty d-none">
-                    <i class="ti ti-shopping-cart"></i>
-                    <p>Your cart is empty...</p>
-                </div>
-
-            </div>
-        </div>
-        <a href="../cart"
-           class="panel-cart-action btn btn-secondary btn-block btn-lg"><span>Go to cart</span></a>
-    </div>
-
-    <!-- Panel Mobile -->
-    <nav id="panel-mobile">
-        <div class="module module-logo bg-dark dark">
-            <a href="../">
-                <img src="assets/img/logo-cloud-kitchen.png" alt="" width="88">
-            </a>
-            <button class="close" data-toggle="panel-mobile"><i class="ti ti-close"></i></button>
-        </div>
-        <nav class="module module-navigation"></nav>
-        <div class="module module-social">
-            <h6 class="text-sm mb-3">Follow Us!</h6>
-            <a href="../#" class="icon icon-social icon-circle icon-sm icon-facebook"><i class="fa fa-facebook"></i></a>
-            <a href="../#" class="icon icon-social icon-circle icon-sm icon-google"><i class="fa fa-google"></i></a>
-            <a href="../#" class="icon icon-social icon-circle icon-sm icon-twitter"><i class="fa fa-twitter"></i></a>
-            <a href="../#" class="icon icon-social icon-circle icon-sm icon-youtube"><i class="fa fa-youtube"></i></a>
-            <a href="../#" class="icon icon-social icon-circle icon-sm icon-instagram"><i
-                    class="fa fa-instagram"></i></a>
-        </div>
-    </nav>
-
-    <!-- Body Overlay -->
-    <div id="body-overlay"></div>
-
-</div>
-
-<!-- Modal / Product -->
-<div class="modal fade" id="modalAddCart" role="dialog">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header modal-header-lg dark bg-dark">
-                <div class="bg-image"><img src="data-images/photos/modal-add.jpg" alt=""></div>
-                <h4 class="modal-title">
-                    <i class="ti ti-check"></i>
-                    Add an item to cart successfully
-                </h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <i class="ti ti-close"></i>
-                </button>
-            </div>
-            <div class="modal-product-details">
-                <div class="row align-items-center">
-                    <div class="col-9">
-                        <h6 class="mb-1 product-modal-name">Product name</h6>
-                        <span
-                                class="text-muted product-modal-ingredients product-modal-qty-price">Qty item x $Price</span>
-                    </div>
-                    <div class="col-3 text-lg text-right">$<span class="product-modal-price">Price</span></div>
-                </div>
-            </div>
-            <div class="row">
-                <button type="button" data-dismiss="modal"
-                        class="modal-btn btn btn-secondary btn-lg col-6 pr-3 border-right">
-                    <span>Continue pick dish</span>
-                </button>
-                <a href="../cart" type="button" data-dismiss="modal"
-                   class="modal-btn btn btn-secondary btn-lg col-6 border-left">
-                    <span>Go to cart</span>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Video Modal / Demo -->
-<div class="modal modal-video fade" id="modalVideo" role="dialog">
-    <button class="close" data-dismiss="modal"><i class="ti ti-close"></i></button>
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <iframe height="500"></iframe>
-        </div>
-    </div>
-</div>
-
-<!-- Modal / COVID -->
-<div class="modal fade" id="covid-modal" role="dialog" data-timeout="1000" data-set-cookie="covid-modal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header modal-header-lg dark bg-dark">
-                <div class="bg-image"><img src="data-images/photos/modal-covid.jpg" alt=""></div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="ti ti-close"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h3>
-                    Hi TechWiz.
-                    <br>
-                    We are COVID-19 safe!
-                </h3>
-                <p>
-                    We are CODEDY-team, from FPT Aptech, Viet Nam. <br>
-                    Participate in the TechWiz 2021 contest with the most demanding standards on Covid-19 prevention and
-                    safety.
-                    Wish the world will soon overcome this disease.
-                </p>
-                <button class="btn btn-secondary" data-dismiss="modal"><span>Ok, thanks!</span></button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Cookies Bar -->
-<div id="cookies-bar" class="body-bar cookies-bar">
-    <div class="body-bar-container container">
-        <div class="body-bar-text">
-            <h4 class="mb-2">Cookies</h4>
-            <p>
-                This website uses cookies to ensure you get the best experience on our website.
-                <a style="text-decoration: underline" href="../contact">Contact now</a>
-                or
-                <a style="text-decoration: underline" href="../feedback">feedback for us</a>.
-            </p>
-        </div>
-        <div class="body-bar-action">
-            <button class="btn btn-primary" data-accept="cookies"><span>Accept</span></button>
-        </div>
-    </div>
-</div>
-
-
-<!-- JS Core -->
-<script src="dist/js/core.js"></script>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-<!-- JS Custom -->
-<script src="dist/js/custom.js"></script>
 
 </body>
 
