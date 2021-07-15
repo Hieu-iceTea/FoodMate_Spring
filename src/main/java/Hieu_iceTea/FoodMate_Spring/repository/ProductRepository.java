@@ -11,6 +11,7 @@ public interface ProductRepository extends BaseRepository<Product, Integer> {
 
     List<Product> findAllByNameContainsOrderByIdDesc(String name);
     //List<Product> findAllByNameContainsOrderByIdDesc(@Param("name") String name);
+    //API: http://localhost:8080/api/products/search/findAllByNameContainsOrderByIdDesc?name=us
 
     //List<Product> findAllByNameContainsIgnoreCaseOrderByIdDesc(String name);
 
