@@ -8,8 +8,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class MvcConfig implements WebMvcConfigurer {
 
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/login").setViewName("front/account/login");
-        registry.addViewController("/access-denied").setViewName("front/account/access-denied");
+        //registry.addViewController("/login").setViewName("front/account/login");
+        //registry.addViewController("/access-denied").setViewName("front/account/access-denied");
     }
 
 }
