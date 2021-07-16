@@ -119,7 +119,7 @@
                                         <li>
                                             <div class="mt-2 mb-3">
                                                 <img style="height: 80px;" class="rounded-circle"
-                                                     th:src="|/front/data-images/user/${currentUser.image ?: '_default-user.png'}|"
+                                                     th:src="|/front/data-images/user/${_auth_currentUser.image ?: '_default-user.png'}|"
                                                      alt="image-user">
                                             </div>
                                             <div class="mb-4">
@@ -152,9 +152,9 @@
                     <a href="../#" class="module module-cart right" data-toggle="panel-cart">
                         <span class="cart-icon">
                             <i class="ti ti-shopping-cart"></i>
-                            <span class="notification" th:classappend="${cartCount > 0 ? '' : 'd-none'}" th:text="${cartCount}"></span>
+                            <span class="notification" th:classappend="${_cart_count > 0 ? '' : 'd-none'}" th:text="${_cart_count}"></span>
                         </span>
-                        <span class="cart-value">$<span class="value-show" th:text="${cartTotal}"></span></span>
+                        <span class="cart-value">$<span class="value-show" th:text="${_cart_total}"></span></span>
                     </a>
                 </div>
             </div>
@@ -180,7 +180,7 @@
 
         <a href="../#" class="module module-cart" data-toggle="panel-cart">
             <i class="ti ti-shopping-cart"></i>
-            <span th:classappend="${cartCount > 0 ? '' : 'd-none'}" class="notification" th:text="${cartCount}"></span>
+            <span th:classappend="${_cart_count > 0 ? '' : 'd-none'}" class="notification" th:text="${_cart_count}"></span>
         </a>
 
     </header>
@@ -299,9 +299,9 @@
             </div>
             <div class="panel-cart-content cart-details">
 
-                <table th:classappend="${cartCount > 0 ? '' : 'd-none'}" class="cart-table-show">
+                <table th:classappend="${_cart_count > 0 ? '' : 'd-none'}" class="cart-table-show">
 
-                    <tr th:each="cart : ${carts}" th:data-rowid="${cart.rowId}">
+                    <tr th:each="cart : ${_cart_content}" th:data-rowid="${cart.rowId}">
                         <td class="title">
                             <span class="name">
                                 <a href="../#product-modal-hide"
@@ -320,11 +320,11 @@
 
                 </table>
 
-                <div th:classappend="${cartCount > 0 ? '' : 'd-none'}" class="cart-summary">
+                <div th:classappend="${_cart_count > 0 ? '' : 'd-none'}" class="cart-summary">
                     <div class="row">
                         <div class="col-7 text-right text-muted">Order total:</div>
                         <div class="col-5"><strong>$<span
-                                class="cart-products-total-show" th:text="${cartTotal}"></span></strong></div>
+                                class="cart-products-total-show" th:text="${_cart_total}"></span></strong></div>
                     </div>
                     <div class="row">
                         <div class="col-7 text-right text-muted">Devliery:</div>
@@ -334,11 +334,11 @@
                     <div class="row text-lg">
                         <div class="col-7 text-right text-muted">Total:</div>
                         <div class="col-5"><strong>$<span
-                                class="cart-total-show" th:text="${cartTotal}"></span></strong></div>
+                                class="cart-total-show" th:text="${_cart_total}"></span></strong></div>
                     </div>
                 </div>
 
-                <div th:classappend="${cartCount <= 0 ? '' : 'd-none'}" class="cart-empty">
+                <div th:classappend="${_cart_count <= 0 ? '' : 'd-none'}" class="cart-empty">
                     <i class="ti ti-shopping-cart"></i>
                     <p>Your cart is empty...</p>
                 </div>

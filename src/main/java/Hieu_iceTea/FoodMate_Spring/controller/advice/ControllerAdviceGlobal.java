@@ -17,7 +17,7 @@ public class ControllerAdviceGlobal {
 
     //region - ModelAttribute -
     //https://stackoverflow.com/questions/30121565/spring-mvc-thymeleaf-adding-variable-to-all-templates-context
-    @ModelAttribute("currentUser")
+    @ModelAttribute("_auth_currentUser")
     public User getCurrentUser() {
 
         return userService.getCurrentUser();

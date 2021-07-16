@@ -21,11 +21,11 @@ public class ControllerAdviceFront {
     //region - ModelAttribute -
     @ModelAttribute()
     public void getCurrentCarts(Model model) {
-        model.addAttribute("carts", cartService.content());
+        model.addAttribute("_cart_content", cartService.content());
 
-        model.addAttribute("cartCount", cartService.count());
-        model.addAttribute("cartTotal", cartService.total());
-        model.addAttribute("cartSubtotal", cartService.subtotal());
+        model.addAttribute("_cart_count", cartService.count());
+        model.addAttribute("_cart_total", cartService.total());
+        //model.addAttribute("_cart_subtotal", cartService.subtotal());
     }
     //endregion
 
