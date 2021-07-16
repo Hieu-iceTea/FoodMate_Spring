@@ -9,4 +9,6 @@ public interface UserService extends BaseService<User, Integer> {
 
     User findByUsername(String username);
 
+    User getCurrentUser();
+
 }
