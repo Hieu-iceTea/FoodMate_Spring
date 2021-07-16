@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -61,7 +62,9 @@ public class ProductController {
     @GetMapping(path = {"/create/", "/create"})
     public String create(Model model) {
 
-        model.addAttribute("product", new Product());
+        if (model.getAttribute("product") == null) { //Phục vụ cho việc Xử lý Form-Validation
+            model.addAttribute("product", new Product());
+        }
 
         model.addAttribute("productCategories", productCategoryService.findAllByOrderByIdDesc());
         model.addAttribute("restaurants", restaurantService.findAllByOrderByIdDesc());
@@ -71,15 +74,21 @@ public class ProductController {
 
     @PostMapping(path = {"/create/", "/create"})
     public String store(@Valid @ModelAttribute Product product,
-                        BindingResult bindingResult, Model model,
+                        BindingResult bindingResult, RedirectAttributes redirectAttributes,
                         @RequestParam("image_file") MultipartFile file) {
 
         //Xử lý Validating-Form
         if (bindingResult.hasErrors()) {
-            model.addAttribute("productCategories", productCategoryService.findAllByOrderByIdDesc());
+            //https://stackoverflow.com/questions/2543797/spring-redirect-after-post-even-with-validation-errors
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.product", bindingResult);
+            redirectAttributes.addFlashAttribute("product", product);
+
+            return "redirect:/admin/product/create";
+
+            /*model.addAttribute("productCategories", productCategoryService.findAllByOrderByIdDesc());
             model.addAttribute("restaurants", restaurantService.findAllByOrderByIdDesc());
 
-            return "dashboard/product/create-edit";
+            return "dashboard/product/create-edit";*/
         }
 
         //Xử lý file
@@ -100,7 +109,9 @@ public class ProductController {
     @GetMapping(path = {"/{id}/edit/", "/{id}/edit"})
     public String edit(Model model, @PathVariable int id) {
 
-        model.addAttribute("product", productService.findById(id));
+        if (model.getAttribute("product") == null) { //Phục vụ cho việc Xử lý Form-Validation
+            model.addAttribute("product", productService.findById(id));
+        }
 
         model.addAttribute("productCategories", productCategoryService.findAllByOrderByIdDesc());
         model.addAttribute("restaurants", restaurantService.findAllByOrderByIdDesc());
@@ -110,16 +121,22 @@ public class ProductController {
 
     @PostMapping(path = {"/{id}/edit/", "/{id}/edit"})
     public String update(@Valid @ModelAttribute Product product,
-                         BindingResult bindingResult, Model model,
+                         BindingResult bindingResult, RedirectAttributes redirectAttributes,
                          @RequestParam("image_file") MultipartFile file,
                          @RequestParam("image_old") String fileName_old) {
 
         //Xử lý Form-Validation
         if (bindingResult.hasErrors()) {
-            model.addAttribute("productCategories", productCategoryService.findAllByOrderByIdDesc());
+            //https://stackoverflow.com/questions/2543797/spring-redirect-after-post-even-with-validation-errors
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.product", bindingResult);
+            redirectAttributes.addFlashAttribute("product", product);
+
+            return "redirect:/admin/product/" + product.getId() + "/edit";
+
+            /*model.addAttribute("productCategories", productCategoryService.findAllByOrderByIdDesc());
             model.addAttribute("restaurants", restaurantService.findAllByOrderByIdDesc());
 
-            return "dashboard/product/create-edit";
+            return "dashboard/product/create-edit";*/
         }
 
         //Xử lý file
