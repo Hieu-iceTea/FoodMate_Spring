@@ -6,6 +6,6 @@ import Hieu_iceTea.FoodMate_Spring.model.User;
 
 public interface UserRepository extends BaseRepository<User, Integer> {
 
-    User findUserByUsername(String username);
+    User findByUsername(String username);
 
 }

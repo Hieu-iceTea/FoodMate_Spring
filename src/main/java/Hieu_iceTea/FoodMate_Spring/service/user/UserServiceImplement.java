@@ -20,8 +20,8 @@ public class UserServiceImplement extends BaseServiceImplement<User, Integer> im
     }
 
     @Override
-    public User findUserByUsername(String username) {
-        return userRepository.findUserByUsername(username);
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
     //endregion
 
