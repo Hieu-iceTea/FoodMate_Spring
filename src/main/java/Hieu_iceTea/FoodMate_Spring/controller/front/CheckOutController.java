@@ -121,7 +121,7 @@ public class CheckOutController {
         }
 
         // 03. Xóa giỏ hàng
-        //cartService.destroy();
+        cartService.destroy();
 
         return "redirect:/checkout/result";
 
