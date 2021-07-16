@@ -10,10 +10,15 @@
 
 <hr>
 
-<div>
+<div sec:authorize="isAuthenticated()">
     Logged user: <span sec:authentication="name"></span>
     <br>
     Roles: <span sec:authentication="principal.authorities"></span>
+</div>
+
+<div sec:authorize="isAnonymous()">
+    You are not logged in!
+    <a href="/account/login">Login now</a>
 </div>
 
 <hr>
