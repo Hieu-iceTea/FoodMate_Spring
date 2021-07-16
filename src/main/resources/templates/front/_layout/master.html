@@ -119,7 +119,7 @@
                                         <li>
                                             <div class="mt-2 mb-3">
                                                 <img style="height: 80px;" class="rounded-circle"
-                                                     src="data-images/user/DinhHieu8896.jpg"
+                                                     th:src="|/front/data-images/user/${currentUser.image ?: '_default-user.png'}|"
                                                      alt="image-user">
                                             </div>
                                             <div class="mb-4">
