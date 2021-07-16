@@ -1,9 +1,14 @@
 package Hieu_iceTea.FoodMate_Spring.controller;
 
+import Hieu_iceTea.FoodMate_Spring.model.User;
 import Hieu_iceTea.FoodMate_Spring.service.user.UserService;
 import Hieu_iceTea.FoodMate_Spring.utilities.shoppingCart.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,8 +24,8 @@ public class ControllerAdviceGlobal {
     @Autowired
     CartService cartService;
 
-    /*@Autowired
-    UserService userService;*/
+    @Autowired
+    UserService userService;
     //endregion
 
     //region - ModelAttribute -
@@ -34,14 +39,22 @@ public class ControllerAdviceGlobal {
     }
 
     //https://stackoverflow.com/questions/30121565/spring-mvc-thymeleaf-adding-variable-to-all-templates-context
-    /*@ModelAttribute("currentUser")
+    @ModelAttribute("currentUser")
     public User getCurrentUser() {
-        UserDetails userDetails = (UserDetails)
-                SecurityContextHolder.getContext()
-                        .getAuthentication().getPrincipal();
 
-        return userService.findUserByEmail(userDetails.getUsername());
-    }*/
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            Object principal = authentication.getPrincipal();
+
+            if (principal instanceof UserDetails userDetails) { //principal != "anonymousUser"
+                return userService.findByUsername(userDetails.getUsername());
+            }
+        }
+
+        return null;
+
+    }
     //endregion
 
 }
