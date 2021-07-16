@@ -14,7 +14,9 @@ public interface BaseService<T extends BaseModel, ID extends Serializable> {
 
     T findById(ID id);
 
-    void save(T item);
+    T save(T item);
+
+    List<T> saveAll(List<T> items);
 
     void deleteById(ID id);
 

@@ -42,8 +42,13 @@ public class BaseServiceImplement<T extends BaseModel, ID extends Serializable> 
     }
 
     @Override
-    public void save(T item) {
-        repository.save(item);
+    public T save(T item) {
+        return repository.save(item);
+    }
+
+    @Override
+    public List<T> saveAll(List<T> items) {
+        return (List<T>) repository.saveAll(items);
     }
 
     @Override
