@@ -39,7 +39,7 @@ public class UserServiceImplement extends BaseServiceImplement<User, Integer> im
             Object principal = authentication.getPrincipal();
 
             if (principal instanceof UserDetails userDetails) { //principal != "anonymousUser"
-                return this.findByUsername(userDetails.getUsername());
+                return userRepository.findByUsername(userDetails.getUsername());
             }
         }
 
