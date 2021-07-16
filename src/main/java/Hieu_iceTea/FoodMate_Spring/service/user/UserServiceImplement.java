@@ -18,6 +18,11 @@ public class UserServiceImplement extends BaseServiceImplement<User, Integer> im
     public UserServiceImplement(UserRepository repository) {
         super(repository);
     }
+
+    @Override
+    public User findUserByUsername(String username) {
+        return userRepository.findUserByUsername(username);
+    }
     //endregion
 
 }

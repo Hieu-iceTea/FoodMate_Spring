@@ -7,6 +7,6 @@ import Hieu_iceTea.FoodMate_Spring.service.base.BaseService;
 
 public interface UserService extends BaseService<User, Integer> {
 
-    //
+    User findUserByUsername(String username);
 
 }
