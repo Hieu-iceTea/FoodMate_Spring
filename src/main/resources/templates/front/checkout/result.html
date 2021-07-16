@@ -22,10 +22,20 @@
         <section class="section bg-light">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8 offset-lg-4">
+
+                    <div th:if="${message}" class="col-lg-8 offset-lg-4">
                         <span class="icon icon-xl icon-success"><i class="ti ti-check-box"></i></span>
                         <h1 class="mb-2">Thank you for your order!</h1>
-                        <h4 class="text-muted mb-5">Please check your email. You will receive it soon...</h4>
+                        <h4 th:if="${message}" th:text="${message}" class="text-muted mb-5"></h4>
+                        <a href="../menu" class="btn btn-outline-secondary">
+                            <span>Go back to menu</span>
+                        </a>
+                    </div>
+
+                    <div th:if="${error}" class="col-lg-8 offset-lg-4">
+                        <span class="icon icon-xl icon-danger"><i class="ti ti-close"></i></span>
+                        <h1 class="mb-2">Error. Please try again later</h1>
+                        <h4 th:if="${error}" th:text="${error}" class="text-muted mb-5"></h4>
                         <a href="../menu" class="btn btn-outline-secondary">
                             <span>Go back to menu</span>
                         </a>

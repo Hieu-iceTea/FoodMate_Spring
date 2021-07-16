@@ -2,7 +2,6 @@ package Hieu_iceTea.FoodMate_Spring.controller.front;
 
 import Hieu_iceTea.FoodMate_Spring.model.Order;
 import Hieu_iceTea.FoodMate_Spring.model.OrderDetail;
-import Hieu_iceTea.FoodMate_Spring.model.Restaurant;
 import Hieu_iceTea.FoodMate_Spring.service.order.OrderService;
 import Hieu_iceTea.FoodMate_Spring.service.orderDetail.OrderDetailService;
 import Hieu_iceTea.FoodMate_Spring.service.product.ProductService;
@@ -15,11 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,7 +67,7 @@ public class CheckOutController {
 
     //region - Add new -
     @PostMapping(path = {"", "/", "/index"})
-    public String addOrder(@RequestParam("delivery_address") String deliveryAddress) {
+    public String addOrder(RedirectAttributes redirectAttributes, @RequestParam("delivery_address") String deliveryAddress) {
 
         // 01. Xử lý dữ liệu giỏ hàng
         List<Cart> content_carts = cartService.content();
@@ -123,12 +119,26 @@ public class CheckOutController {
         // 03. Xóa giỏ hàng
         cartService.destroy();
 
+        // 04. Gửi mail
+
+        // 05. Gửi thông báo
+        redirectAttributes.addFlashAttribute("message", "Please check your email. You will receive it soon...");
+
         return "redirect:/checkout/result";
 
     }
 
     @GetMapping(path = {"result", "result/"})
-    public String result() {
+    public String result(Model model) {
+
+        String message = (String) model.getAttribute("message");
+        //@ModelAttribute("message") String message
+        //String message = (String) model.asMap().get("message");
+        //String message = (String) RequestContextUtils.getInputFlashMap(request).get("message"); //HttpServletRequest request
+
+        if (message == null || message.isBlank()) {
+            return "redirect:/";
+        }
 
         return "front/checkout/result";
 
