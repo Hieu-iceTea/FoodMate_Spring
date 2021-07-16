@@ -41,12 +41,12 @@ public class CartController {
         Map<Object, List<Cart>> cartsGroupByRestaurant_Map = carts.stream()
                 .collect(Collectors.groupingBy(cart -> cart.getOptions().get("restaurant_id")));
         List<List<Cart>> cartsGroupByRestaurant = cartsGroupByRestaurant_Map.values().stream().toList();
-        //List<Cart>[] cartsGroupByRestaurant = (List<Cart>[]) cartsGroupByRestaurant_Map.values().toArray();
+        /*List<Cart>[] cartsGroupByRestaurant = (List<Cart>[]) cartsGroupByRestaurant_Map.values().toArray();*/
 
 
         // 03. Gửi dữ liệu đến view
-        //model.addAttribute("carts", carts);
-        //model.addAttribute("cartsGroupByRestaurant_Map", cartsGroupByRestaurant_Map);
+        /*model.addAttribute("carts", carts);
+        model.addAttribute("cartsGroupByRestaurant_Map", cartsGroupByRestaurant_Map);*/
         model.addAttribute("cartsGroupByRestaurant", cartsGroupByRestaurant);
 
         model.addAttribute("total", cartService.total());
