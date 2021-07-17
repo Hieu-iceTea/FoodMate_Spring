@@ -13,7 +13,7 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    //region - JDBC Authentication -
+    //region - Authentication | JDBC-
     @Autowired
     DataSource dataSource;
 
@@ -43,6 +43,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                 .roles("USER", "ADMIN")
                 )*/
         ;
+
+        //inMemoryAuthentication
+        /*auth.inMemoryAuthentication()
+                .withUser("customer").password("{noop}1996").roles("CUSTOMER")
+                .and()
+                .withUser("admin").password("{noop}1996").roles("ADMIN");*/
     }
 
     /*@Bean
@@ -51,7 +57,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }*/
     //endregion
 
-    //region - Configure -
+    //region - Authorization | Configure -
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -60,6 +66,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").hasAnyRole("HOST", "ADMIN", "STAFF")
                 .antMatchers("/account/profile/**").hasRole("CUSTOMER")
                 .antMatchers("/account/my-order/**").hasRole("CUSTOMER")
+
+                .antMatchers("/api/**").hasAnyRole("HOST")
 
                 //.antMatchers("/").permitAll()
                 //.anyRequest().authenticated()
@@ -76,6 +84,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .exceptionHandling()
                 .accessDeniedPage("/account/access-denied")
+
+                //Thêm 2 dòng này nếu dùng API (Đăng nhập kiểu Basic-Auth trong Postman)
+                .and()
+                .httpBasic()
         ;
     }
     //endregion
