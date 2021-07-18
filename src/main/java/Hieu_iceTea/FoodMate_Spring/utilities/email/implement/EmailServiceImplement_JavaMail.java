@@ -31,7 +31,7 @@ public class EmailServiceImplement_JavaMail implements EmailService {
         prop.put("mail.smtp.host", host);
         prop.put("mail.smtp.port", port);
         prop.put("mail.smtp.ssl.trust", host);
-        prop.put("mail.smtp.ssl.protocols", "TLSv1.2"); //Chú ý thêm dòng này. Tham khảo: https://stackoverflow.com/questions/16115453/javamail-could-not-convert-socket-to-tls-gmail
+        //prop.put("mail.smtp.ssl.protocols", "TLSv1.2"); //Chú ý thêm dòng này nếu dùng java-mail version[1.5.0-b01]. Tham khảo: https://stackoverflow.com/questions/16115453/javamail-could-not-convert-socket-to-tls-gmail
 
         return Session.getInstance(prop, new Authenticator() {
             @Override
