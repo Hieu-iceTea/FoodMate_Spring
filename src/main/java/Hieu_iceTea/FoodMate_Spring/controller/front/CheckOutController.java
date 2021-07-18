@@ -8,6 +8,7 @@ import Hieu_iceTea.FoodMate_Spring.service.product.ProductService;
 import Hieu_iceTea.FoodMate_Spring.service.restaurant.RestaurantService;
 import Hieu_iceTea.FoodMate_Spring.service.user.UserService;
 import Hieu_iceTea.FoodMate_Spring.utilities.Common;
+import Hieu_iceTea.FoodMate_Spring.utilities.email.EmailService;
 import Hieu_iceTea.FoodMate_Spring.utilities.shoppingCart.model.Cart;
 import Hieu_iceTea.FoodMate_Spring.utilities.shoppingCart.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,9 @@ public class CheckOutController {
 
     @Autowired
     private RestaurantService restaurantService;
+
+    @Autowired
+    private EmailService emailService;
     //endregion
 
 
@@ -120,6 +124,7 @@ public class CheckOutController {
         cartService.destroy();
 
         // 04. Gửi mail
+        emailService.sendMail(userService.getCurrentUser().getEmail(), "Thông báo đơn hàng", "Bạn đã đặt hàng thành công!!!");
 
         // 05. Gửi thông báo
         redirectAttributes.addFlashAttribute("message", "Please check your email. You will receive it soon...");
