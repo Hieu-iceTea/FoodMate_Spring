@@ -48,6 +48,7 @@ public class CheckOutController {
     @Autowired
     private RestaurantService restaurantService;
 
+    @Qualifier("emailServiceImplement_SpringMail")
     @Autowired
     private EmailService emailService;
     //endregion
@@ -124,7 +125,7 @@ public class CheckOutController {
         cartService.destroy();
 
         // 04. Gửi mail
-        emailService.sendMail(userService.getCurrentUser().getEmail(), "Thông báo đơn hàng", "Bạn đã đặt hàng thành công!!!");
+        this.sendEmail();
 
         // 05. Gửi thông báo
         redirectAttributes.addFlashAttribute("message", "Please check your email. You will receive it soon...");
@@ -151,9 +152,9 @@ public class CheckOutController {
     //endregion
 
 
-    public String sendEmail() {
+    private void sendEmail() {
 
-        return "";
+        emailService.sendSimpleMessage(userService.getCurrentUser().getEmail(), "Thông báo đơn hàng", "Bạn đã đặt hàng thành công!!!");
 
     }
 
