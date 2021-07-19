@@ -1,8 +1,6 @@
 package Hieu_iceTea.FoodMate_Spring.utilities.email;
 
-import javax.mail.MessagingException;
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 

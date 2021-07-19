@@ -9,7 +9,6 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -107,17 +106,17 @@ public class EmailServiceImplement_JavaMail implements EmailService {
 
     }
 
-    @Override
+    @Override //Chưa làm
     public void sendSimpleMessageUsingTemplate(String to, String subject, String... templateModel) {
         //Chưa làm
     }
 
-    @Override
+    @Override //Chưa làm
     public void sendMessageWithAttachment(String to, String subject, String text, String pathToAttachment) {
         //Chưa làm
     }
 
-    @Override
+    @Override //Chưa làm
     public void sendMessageUsingThymeleafTemplate(String to, String subject, String templateFile, Map<String, Object> templateModel, List<File> inLineFiles, List<File> attachmentFiles) {
         //Chưa làm
     }
