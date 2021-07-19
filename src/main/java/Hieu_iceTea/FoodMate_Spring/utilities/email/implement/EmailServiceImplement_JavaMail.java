@@ -9,6 +9,8 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import java.io.File;
+import java.io.IOException;
+import java.util.Map;
 import java.util.Properties;
 
 //https://baeldung.com/java-email
@@ -41,7 +43,7 @@ public class EmailServiceImplement_JavaMail implements EmailService {
         });
     }
 
-    private Message createMail(String to, String subject, String msg, String pathName) throws Exception {
+    private Message createMail(String to, String subject, String msgText, String pathName) throws Exception {
 
         Session session = this.getSession();
 
@@ -53,10 +55,10 @@ public class EmailServiceImplement_JavaMail implements EmailService {
         Multipart multipart = new MimeMultipart();
 
         // Văn bản thông thường
-        //String msg = "This is my first email using JavaMailer";
-        if (msg != null && !msg.isBlank()) {
+        //String msgText = "This is my first email using JavaMailer";
+        if (msgText != null && !msgText.isBlank()) {
             MimeBodyPart mimeBodyPart = new MimeBodyPart();
-            mimeBodyPart.setContent(msg, "text/html; charset=utf-8");
+            mimeBodyPart.setContent(msgText, "text/html; charset=utf-8");
             multipart.addBodyPart(mimeBodyPart);
         }
 
@@ -76,10 +78,13 @@ public class EmailServiceImplement_JavaMail implements EmailService {
 
 
     //region - Public Method -
-    public void sendMail(String to, String subject) {
+    public void sendMailDemo(String to) {
+
+        String subject = "Demo - JavaMailer";
+        String text = "This is my first email using JavaMailer";
 
         try {
-            Message message = createMail(to, subject, "This is my first email using JavaMailer", null);
+            Message message = createMail(to, subject, text, null);
 
             Transport.send(message);
         } catch (Exception e) {
@@ -88,18 +93,33 @@ public class EmailServiceImplement_JavaMail implements EmailService {
 
     }
 
-    public void sendMail(String to, String subject, String content) {
+    @Override
+    public void sendSimpleMessage(String to, String subject, String text) {
 
         try {
-            Message message = createMail(to, subject, content, null);
+            Message message = createMail(to, subject, text, null);
 
             Transport.send(message);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+    }
+
+    @Override
+    public void sendSimpleMessageUsingTemplate(String to, String subject, String... templateModel) {
+        //Chưa làm
+    }
+
+    @Override
+    public void sendMessageWithAttachment(String to, String subject, String text, String pathToAttachment) {
+        //Chưa làm
+    }
+
+    @Override
+    public void sendMessageUsingThymeleafTemplate(String to, String subject, Map<String, Object> templateModel) throws IOException, MessagingException {
+        //Chưa làm
     }
     //endregion
-
 
 }

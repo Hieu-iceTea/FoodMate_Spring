@@ -86,7 +86,14 @@
 		<dependency>
 			<groupId>com.sun.mail</groupId>
 			<artifactId>javax.mail</artifactId>
-			<version>1.6.2</version>
+			<!--<version>1.6.2</version>-->
+		</dependency>
+
+		<!--https://www.baeldung.com/spring-email-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+			<!--<version>2.3.4.RELEASE</version>-->
 		</dependency>
 	</dependencies>
 
