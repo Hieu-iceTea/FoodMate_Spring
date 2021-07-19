@@ -10,6 +10,7 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
@@ -117,7 +118,7 @@ public class EmailServiceImplement_JavaMail implements EmailService {
     }
 
     @Override
-    public void sendMessageUsingThymeleafTemplate(String to, String subject, Map<String, Object> templateModel) throws IOException, MessagingException {
+    public void sendMessageUsingThymeleafTemplate(String to, String subject, String templateFile, Map<String, Object> templateModel, List<File> inLineFiles, List<File> attachmentFiles) {
         //Chưa làm
     }
     //endregion

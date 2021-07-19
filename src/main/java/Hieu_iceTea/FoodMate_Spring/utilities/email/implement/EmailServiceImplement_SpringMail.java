@@ -2,10 +2,7 @@ package Hieu_iceTea.FoodMate_Spring.utilities.email.implement;
 
 import Hieu_iceTea.FoodMate_Spring.utilities.email.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.Resource;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -17,6 +14,7 @@ import org.thymeleaf.spring5.SpringTemplateEngine;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.File;
+import java.util.List;
 import java.util.Map;
 
 
@@ -27,6 +25,7 @@ public class EmailServiceImplement_SpringMail implements EmailService {
 
     //region - Fields -
     private static final String NOREPLY_ADDRESS = "noreply@baeldung.com";
+    private static final String templatesPath = "mail/";
     //endregion
 
 
@@ -43,8 +42,8 @@ public class EmailServiceImplement_SpringMail implements EmailService {
 
 
     //region - Resource -
-    @Value("classpath:/static/favicon-front.png")
-    private Resource resourceFile;
+    /*@Value("classpath:/static/favicon-front.png")
+    private Resource resourceFile;*/
     //endregion
 
 
@@ -93,37 +92,54 @@ public class EmailServiceImplement_SpringMail implements EmailService {
     }
 
     @Override
-    public void sendMessageUsingThymeleafTemplate(String to, String subject, Map<String, Object> templateModel) throws MessagingException {
+    public void sendMessageUsingThymeleafTemplate(String to, String subject, String templateFile,
+                                                  Map<String, Object> templateModel,
+                                                  List<File> inLineFiles, List<File> attachmentFiles) {
 
-        Context thymeleafContext = new Context();
-        thymeleafContext.setVariables(templateModel);
+        Context context = new Context();
+        context.setVariables(templateModel);
 
-        String htmlBody = thymeleafTemplateEngine.process("mail-templates/template-thymeleaf.html", thymeleafContext);
+        String htmlBody = thymeleafTemplateEngine.process(templatesPath + templateFile, context);
 
-
-        sendHtmlMessage(to, subject, htmlBody);
+        sendHtmlMessage(to, subject, htmlBody, inLineFiles, attachmentFiles);
     }
     //endregion
 
 
     //region - Private Method -
-    private void sendHtmlMessage(String to, String subject, String htmlBody) throws MessagingException {
+    private void sendHtmlMessage(String to, String subject, String htmlBody,
+                                 List<File> inLineFiles, List<File> attachmentFiles) {
 
-        MimeMessage message = emailSender.createMimeMessage();
+        try {
 
-        MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+            MimeMessage message = emailSender.createMimeMessage();
 
-        helper.setFrom(NOREPLY_ADDRESS);
-        helper.setTo(to);
-        helper.setSubject(subject);
-        helper.setText(htmlBody, true);
+            MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 
-        helper.addInline("attachment_resourceFile.png", resourceFile);
+            helper.setFrom(NOREPLY_ADDRESS);
+            helper.setTo(to);
+            helper.setSubject(subject);
+            helper.setText(htmlBody, true);
 
-        FileSystemResource fileSystemResource = new FileSystemResource(new File("src/main/resources/static/favicon-front.png"));
-        helper.addInline("attachment_fileSystemResource.png", resourceFile);
+            //helper.addInline("attachment_resourceFile.png", resourceFile);
 
-        emailSender.send(message);
+            if (inLineFiles != null && !inLineFiles.isEmpty()) {
+                for (File file : inLineFiles) {
+                    helper.addInline(file.getName(), file);
+                }
+            }
+
+            if (attachmentFiles != null && !attachmentFiles.isEmpty()) {
+                for (File file : attachmentFiles) {
+                    helper.addAttachment(file.getName(), file);
+                }
+            }
+
+            emailSender.send(message);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
     //endregion
