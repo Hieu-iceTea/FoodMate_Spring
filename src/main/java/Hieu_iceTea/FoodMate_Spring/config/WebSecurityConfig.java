@@ -6,6 +6,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 
 import javax.sql.DataSource;
 
@@ -88,6 +89,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 //Thêm 2 dòng này nếu dùng API (Đăng nhập kiểu Basic-Auth trong Postman)
                 .and()
                 .httpBasic()
+
+                //Thêm phần này để hủy csrf, lúc đó test trong Postman cho dễ, đỡ phải thêm thêm trường @csrf. AHIHI
+                .and()
+                .csrf().disable()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         ;
     }
     //endregion
