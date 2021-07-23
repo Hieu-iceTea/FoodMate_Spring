@@ -44,11 +44,12 @@ public class ProductControllerApi {
 
     //region - Create -
     @PostMapping(path = {"/create/", "/create"})
-    public Product store(@Valid @ModelAttribute Product product,
-                        BindingResult bindingResult, RedirectAttributes redirectAttributes,
-                        @RequestParam("image_file") MultipartFile file) {
+    public Product store(/*@Valid @ModelAttribute Product product,*/
+                        @RequestBody Product newProduct
+                        /*BindingResult bindingResult, RedirectAttributes redirectAttributes,
+                        @RequestParam("image_file") MultipartFile file*/) {
 
-        //Xử lý Validating-Form
+        /*//Xử lý Validating-Form
         if (bindingResult.hasErrors()) {
             //https://stackoverflow.com/questions/2543797/spring-redirect-after-post-even-with-validation-errors
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.product", bindingResult);
@@ -56,20 +57,20 @@ public class ProductControllerApi {
 
             //return "redirect:/admin/product/create";
 
-            /*model.addAttribute("productCategories", productCategoryService.findAllByOrderByIdDesc());
+            *//*model.addAttribute("productCategories", productCategoryService.findAllByOrderByIdDesc());
             model.addAttribute("restaurants", restaurantService.findAllByOrderByIdDesc());
 
-            return "dashboard/product/create-edit";*/
+            return "dashboard/product/create-edit";*//*
         }
 
         //Xử lý file
         if (!file.isEmpty()) {
             // 02. Lưu file mới:
-            /*String fileName =  storageService.store(file, _path);
-            product.setImage(fileName);*/
-        }
+            *//*String fileName =  storageService.store(file, _path);
+            product.setImage(fileName);*//*
+        }*/
 
-        return productService.save(product);
+        return productService.save(newProduct);
 
         //return "redirect:/admin/product/index";
     }
