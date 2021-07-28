@@ -2,6 +2,7 @@ package Hieu_iceTea.FoodMate_Spring.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -64,11 +65,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
 
+                // ADMIN:
                 .antMatchers("/admin/**").hasAnyRole("HOST", "ADMIN", "STAFF")
+
+                // CLIENT:
                 .antMatchers("/account/profile/**").hasRole("CUSTOMER")
                 .antMatchers("/account/my-order/**").hasRole("CUSTOMER")
 
-                .antMatchers("/api/**").hasAnyRole("HOST")
+                // API:
+                .antMatchers(HttpMethod.GET, "/api/**").hasAnyRole("HOST", "ADMIN", "ADMIN_ReadOnly")
+                .antMatchers(HttpMethod.POST, "/api/**").hasAnyRole("HOST", "ADMIN")
+                .antMatchers(HttpMethod.PUT, "/api/**").hasAnyRole("HOST", "ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/api/**").hasAnyRole("HOST", "ADMIN")
+
 
                 //.antMatchers("/").permitAll()
                 //.anyRequest().authenticated()

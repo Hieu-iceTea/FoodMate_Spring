@@ -245,7 +245,7 @@ VALUES
 (6, 3, 'Staff_C', 'staff_c.codedy@gmail.com', '{bcrypt}$2y$10$//Od0OmEqRwFepW3wynrYOwslyvaS.snzBbpWwskF1Zrg5fNI.eTe', '2021-08-08', 'staff_c.jpg', 1, 'CODEDY', 'Staff C', '0868 6633 15', 'Codedy, Ha Noi, Viet Nam', TRUE),
 (5, 2, 'Staff_B', 'staff_b.codedy@gmail.com', '{bcrypt}$2y$10$//Od0OmEqRwFepW3wynrYOwslyvaS.snzBbpWwskF1Zrg5fNI.eTe', '2021-08-08', 'staff_b.jpg', 2, 'CODEDY', 'Staff B', '0868 6633 15', 'Codedy, Ha Noi, Viet Nam', TRUE),
 (4, 1, 'Staff_A', 'staff_a.codedy@gmail.com', '{bcrypt}$2y$10$//Od0OmEqRwFepW3wynrYOwslyvaS.snzBbpWwskF1Zrg5fNI.eTe', '2021-08-08', 'staff_a.jpg', 1, 'CODEDY', 'Staff A', '0868 6633 15', 'Codedy, Ha Noi, Viet Nam', TRUE),
-(3, NULL, 'Admin_ReadOnly', 'admin_readOnly.codedy@gmail.com', '{bcrypt}$2y$10$//Od0OmEqRwFepW3wynrYOwslyvaS.snzBbpWwskF1Zrg5fNI.eTe', '2021-08-08', 'admin_readOnly.jpg', 1, 'CODEDY', 'Admin ReadOnly', '0868 6633 15', 'Codedy, Ha Noi, Viet Nam', FALSE),
+(3, NULL, 'Admin_ReadOnly', 'admin_readOnly.codedy@gmail.com', '{bcrypt}$2y$10$//Od0OmEqRwFepW3wynrYOwslyvaS.snzBbpWwskF1Zrg5fNI.eTe', '2021-08-08', 'admin_readOnly.jpg', 1, 'CODEDY', 'Admin ReadOnly', '0868 6633 15', 'Codedy, Ha Noi, Viet Nam', TRUE),
 (2, NULL, 'Admin', 'admin.codedy@gmail.com', '{bcrypt}$2y$10$//Od0OmEqRwFepW3wynrYOwslyvaS.snzBbpWwskF1Zrg5fNI.eTe', '2021-08-08', 'admin.jpg', 1, 'CODEDY', 'Admin', '0868 6633 15', 'Codedy, Ha Noi, Viet Nam', TRUE),
 (1, NULL, 'Host', 'host.codedy@gmail.com', '{bcrypt}$2y$10$//Od0OmEqRwFepW3wynrYOwslyvaS.snzBbpWwskF1Zrg5fNI.eTe', '2021-08-08', 'host.jpg', 1, 'CODEDY', 'Host', '032 87 99 000', 'Codedy, Ha Noi, Viet Nam', TRUE);
 
@@ -254,7 +254,6 @@ INSERT INTO authorities (username, authority)
 VALUES
 ('Host', 'ROLE_HOST'),
 ('Admin', 'ROLE_ADMIN'),
-('Admin_ReadOnly', 'ROLE_ADMIN'),
 ('Admin_ReadOnly', 'ROLE_ADMIN_ReadOnly'),
 ('Staff_A', 'ROLE_STAFF'),
 ('Staff_B', 'ROLE_STAFF'),
