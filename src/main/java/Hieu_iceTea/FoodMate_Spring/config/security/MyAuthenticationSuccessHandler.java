@@ -1,4 +1,4 @@
-package Hieu_iceTea.FoodMate_Spring.config;
+package Hieu_iceTea.FoodMate_Spring.config.security;
 
 
 import java.io.IOException;
