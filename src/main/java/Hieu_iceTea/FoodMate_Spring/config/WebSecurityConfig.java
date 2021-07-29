@@ -101,8 +101,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 //Thêm phần này để hủy csrf, lúc đó test trong Postman cho dễ, đỡ phải thêm thêm trường @csrf. AHIHI
                 .and()
-                .csrf().disable()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .csrf()
+                .ignoringAntMatchers("/api/**")
+                //.disable()
+                //.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         ;
     }
     //endregion
