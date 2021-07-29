@@ -33,6 +33,9 @@ public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHand
 
     @Override
     public void onAuthenticationSuccess(final HttpServletRequest request, final HttpServletResponse response, final Authentication authentication) throws IOException {
+        /*SavedRequestAwareAuthenticationSuccessHandler handler = new SavedRequestAwareAuthenticationSuccessHandler ();
+        handler.onAuthenticationSuccess(request, response, authentication);*/
+
         handle(request, response, authentication);
         clearAuthenticationAttributes(request);
     }

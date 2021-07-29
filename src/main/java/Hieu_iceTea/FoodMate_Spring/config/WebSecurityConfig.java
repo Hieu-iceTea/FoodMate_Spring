@@ -84,6 +84,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/account/login") //Bỏ dòng này sẽ dùng trang login mặc định
+                //.successHandler(new MyAuthenticationSuccessHandler())
                 .defaultSuccessUrl("/account/login-success-redirect")
                 .permitAll()
 
