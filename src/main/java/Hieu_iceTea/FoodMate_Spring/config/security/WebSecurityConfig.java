@@ -65,7 +65,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
 
                 // ADMIN:
-                .antMatchers("/admin/**").hasAnyRole("HOST", "ADMIN", "ADMIN_ReadOnly", "STAFF")
+                .antMatchers(HttpMethod.GET, "/admin/**").hasAnyRole("HOST", "ADMIN", "ADMIN_ReadOnly", "STAFF")
+                .antMatchers(HttpMethod.POST, "/admin/**").hasAnyRole("HOST", "ADMIN", "STAFF")
+                .antMatchers(HttpMethod.PUT, "/admin/**").hasAnyRole("HOST", "ADMIN", "STAFF")
+                .antMatchers(HttpMethod.DELETE, "/admin/**").hasAnyRole("HOST", "ADMIN", "STAFF")
 
                 // CLIENT:
                 .antMatchers("/account/profile/**").hasRole("CUSTOMER")
