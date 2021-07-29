@@ -18,7 +18,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -121,14 +123,25 @@ public class CheckOutController {
             orderDetailService.saveAll(orderDetails);
         }
 
-        // 03. Xóa giỏ hàng
-        cartService.destroy();
+        // 03. Gửi mail
+        Map<String, Object> mail_data = new HashMap<>() {{
+            put("carts", cartService.content());
+            put("order_infos", new HashMap<>() {{
+                put("fullName", userService.getCurrentUser().getLastName() + ", " + userService.getCurrentUser().getFirstName());
+                put("address", deliveryAddress);
+                put("phone", userService.getCurrentUser().getPhone());
+                put("email", userService.getCurrentUser().getEmail());
+                put("total", cartService.total());
+            }});
+        }};
 
-        // 04. Gửi mail
-        this.sendEmail();
+        this.sendEmail_OrderNotification(userService.getCurrentUser().getEmail(), mail_data);
 
-        // 05. Gửi thông báo
+        // 04. Gửi thông báo
         redirectAttributes.addFlashAttribute("message", "Please check your email. You will receive it soon...");
+
+        // 05. Xóa giỏ hàng
+        cartService.destroy();
 
         return "redirect:/checkout/result";
 
@@ -152,9 +165,43 @@ public class CheckOutController {
     //endregion
 
 
-    private void sendEmail() {
+    private void sendEmail_OrderNotification(String to, Map<String, Object> mail_data) {
 
-        emailService.sendSimpleMessage(userService.getCurrentUser().getEmail(), "Thông báo đơn hàng", "Bạn đã đặt hàng thành công!!!");
+        // Cách 1. Gửi mail đơn giản:
+        //emailService.sendSimpleMessage(userService.getCurrentUser().getEmail(), "Thông báo đơn hàng", "Bạn đã đặt hàng thành công!!!");
+
+
+        // Cách 2. Gửi mail dùng template HTML (Thymeleaf)
+
+        // 1. Template Model
+        Map<String, Object> templateModel = mail_data;
+
+        // 2. InLine Files
+        List<File> inLineFiles = new ArrayList<>();
+        inLineFiles.add(new File("src/main/resources/templates/mail/order-notification/images/TechWiz-header.png"));
+        inLineFiles.add(new File("src/main/resources/templates/mail/order-notification/images/logo-cloud-kitchen-black.png"));
+
+        //Product-images
+        List<Cart> carts = (List<Cart>) mail_data.get("carts");
+        for (Cart cart : carts) {
+            String image = (String) cart.getOptions().get("image");
+
+            inLineFiles.add(new File("src/main/resources/static/front/data-images/products/" + image));
+        }
+
+        // 3. Attachment Files
+        /*List<File> attachmentFiles = new ArrayList<>();
+        attachmentFiles.add(new File("src/main/resources/static/favicon-admin.png"));*/
+
+        // 4. Gọi tới service để gửi email
+        emailService.sendMessageUsingThymeleafTemplate(
+                to,
+                "Order Notification",
+                "order-notification/index.html",
+                templateModel,
+                inLineFiles,
+                null
+        );
 
     }
 
