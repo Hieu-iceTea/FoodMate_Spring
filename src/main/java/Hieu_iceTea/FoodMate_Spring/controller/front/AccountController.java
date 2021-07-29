@@ -37,7 +37,7 @@ public class AccountController {
             return "redirect:/" + continueUri;
         }
 
-        if (request.isUserInRole("HOST") || request.isUserInRole("ADMIN") || request.isUserInRole("STAFF")) {
+        if (request.isUserInRole("HOST") || request.isUserInRole("ADMIN") ||request.isUserInRole("ADMIN_ReadOnly") || request.isUserInRole("STAFF")) {
             return "redirect:/admin";
         } else {
             return "redirect:/";

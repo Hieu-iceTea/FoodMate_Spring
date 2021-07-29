@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>menu-item | Component</title>
+</head>
+
+<body>
+
+    <!-- Button - Submit -->
+    <span th:fragment="submit">
+        <button sec:authorize="hasAnyRole('ROLE_HOST', 'ROLE_ADMIN', 'ROLE_STAFF')"
+
+                th:type="submit"
+
+                class="btn-shadow btn-hover-shine btn btn-primary">
+            <span class="btn-icon-wrapper pr-2 opacity-8">
+                <i class="fa fa-download fa-w-20"></i>
+            </span>
+            <span>Save</span>
+        </button>
+
+        <button sec:authorize="hasAnyRole('ROLE_ADMIN_ReadOnly')"
+
+                th:type="button"
+                th:onclick="alert('Unauthorized')" th:classappend="disabled"
+
+                class="btn-shadow btn-hover-shine btn btn-primary">
+            <span class="btn-icon-wrapper pr-2 opacity-8">
+                <i class="fa fa-download fa-w-20"></i>
+            </span>
+            <span>Save</span>
+        </button>
+    </span>
+
+</body>
+
+</html>
