@@ -110,14 +110,11 @@
                                                             <i class="fa fa-edit fa-w-20"></i>
                                                         </span>
                                             </a>
-                                            <form class="d-inline" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_HOST')"
+                                            <form class="d-inline"
                                                   th:action="@{|/admin/category/${productCategory.id}|}" th:method="DELETE" >
-                                                <button class="btn btn-hover-shine btn-outline-danger border-0 btn-sm"
-                                                        onclick="return confirm('Do you really want to delete this item?')">
-                                                        <span class="btn-icon-wrapper opacity-8">
-                                                            <i class="fa fa-trash fa-w-20"></i>
-                                                        </span>
-                                                </button>
+
+                                                <span th:replace="dashboard/_fragments/button :: deleteOnIndex"></span>
+
                                             </form>
                                         </td>
                                     </tr>

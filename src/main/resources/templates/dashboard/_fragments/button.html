@@ -26,13 +26,62 @@
         <button sec:authorize="hasAnyRole('ROLE_ADMIN_ReadOnly')"
 
                 th:type="button"
-                th:onclick="alert('Unauthorized')" th:classappend="disabled"
+                th:onclick="alert('401 - Unauthorized\n\nThe request has not been applied because the account being logged in lacks valid authentication credentials for the target resource.\n\nPlease log in to another account or contact the administrator for access permission.\n\n|Hiếu iceTea|')"
 
                 class="btn-shadow btn-hover-shine btn btn-primary">
             <span class="btn-icon-wrapper pr-2 opacity-8">
                 <i class="fa fa-download fa-w-20"></i>
             </span>
             <span>Save</span>
+        </button>
+    </span>
+
+
+    <!-- Button - Delete OnIndex -->
+    <span th:fragment="deleteOnIndex">
+        <button sec:authorize="hasAnyRole('ROLE_HOST', 'ROLE_ADMIN', 'ROLE_STAFF')"
+                class="btn btn-hover-shine btn-outline-danger border-0 btn-sm"
+
+                th:type="submit">
+                <span class="btn-icon-wrapper opacity-8">
+                    <i class="fa fa-trash fa-w-20"></i>
+                </span>
+        </button>
+
+        <button sec:authorize="hasAnyRole('ROLE_ADMIN_ReadOnly')"
+                class="btn btn-hover-shine btn-outline-danger border-0 btn-sm"
+
+                th:type="button"
+                th:onclick="alert('401 - Unauthorized\n\nThe request has not been applied because the account being logged in lacks valid authentication credentials for the target resource.\n\nPlease log in to another account or contact the administrator for access permission.\n\n|Hiếu iceTea|')">
+                <span class="btn-icon-wrapper opacity-8">
+                    <i class="fa fa-trash fa-w-20"></i>
+                </span>
+        </button>
+    </span>
+
+
+    <!-- Button - Delete OnShow -->
+    <span th:fragment="deleteOnShow">
+        <button sec:authorize="hasAnyRole('ROLE_HOST', 'ROLE_ADMIN', 'ROLE_STAFF')"
+                class="btn nav-link"
+
+                th:type="submit"
+                onclick="return confirm('Do you really want to delete this item?')">
+            <span class="btn-icon-wrapper opacity-8">
+                <i class="fa fa-trash fa-w-20"></i>
+            </span>
+            <span class="ml-1">Delete</span>
+        </button>
+
+        <button sec:authorize="hasAnyRole('ROLE_ADMIN_ReadOnly')"
+                class="btn nav-link"
+
+                th:type="button"
+                th:onclick="alert('401 - Unauthorized\n\nThe request has not been applied because the account being logged in lacks valid authentication credentials for the target resource.\n\nPlease log in to another account or contact the administrator for access permission.\n\n|Hiếu iceTea|')">
+            <span class="btn-icon-wrapper opacity-8">
+                <i class="fa fa-trash fa-w-20"></i>
+            </span>
+            <span class="ml-1">Delete</span>
         </button>
     </span>
 

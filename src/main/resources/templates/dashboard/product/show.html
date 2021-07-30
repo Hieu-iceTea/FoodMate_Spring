@@ -1,4 +1,5 @@
 <!doctype html>
+<!doctype html>
 
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
@@ -45,13 +46,9 @@
                     <li class="nav-item delete">
                         <form class="d-inline"
                               th:action="@{|/admin/product/${product.id}|}" th:method="DELETE">
-                            <button class="btn nav-link"
-                                    onclick="return confirm('Do you really want to delete this item?')">
-                                <span class="btn-icon-wrapper opacity-8">
-                                    <i class="fa fa-trash fa-w-20"></i>
-                                </span>
-                                <span class="ml-1"> Delete</span>
-                            </button>
+
+                            <span th:replace="dashboard/_fragments/button :: deleteOnShow"></span>
+
                         </form>
                     </li>
                 </ul>
