@@ -26,7 +26,7 @@
         <button sec:authorize="hasAnyRole('ROLE_ADMIN_ReadOnly')"
 
                 th:type="button"
-                th:onclick="alert('401 - Unauthorized\n\nThe request has not been applied because the account being logged in lacks valid authentication credentials for the target resource.\n\nPlease log in to another account or contact the administrator for access permission.\n\n|Hiếu iceTea|')"
+                th:onclick="alert('403 - Forbidden\n\nYou dont have access.\n\nTo access this action, switch to an account with permission. You are signed in as ${_auth_currentUser.username}\nOr contact the administrator for access permission.\n\n| Hiếu iceTea - DinhHieu8896@gmail.com |')"
 
                 class="btn-shadow btn-hover-shine btn btn-primary">
             <span class="btn-icon-wrapper pr-2 opacity-8">
@@ -52,7 +52,7 @@
                 class="btn btn-hover-shine btn-outline-danger border-0 btn-sm"
 
                 th:type="button"
-                th:onclick="alert('401 - Unauthorized\n\nThe request has not been applied because the account being logged in lacks valid authentication credentials for the target resource.\n\nPlease log in to another account or contact the administrator for access permission.\n\n|Hiếu iceTea|')">
+                th:onclick="alert('403 - Forbidden\n\nYou dont have access.\n\nTo access this action, switch to an account with permission. You are signed in as ${_auth_currentUser.username}\nOr contact the administrator for access permission.\n\n| Hiếu iceTea - DinhHieu8896@gmail.com |')">
                 <span class="btn-icon-wrapper opacity-8">
                     <i class="fa fa-trash fa-w-20"></i>
                 </span>
@@ -77,7 +77,7 @@
                 class="btn nav-link"
 
                 th:type="button"
-                th:onclick="alert('401 - Unauthorized\n\nThe request has not been applied because the account being logged in lacks valid authentication credentials for the target resource.\n\nPlease log in to another account or contact the administrator for access permission.\n\n|Hiếu iceTea|')">
+                th:onclick="alert('403 - Forbidden\n\nYou dont have access.\n\nTo access this action, switch to an account with permission. You are signed in as ${_auth_currentUser.username}\nOr contact the administrator for access permission.\n\n| Hiếu iceTea - DinhHieu8896@gmail.com |')">
             <span class="btn-icon-wrapper opacity-8">
                 <i class="fa fa-trash fa-w-20"></i>
             </span>
