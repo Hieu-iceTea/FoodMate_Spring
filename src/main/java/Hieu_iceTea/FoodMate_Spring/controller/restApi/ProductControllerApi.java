@@ -18,6 +18,7 @@ public class ProductControllerApi {
 
     //TODO: Sửa lỗi vòng lặp đệ quy khi xử lý JSON, lý do relationship giữa các bảng.
     //Video hướng dẫn của cô ThiDK: http://youtube.com/watch?v=pMxgLOPe_OE
+    //Video hướng dẫn của cô ThiDK - video 2: https://www.youtube.com/watch?v=nimev8Djyd8
 
     //region - Autowired Service -
     @Autowired
@@ -33,7 +34,7 @@ public class ProductControllerApi {
 
     }
 
-    @GetMapping(path = {"/{id}/", "/{id}"})
+    @GetMapping(path = {"/{id}", "/{id}/"})
     public Product show(@PathVariable int id) {
 
         return productService.findById(id);
@@ -43,7 +44,7 @@ public class ProductControllerApi {
 
 
     //region - Create -
-    @PostMapping(path = {"/create/", "/create"})
+    @PostMapping(path = {"", "/"})
     public Product store(/*@Valid @ModelAttribute Product product,*/
                         @RequestBody Product newProduct
                         /*BindingResult bindingResult, RedirectAttributes redirectAttributes,
@@ -78,7 +79,7 @@ public class ProductControllerApi {
 
 
     //region - Edit -
-    @PostMapping(path = {"/{id}/edit/", "/{id}/edit"})
+    @PutMapping(path = {"/{id}", "/{id}/"})
     public String update(@Valid @ModelAttribute Product product,
                          BindingResult bindingResult, RedirectAttributes redirectAttributes,
                          @RequestParam("image_file") MultipartFile file,

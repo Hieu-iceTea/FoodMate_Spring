@@ -75,10 +75,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/account/my-order/**").hasRole("CUSTOMER")
 
                 // API:
-                .antMatchers(HttpMethod.GET, "/api/**").hasAnyRole("HOST", "ADMIN", "ADMIN_ReadOnly")
-                .antMatchers(HttpMethod.POST, "/api/**").hasAnyRole("HOST", "ADMIN")
-                .antMatchers(HttpMethod.PUT, "/api/**").hasAnyRole("HOST", "ADMIN")
-                .antMatchers(HttpMethod.DELETE, "/api/**").hasAnyRole("HOST", "ADMIN")
+                .antMatchers(HttpMethod.GET, "/api/**", "/restApi/**").hasAnyRole("HOST", "ADMIN", "ADMIN_ReadOnly")
+                .antMatchers(HttpMethod.POST, "/api/**", "/restApi/**").hasAnyRole("HOST", "ADMIN")
+                .antMatchers(HttpMethod.PUT, "/api/**", "/restApi/**").hasAnyRole("HOST", "ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/api/**", "/restApi/**").hasAnyRole("HOST", "ADMIN")
 
 
                 //.antMatchers("/").permitAll()
@@ -95,9 +95,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .permitAll()
 
-                .and()
+                //Khi dùng API chú ý bỏ phần này
+                /*.and()
                 .exceptionHandling()
-                .accessDeniedPage("/account/access-denied")
+                .accessDeniedPage("/account/access-denied")*/
 
                 //Thêm 2 dòng này nếu dùng API (Đăng nhập kiểu Basic-Auth trong Postman)
                 .and()
@@ -106,7 +107,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 //Thêm phần này để hủy csrf, lúc đó test trong Postman cho dễ, đỡ phải thêm thêm trường @csrf. AHIHI
                 .and()
                 .csrf()
-                .ignoringAntMatchers("/api/**")
+                .ignoringAntMatchers("/api/**", "/restApi/**")
                 //.disable()
                 //.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         ;
