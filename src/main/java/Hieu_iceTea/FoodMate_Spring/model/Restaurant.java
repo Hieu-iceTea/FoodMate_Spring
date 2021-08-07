@@ -1,5 +1,7 @@
 package Hieu_iceTea.FoodMate_Spring.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -7,6 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "restaurants")
+//@JsonIgnoreProperties({"hibernateLazyInitial", "handler"})
 public class Restaurant extends BaseModel {
 
     //region - Define Fields -

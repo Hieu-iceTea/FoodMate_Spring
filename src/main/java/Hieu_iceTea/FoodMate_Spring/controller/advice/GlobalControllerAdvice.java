@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 //https://docs.spring.io/spring-framework/docs/4.1.6.RELEASE/spring-framework-reference/html/mvc.html#mvc-ann-controller-advice
 @ControllerAdvice()
-public class ControllerAdviceGlobal {
+public class GlobalControllerAdvice {
 
     //region - Autowired Service -
     @Autowired

@@ -1,9 +1,8 @@
-package Hieu_iceTea.FoodMate_Spring.controller.restApi;
+package Hieu_iceTea.FoodMate_Spring.controller.rest;
 
 import Hieu_iceTea.FoodMate_Spring.model.Product;
 import Hieu_iceTea.FoodMate_Spring.service.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -14,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/restApi/products")
-public class ProductControllerApi {
+public class ProductRestController {
 
     //TODO: Sửa lỗi vòng lặp đệ quy khi xử lý JSON, lý do relationship giữa các bảng.
     //Video hướng dẫn của cô ThiDK: http://youtube.com/watch?v=pMxgLOPe_OE

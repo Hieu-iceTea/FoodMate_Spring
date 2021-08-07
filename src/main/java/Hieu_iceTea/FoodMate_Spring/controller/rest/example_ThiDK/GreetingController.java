@@ -1,4 +1,4 @@
-package Hieu_iceTea.FoodMate_Spring.controller.restApi.example_ThiDK;
+package Hieu_iceTea.FoodMate_Spring.controller.rest.example_ThiDK;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

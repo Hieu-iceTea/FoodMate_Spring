@@ -1,6 +1,7 @@
-package Hieu_iceTea.FoodMate_Spring.controller.restApi;
+package Hieu_iceTea.FoodMate_Spring.controller.rest;
 
 
+import Hieu_iceTea.FoodMate_Spring.controller.rest.exception.RestaurantNotFoundException;
 import Hieu_iceTea.FoodMate_Spring.model.Restaurant;
 import Hieu_iceTea.FoodMate_Spring.service.restaurant.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +12,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/restApi/restaurants")
-public class RestaurantControllerApi {
+public class RestaurantRestController {
 
+    //TODO: Sửa lỗi vòng lặp đệ quy khi xử lý JSON, lý do relationship giữa các bảng.
     //Video hướng dẫn của cô ThiDK: http://youtube.com/watch?v=pMxgLOPe_OE
     //Video hướng dẫn của cô ThiDK - video 2: https://www.youtube.com/watch?v=nimev8Djyd8
 
@@ -36,7 +38,8 @@ public class RestaurantControllerApi {
         Restaurant restaurant = restaurantService.findById(id);
 
         if (restaurant == null) {
-            throw new RuntimeException("Employee id not found - " + id);
+            throw new RestaurantNotFoundException("Restaurant id not found - " + id);
+            //throw new RuntimeException("Restaurant id not found - " + id);
         }
 
         return restaurant;
@@ -72,7 +75,8 @@ public class RestaurantControllerApi {
     public String delete(@PathVariable int id) {
 
         if (restaurantService.findById(id) == null) {
-            throw new RuntimeException("Employee id not found - " + id);
+            throw new RestaurantNotFoundException("Restaurant id not found - " + id);
+            //throw new RuntimeException("Restaurant id not found - " + id);
         }
 
         // 02. Xóa bản ghi database
