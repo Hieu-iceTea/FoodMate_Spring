@@ -1,6 +1,10 @@
 package Hieu_iceTea.FoodMate_Spring.controller.front;
 
+import Hieu_iceTea.FoodMate_Spring.model.Order;
+import Hieu_iceTea.FoodMate_Spring.service.order.OrderService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,10 +14,17 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 @RequestMapping(path = "/account")
 public class AccountController {
+
+    //region - Autowired Service -
+    @Autowired
+    private OrderService orderService;
+    //endregion
+
 
     //region - Account -
     @GetMapping("login")
@@ -82,14 +93,22 @@ public class AccountController {
 
     //region - Order -
     @GetMapping("my-order")
-    public String myOrderIndex() {
+    public String myOrderIndex(Model model) {
+
+        List<Order> orders = orderService.findAllByOrderByIdDesc();
+
+        model.addAttribute("orders", orders);
 
         return "front/account/my-order/index";
 
     }
 
     @GetMapping("my-order/{id}")
-    public String myOrderShow(@PathVariable int id) {
+    public String myOrderShow(Model model, @PathVariable int id) {
+
+        Order order = orderService.findById(id);
+
+        model.addAttribute("order", order);
 
         return "front/account/my-order/show";
 
