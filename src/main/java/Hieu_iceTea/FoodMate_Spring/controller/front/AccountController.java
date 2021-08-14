@@ -113,6 +113,10 @@ public class AccountController {
 
         Order order = orderService.findById(id);
 
+        if (order.getUser() != userService.getCurrentUser()) {
+            return "redirect:/account/my-order";
+        }
+
         model.addAttribute("order", order);
 
         return "front/account/my-order/show";
