@@ -2,6 +2,7 @@ package Hieu_iceTea.FoodMate_Spring.controller.front;
 
 import Hieu_iceTea.FoodMate_Spring.model.Order;
 import Hieu_iceTea.FoodMate_Spring.service.order.OrderService;
+import Hieu_iceTea.FoodMate_Spring.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +24,9 @@ public class AccountController {
     //region - Autowired Service -
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    private UserService userService;
     //endregion
 
 
@@ -95,7 +99,8 @@ public class AccountController {
     @GetMapping("my-order")
     public String myOrderIndex(Model model) {
 
-        List<Order> orders = orderService.findAllByOrderByIdDesc();
+        List<Order> orders = orderService.findAllByUserOrderByIdDesc(userService.getCurrentUser());
+        //List<Order> orders = orderService.findAllByUserIdOrderByIdDesc(userService.getCurrentUser().getId());
 
         model.addAttribute("orders", orders);
 
