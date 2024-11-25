@@ -95,6 +95,13 @@
 			<artifactId>spring-boot-starter-mail</artifactId>
 			<!--<version>2.3.4.RELEASE</version>-->
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy -->
+		<dependency>
+			<groupId>net.bytebuddy</groupId>
+			<artifactId>byte-buddy</artifactId>
+			<version>1.11.22</version>
+		</dependency>
 	</dependencies>
 
 	<build>
